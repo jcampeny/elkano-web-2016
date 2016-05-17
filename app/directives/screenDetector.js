@@ -17,21 +17,17 @@ app.directive('screenDetector', ['$window', '$document','$timeout', 'animateServ
 		var delay = s.delay || 0;
 		var timeout;
 		$document.bind('mousewheel DOMMouseScroll touchmove scroll', function(){
-			if(!animated){
-				if(inScreen()){
+			if(inScreen()){
+				if(!animated){
 					animateService.animate(e, time, delay, type, s.value);
-					//animated = true;
-				}else{
+					animated = true;
+				}
+			}else{
+				if(animated){
 					TweenLite.set(e, {opacity: 0});
-					/*$timeout.cancel(timeout);
-					timeout = $timeout(function(){
-						if(inScreen()){
-							animateService.animate(e, time, delay, type, s.value);
-							//animated = true;
-						}
-					},500);*/
-				}				
-			}
+					animated = false;
+				}
+			}				
 		});
 
 		function inScreen(){
