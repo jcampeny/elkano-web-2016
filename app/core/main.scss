@@ -2,7 +2,16 @@
 @import 'mixins';
 @import '../components/header/header';
 @import '../components/footer/footer';
-@import '../components/section/section';
+@import '../views/home/home';
+@import '../views/about/about';
+@import '../views/case-study/case-study';
+@import '../views/contact/contact';
+@import '../views/join-us/join-us';
+@import '../views/project/project';
+@import '../views/service/service';
+@import '../views/start-project/start-project';
+@import '../views/work/work';
+
 
 body {
 	margin:0;

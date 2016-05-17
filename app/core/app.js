@@ -5,7 +5,9 @@ var app = angular.module("app",['templates-dist', 'ui.router', 'ui.bootstrap', '
 		//DataService.all("type", "per_page", "page").then(function(post) {
 			//ex: posts , int || "all", int
 		//});
-
+		DataService.all("posts", "all", 10).then(function(post) {
+			console.log(post);
+		});
 	}])
 
 	.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$resourceProvider', '$httpProvider',
@@ -13,8 +15,16 @@ var app = angular.module("app",['templates-dist', 'ui.router', 'ui.bootstrap', '
 			$urlRouterProvider.otherwise("/");
 
 			$stateProvider
-				.state('app', {url:'/', templateUrl: '../app/core/main.html', abstract: true})
-				.state('app.section', {url:'', template: '<app-section></app-section>'});
+				.state('app', 				{url:'/', 						templateUrl: '../app/core/main.html', abstract: true})
+				.state('app.home', 			{url:'', 						template: '<app-home></app-home>'})
+				.state('app.about', 		{url:'about', 					template: '<app-about></app-about>'})
+				.state('app.service', 		{url:'service', 				template: '<app-service></app-service>'})
+				.state('app.work', 			{url:'work', 					template: '<app-work></app-work>'})
+				.state('app.project', 		{url:'work/project/:slug', 		template: '<app-project></app-project>'})
+				.state('app.caseStudy', 	{url:'work/case-study/:slug', 	template: '<app-case-study></app-case-study>'})
+				.state('app.join', 			{url:'join-us', 				template: '<app-join-us></app-join-us>'})
+				.state('app.contact', 		{url:'contact', 				template: '<app-contact></app-contact>'})
+				.state('app.startProject',  {url:'start-a-project',			template: '<app-start-project></app-start-project>'});
 
 			$locationProvider.html5Mode(true);
 			$resourceProvider.defaults.stripTrailingSlashes = false;
