@@ -21,7 +21,7 @@ angular.module('app').service("animateService", [function( ) {
 	    			TweenLite.fromTo(e,time,{ left: "-30px"},{left: "0px", delay:delay});
 	    			break;
 	    		default:
-	    			TweenLite.to(e,time,{ delay:delay});
+	    			TweenLite.to(e,time,{ ease : Power1.easeInOut, opacity: "1", delay:delay});
 	    	}
 	    	
 	    }

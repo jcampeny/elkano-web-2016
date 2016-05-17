@@ -9,26 +9,27 @@ app.directive('screenDetector', ['$window', '$document','$timeout', 'animateServ
 		},
 		link : function(s, e, a) {
 
-
+		
 		var animated = false;
 
 		var type = s.type || "fade";
-		var time = s.time || 1;
-		var delay = s.delay || 0.5;
+		var time = s.time || 0.75;
+		var delay = s.delay || 0;
 		var timeout;
 		$document.bind('mousewheel DOMMouseScroll touchmove scroll', function(){
 			if(!animated){
 				if(inScreen()){
 					animateService.animate(e, time, delay, type, s.value);
-					animated = true;
+					//animated = true;
 				}else{
-					$timeout.cancel(timeout);
+					TweenLite.set(e, {opacity: 0});
+					/*$timeout.cancel(timeout);
 					timeout = $timeout(function(){
 						if(inScreen()){
 							animateService.animate(e, time, delay, type, s.value);
-							animated = true;
+							//animated = true;
 						}
-					},500);
+					},500);*/
 				}				
 			}
 		});
