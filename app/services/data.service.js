@@ -69,11 +69,11 @@
              */
             function decorateResult(result) {
                 if(typeof result.taxonomy === "undefined"){
-                    if(typeof result.title !== "undefined"){result.title = $sce.trustAsHtml(result.title.rendered);}
-                    if(typeof result.excerpt !== "undefined"){result.excerpt = $sce.trustAsHtml(result.excerpt.rendered);}
-                    if(typeof result.date !== "undefined"){result.date = Date.parse(result.date);}
-                    if(typeof result.content !== "undefined"){result.content_untrust = result.content.rendered;}
-                    if(typeof result.content !== "undefined"){result.content = $sce.trustAsHtml(result.content.rendered);}
+                    result.title = $sce.trustAsHtml(result.title.rendered);
+                    result.excerpt = $sce.trustAsHtml(result.excerpt.rendered);
+                    result.date = Date.parse(result.date);
+                    result.content_untrust = result.content.rendered;
+                    result.content = $sce.trustAsHtml(result.content.rendered);
 
 
                     if(typeof result._embedded !== "undefined" && typeof result._embedded['wp:featuredmedia'] !== "undefined" && result._embedded['wp:featuredmedia'].length > 0){
