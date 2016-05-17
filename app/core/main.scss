@@ -18,3 +18,7 @@ body {
 	padding:0;
 	@include opacity(1); 
 }
+
+.views-container{
+	position: relative;
+}
