@@ -420,6 +420,7 @@ function twentysixteen_widget_tag_cloud_args( $args ) {
 }
 add_filter( 'widget_tag_cloud_args', 'twentysixteen_widget_tag_cloud_args' );
 
+
 /**
  *
  *
@@ -552,45 +553,113 @@ $custom_posts = array(
 		'book',
 		'article'
 	);
+/*
+  $settings = array(
+    'media_buttons' => true,
+    'teeny' => true,
+    'editor_height' => 35
+  );
+$metabox_test = new MetaBox('identifier', 'Identifier', $custom_posts, $settings);
+*/
+
+$metabox_list = array(
+		array('identifier', 'Identifier:'),
+		array('publication_appear', 'Publication within which it appears:')
+	);
 
 function admin_init_metabox(){
 	global $custom_posts;
     add_meta_box("metaBox_custom_post", "Other information", "metaBox_custom_post",$custom_posts , "normal", "low");
 }
+
 add_action("admin_init", "admin_init_metabox");
 
 //Content Metabox
 function metaBox_custom_post() {
   global $post;
+  global $metabox_list;
 
   $custom = get_post_custom($post->ID);
-  $publication_appear = $custom["publication_appear"][0];
-  $identifier = $custom["identifier"][0];
 
   $settings = array(
-    'media_buttons' => false,
+    'media_buttons' => true,
     'teeny' => true,
-    'editor_height' => 15
+    'editor_height' => 35
   );
 
-  ?>
-  <p><label>Publication within which it appears:</label><br>
-  	<?php wp_editor( $publication_appear, "publication_appear", $settings);?>
-  <p><label>Identifier:</label><br>
-  	<?php wp_editor( $identifier, "identifier", $settings);?>
-  <?php
+  foreach ($metabox_list as $value) {
+  	$metabox_container = $custom[$value[0]][0];
+  	
+  	?><p><label><?php echo $value[1] ?></label><br>
+  		<?php wp_editor( $metabox_container, $value[0], $settings);?>
+  	<?php
+  }
 
 }
 
 //Update DB
 function save_details(){
   global $post;
+  global $metabox_list;
 
-  update_post_meta($post->ID, "publication_appear", $_POST["publication_appear"]);
-  update_post_meta($post->ID, "identifier", $_POST["identifier"]);
+  foreach ($metabox_list as $value) {
+  	update_post_meta($post->ID, $value[0], $_POST[$value[0]]);
+  }
+  
 }
 
 add_action('save_post', 'save_details');
+
+
+//send it with WP RESTAPI
+function wpsd_add_custom_posts_args() {
+    global $wp_post_types;
+    global $custom_posts;
+
+    foreach ($custom_posts as $value) {
+    	$wp_post_types[$value]->show_in_rest = true;
+	   	$wp_post_types[$value]->rest_base = $value;
+	   	$wp_post_types[$value]->rest_controller_class = 'WP_REST_Posts_Controller';		
+    }
+
+
+}
+add_action( 'init', 'wpsd_add_custom_posts_args', 30 );
+
+//send metabox
+function register_metabox(){
+	global $metabox_list;
+	global $custom_posts;
+	$functions = array();
+	foreach ($custom_posts as $i) {
+		foreach ($metabox_list as $key => $value) {
+			register_api_field( $i, $value[0] ,
+				array(
+					'get_callback' => $value[0],
+					'update_callback' => null,
+					'schema' => null
+					)
+				);
+		}
+	}
+
+
+
+
+}
+
+function identifier ($object, $field_name, $request){
+	$custom = get_post_custom($object->ID);
+	return $custom["identifier"][0];
+};
+
+function publication_appear ($object, $field_name, $request){
+	$custom = get_post_custom($object->ID);
+	return $custom["publication_appear"][0];
+};
+
+add_action( 'rest_api_init', 'register_metabox' );	
+
 
 /**
  *
