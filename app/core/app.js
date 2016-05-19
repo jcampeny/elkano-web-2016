@@ -1,13 +1,11 @@
 var app = angular.module("app",['templates-dist', 'ui.router', 'ui.bootstrap', 'ngAnimate', 'ngResource', 'pascalprecht.translate'])
 
-	.controller("mainController", [ '$scope', 'ArrayService', '$sce', 'DataService', function($scope, ArrayService,$sce,DataService) {
+	.controller("mainController", [ '$document', '$scope', 'ArrayService', '$sce', 'DataService', function($document, $scope, ArrayService,$sce,DataService) {
 		
 		//DataService.all("type", "per_page", "page").then(function(post) {
 			//ex: posts , int || "all", int
 		//});
-		DataService.all("posts", "all", 10).then(function(post) {
-			console.log(post);
-		});
+
 	}])
 
 	.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$resourceProvider', '$httpProvider',
@@ -39,7 +37,7 @@ var app = angular.module("app",['templates-dist', 'ui.router', 'ui.bootstrap', '
 	    "BASE_URL": ""
 	})
 
-	.run(['$rootScope', '$location', '$window', '$state', function($rootScope, $location, $window, $state){
+	.run(['$rootScope', '$location', '$window', '$state', 'stateService', function($rootScope, $location, $window, $state, stateService){
 	     $rootScope.$on('$stateChangeSuccess',
 	        function(event){
 	            if (!$window.ga)
@@ -48,7 +46,7 @@ var app = angular.module("app",['templates-dist', 'ui.router', 'ui.bootstrap', '
 	    });
 
 		$rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams, error) {
-
+			stateService.setState(event, toState, toParams, fromState, fromParams, error);
 		});
 
 	}]);

@@ -20,7 +20,7 @@ $message = "
 
 $subject = "Contacto Web";
 $headers = "From: $fromEmail\r\n";
-$mail = "cristiam86@gmail.com";
+$mail = "jordicampeny12@gmail.com";
 
 if(mail($mail, $subject, $message, $headers)) {
 	insertToDB($request);

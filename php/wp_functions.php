@@ -543,30 +543,45 @@ function save_details_message(){
 /**
  *
  *
- * MetaBox for Custom post
+ * Settings metaboox
  *
  *
  */
 
-//Custom Posts that use this metabox
-$custom_posts = array(
-		'book',
-		'article'
+$custom_posts = array( //create metabox
+		'project',
+		'case'
 	);
-/*
-  $settings = array(
-    'media_buttons' => true,
-    'teeny' => true,
-    'editor_height' => 35
-  );
-$metabox_test = new MetaBox('identifier', 'Identifier', $custom_posts, $settings);
-*/
 
-$metabox_list = array(
+$custom_posts_list = array( //Name and icon
+	array('Project','dashicons-images-alt'),
+	array('Case Study','dashicons-analytics')
+);
+
+$metabox_list = array( // metaboxs list
 		array('identifier', 'Identifier:'),
 		array('publication_appear', 'Publication within which it appears:')
 	);
+/*
+* one function for each metabox (same name)
+*/
+function identifier ($object, $field_name, $request){
+	$custom = get_post_custom($object->ID);
+	return $custom["identifier"][0];
+};
 
+function publication_appear ($object, $field_name, $request){
+	$custom = get_post_custom($object->ID);
+	return $custom["publication_appear"][0];
+};
+
+/**
+ *
+ *
+ * Create Metabox
+ *
+ *
+ */
 function admin_init_metabox(){
 	global $custom_posts;
     add_meta_box("metaBox_custom_post", "Other information", "metaBox_custom_post",$custom_posts , "normal", "low");
@@ -621,8 +636,6 @@ function wpsd_add_custom_posts_args() {
 	   	$wp_post_types[$value]->rest_base = $value;
 	   	$wp_post_types[$value]->rest_controller_class = 'WP_REST_Posts_Controller';		
     }
-
-
 }
 add_action( 'init', 'wpsd_add_custom_posts_args', 30 );
 
@@ -642,21 +655,7 @@ function register_metabox(){
 				);
 		}
 	}
-
-
-
-
 }
-
-function identifier ($object, $field_name, $request){
-	$custom = get_post_custom($object->ID);
-	return $custom["identifier"][0];
-};
-
-function publication_appear ($object, $field_name, $request){
-	$custom = get_post_custom($object->ID);
-	return $custom["publication_appear"][0];
-};
 
 add_action( 'rest_api_init', 'register_metabox' );	
 
@@ -715,16 +714,12 @@ function create_author_taxonomy() {
  *
  *
  */
-$custom_posts_list = array(
-	array('Article','dashicons-format-aside'),
-	array('Book','dashicons-book-alt')
-);
 
-create_Custom_post($custom_posts_list);
+create_Custom_post($custom_posts, $custom_posts_list);
 
-function create_Custom_post($custom_posts_list){
-	foreach ($custom_posts_list as $custom_post) {
-		$custom_post_creator = new CustomPost($custom_post[0], $custom_post[1]);
+function create_Custom_post($custom_posts, $custom_posts_list){
+	foreach ($custom_posts_list as $key => $custom_post) {
+		$custom_post_creator = new CustomPost($custom_posts[$key], $custom_post[1], $custom_post[0]);
 	}	
 }
 
@@ -740,11 +735,13 @@ function create_Custom_post($custom_posts_list){
 class CustomPost {
     private $name;  // name that appear in labels (and identifier)
 	private $icon; // Icon that appear in admin menu
+	private $label; // Labels
 
 	//constructor
-	function __construct($name, $icon){
+	function __construct($name, $icon, $label){
 		$this->name = $name;
         $this->icon = $icon;
+        $this->label = $label;
 
         $this->add();
 	}
@@ -762,7 +759,7 @@ class CustomPost {
 
 	//Set labels and arg for Custom Post Type
     private function set_labels(){
-    	$name = $this->name;
+    	$name = $this->label;
     	$icon = $this->icon;
 
 		$labels = array(

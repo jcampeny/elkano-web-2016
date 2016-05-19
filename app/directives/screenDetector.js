@@ -1,6 +1,6 @@
-app.directive('screenDetector', ['$window', '$document','$timeout', 'animateService', function($window, $document, $timeout, animateService){
+app.directive('screenDetector', ['$window', '$document','$timeout', 'animateService', 'screenService', function($window, $document, $timeout, animateService, screenService){
 	return {
-		restrict : 'AC',
+		restrict : 'EA',
 		scope: {
 			type : '@',
 			time : '@',
@@ -9,40 +9,74 @@ app.directive('screenDetector', ['$window', '$document','$timeout', 'animateServ
 		},
 		link : function(s, e, a) {
 
-		
 		var animated = false;
 
 		var type = s.type || "fade";
 		var time = s.time || 0.75;
 		var delay = s.delay || 0;
 		var timeout;
+		var element = $(e);
+
+		var scrollHandling = {
+		    allow: true,
+		    reallow: function() {
+		        scrollHandling.allow = true;
+		    },
+		    delay: 100 //++ to improve performance
+		};
+
 		$document.bind('mousewheel DOMMouseScroll touchmove scroll', function(){
-			if(inScreen()){
-				if(!animated){
-					animateService.animate(e, time, delay, type, s.value);
-					animated = true;
-				}
-			}else{
-				if(animated){
-					TweenLite.set(e, {opacity: 0});
-					animated = false;
-				}
+			if(scrollHandling.allow){
+				//evita scroll
+				scrollHandling.allow = false;
+				//cancelamos scroll hasta que timeout lo permita
+				//para mejora del rendimiento -> modificar delay
+				$timeout(function() {
+					scrollHandling.reallow();
+					if(screenService.inScreen(element)){
+						if(!animated){
+							animateService.animate(e, time, delay, type, s.value);
+							animated = true;
+						}
+					}else{
+						TweenLite.set(e, {opacity: 0});
+						animated = false;
+					}
+				}, scrollHandling.delay);
 			}				
 		});
-
-		function inScreen(){
-			var $window = $(window);
-		    var w_bottom = $window.scrollTop() + $window.height(); //distancia al top + altura del viewport = posición del bottom del content
-		    var element = $(e);
-		    var top = element.offset().top; //posición a top independiente del scroll
-		    var height = element.height(); //su altura
-		    var bottom = top + height; //parte inferior
-
-		    return (top >= $window.scrollTop() && top < w_bottom) || 
-		    	   (bottom > $window.scrollTop() && bottom <= w_bottom) ||
-                   (height > $window.height() && top <= $window.scrollTop() && bottom >= w_bottom);
-		}
-
 		}
 	};
 }]);
+
+angular.module('app')
+	.directive('headerChanger', ['screenService', '$document', '$timeout', function (screenService, $document, $timeout) {
+		return {
+			restrict : 'EA',
+			scope : {
+				value : '@'
+			},
+			link : function (s, e, a){
+				var element = $(e);
+
+				var scrollHandling = {
+				    allow: true,
+				    reallow: function() {
+				        scrollHandling.allow = true;
+				    },
+				    delay: 50 //++ to improve performance
+				};
+
+				$document.bind('mousewheel DOMMouseScroll touchmove scroll', function(){
+					if(scrollHandling.allow && screenService.inScreenHeader(element)){
+						scrollHandling.allow = false;
+						$timeout(function() {
+							scrollHandling.reallow();
+							screenService.setHeaderState(s.value);
+						}, scrollHandling.delay);
+						
+					}
+				});
+			}
+		};
+	}]);
