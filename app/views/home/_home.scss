@@ -1,0 +1,154 @@
+app-home{
+	section#home-section-1{
+		div{
+			position: relative;
+			min-height: 100vh;
+			width: 100%;
+			background-image : url('/assets/img/home1-mobile.jpg');
+			background-size : cover;
+			@media (min-width: $tabletV) {
+				background-image : url('/assets/img/home1.jpg');
+			}
+			h1{
+				position: absolute;
+				width: 80%;
+				color: white;
+				top: 50%;
+				margin: auto $margin-mobile-H;
+				@include transform (translateY(-50%));
+				@media (max-width: $tabletH) { br {display: none} }
+			}
+		}
+		article{
+			background-color: $primary-blue;
+			text-align: left;
+			@media (min-width: $tabletV) { text-align: center; }
+			h2{
+				color: white;
+				margin: 0 $margin-mobile-H*1.2 0 $margin-mobile-H;
+				padding: $margin-mobile-H*1.5 0;
+				@media (max-width: $desktop) { br {display: none} }
+				@media (min-width: $tabletV) {
+					width: ((8*100%) / 12);
+					padding: 70px 0px 50px 0px;
+					margin: 0 auto;
+				}
+			}
+			figure, a{
+				margin: 0 $margin-mobile-H;
+				@media (min-width: $tabletV) { margin: 0; }
+			}
+			p.btn-ekd{
+				font-family: $font-Calibre;
+				padding: $margin-mobile-H*1.5 0;
+				margin: 0;
+				@extend .btn-white;
+				@media (min-width: $tabletV) { padding: 50px 0px; }
+			}
+		}
+	}
+	section#home-section-2{
+		div{
+			min-height: 60vw;
+			background-size: cover;
+    		background-position: center center;
+    		position: relative;
+    		color: $secundary-blue;
+    		@media (min-width: $tabletV) { min-height: 30vw; }
+    		article{
+    			position: absolute;
+    			bottom: 0;
+	    		h4{
+	    			font-family: $font-Sabon;
+	    			font-size: 20px;
+	    			line-height: 24px;
+	    			margin-bottom: 0px;
+	    		}
+	    		h6{
+	    			font-family: $font-Calibre;
+	    			font-size: 12px;
+	    			line-height: 14px;
+	    			margin-top: 0px;
+	    			margin-bottom: 15px;
+	    		}
+	    		@media (min-width: $tabletV) { 
+	    			h4{
+	    				font-size: 26px;
+	    				line-height: 31px;
+	    			}
+	    			h3{
+		    			font-size: 18px;
+		    			line-height: 22px;
+	    			}
+	    		}
+    		}
+
+		}
+		div:first-child{
+			@media (min-width: $tabletV) { min-height: 60vw; }
+			
+		}
+		article.view-more {
+			background-color: white;
+    		text-align: center;
+    		clear: both;
+			p.btn-ekd{
+				font-family: $font-Calibre;
+				padding: $margin-mobile-H*1.5 0;
+				margin: 0;
+				@extend .btn-blue;
+				@media (min-width: $tabletV) { padding: 50px 0px; }
+			}
+		}
+	}
+	section#home-section-3{
+		text-align: center;
+		background-color: $grey-f;
+		article, h3{
+			margin: 0 auto; 
+			color: $primary-blue;
+			width: 100% - ($margin-mobile-H*4);
+			@media (min-width: $tabletV) {width: 50%; }
+		}
+		h3{padding: 40px 0 0 0;}
+		ul{
+			margin: 30px 0;
+			padding-left: 0;
+			li{
+				list-style: none;
+				@media (min-width: $tabletV) { display: inline; }
+				img{
+					width: 65%;
+					margin: 7%;
+					@media (min-width: $tabletV) { width: 16%; margin: 4%;}
+				}
+			}			
+		}
+		article[ng-repeat]{
+			display: none;
+			position: relative;
+			height: 330px;
+			@media (min-width: $tabletV) { height: 220px;}
+			&[state='0']{
+				display: block;
+			}
+			cite{
+				font-size: 18px;
+				color: $primary-blue;
+				font-style: normal;
+				position: relative;
+			}
+			hr{
+				border-top: 1px solid #303D4D;
+				width: 25%;
+			}
+			p{
+				position: relative;
+			}
+		}
+
+	}
+	section#home-section-4{
+		
+	}
+}

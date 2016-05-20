@@ -1,0 +1,348 @@
+.btn-white{
+  $color : #FFFFFF;
+  @media (min-width: $tabletV) {    
+      /*button*/
+    .button span::before, .button span::after,/* button span::before, button span::after,*/ input[type="submit"] span::before, input[type="submit"] span::after, input[type="reset"] span::before, input[type="reset"] span::after, input[type="button"] span::before, input[type="button"] span::after {
+        content: '';
+        display: block;
+        position: absolute;
+        background: $color;
+        -webkit-transition: -webkit-transform $transition_btn_ekd;
+        transition: -webkit-transform $transition_btn_ekd;
+        transition: transform $transition_btn_ekd;
+        transition: transform $transition_btn_ekd, -webkit-transform $transition_btn_ekd;
+    }
+    .button::after, /*button::after,*/ input[type="submit"]::after, input[type="reset"]::after, input[type="button"]::after {
+        content: '';
+        width: 20%;
+        left: 50%;
+        height: 1px;
+        bottom: 0;
+        -webkit-transform: translatex(-50%);
+        transform: translatex(-50%);
+        -webkit-transition: width $transition_btn_ekd $time_btn_ekd*2,background $transition_btn_ekd 0s;
+        transition: width $transition_btn_ekd $time_btn_ekd*2,background $transition_btn_ekd 0s;
+        display: block;
+        position: absolute;
+        background: $color;
+    }
+
+    .button span:first-child, /*button span:first-child,*/ input[type="submit"] span:first-child, input[type="reset"] span:first-child, input[type="button"] span:first-child {
+        height: 100%;
+    }
+    .button span,/* button span,*/ input[type="submit"] span, input[type="reset"] span, input[type="button"] span {
+        display: block;
+        position: absolute;
+        -webkit-transition: all $transition_btn_ekd;
+        transition: all $transition_btn_ekd;
+        width: 100%;
+        top: 0;
+        left: 0;
+    }
+    a>span {
+        color: inherit;
+        font: inherit;
+        text-decoration: inherit;
+        line-height: inherit;
+    }
+    .button span:last-child, /*button span:last-child,*/ input[type="submit"] span:last-child, input[type="reset"] span:last-child, input[type="button"] span:last-child {
+        width: 100%;
+        height: 1px;
+    }
+
+    .button span:first-child::before,/* button span:first-child::before,*/ input[type="submit"] span:first-child::before, input[type="reset"] span:first-child::before, input[type="button"] span:first-child::before {
+        left: 0;
+    }
+    .button span:first-child::before, .button span:first-child::after,/* button span:first-child::before, button span:first-child::after,*/ input[type="submit"] span:first-child::before, input[type="submit"] span:first-child::after, input[type="reset"] span:first-child::before, input[type="reset"] span:first-child::after, input[type="button"] span:first-child::before, input[type="button"] span:first-child::after {
+        width: 1px;
+        height: 100%;
+        bottom: 0;
+        -webkit-transform: scale3d(1, 0, 1);
+        transform: scale3d(1, 0, 1);
+        -webkit-transform-origin: bottom center;
+        transform-origin: bottom center;
+        -webkit-transition: background $transition_btn_ekd 0s,-webkit-transform $transition_btn_ekd $time_btn_ekd;
+        transition: background $transition_btn_ekd 0s,-webkit-transform $transition_btn_ekd $time_btn_ekd;
+        transition: transform $transition_btn_ekd $time_btn_ekd,background $transition_btn_ekd 0s;
+        transition: transform $transition_btn_ekd $time_btn_ekd,background $transition_btn_ekd 0s,-webkit-transform $transition_btn_ekd $time_btn_ekd;
+    }
+    .button span:first-child::after,/* button span:first-child::after,*/ input[type="submit"] span:first-child::after, input[type="reset"] span:first-child::after, input[type="button"] span:first-child::after {
+        right: 0;
+    }
+    .button span:last-child::before, /*button span:last-child::before,*/ input[type="submit"] span:last-child::before, input[type="reset"] span:last-child::before, input[type="button"] span:last-child::before {
+        left: 0;
+        -webkit-transform-origin: bottom left;
+        transform-origin: bottom left;
+    }
+    .button span:last-child::after, /*button span:last-child::after,*/ input[type="submit"] span:last-child::after, input[type="reset"] span:last-child::after, input[type="button"] span:last-child::after {
+        right: 0;
+        -webkit-transform-origin: bottom right;
+        transform-origin: bottom right;
+    }
+    .button span:last-child::before, .button span:last-child::after,/* button span:last-child::before, button span:last-child::after,*/ input[type="submit"] span:last-child::before, input[type="submit"] span:last-child::after, input[type="reset"] span:last-child::before, input[type="reset"] span:last-child::after, input[type="button"] span:last-child::before, input[type="button"] span:last-child::after {
+        height: 1px;
+        width: 100%;
+        bottom: 0;
+        -webkit-transform: scale3d(0, 1, 1);
+        transform: scale3d(0, 1, 1);
+        -webkit-transition: background $transition_btn_ekd 0s,-webkit-transform $transition_btn_ekd 0s;
+        transition: background $transition_btn_ekd 0s,-webkit-transform $transition_btn_ekd 0s;
+        transition: transform $transition_btn_ekd 0s,background $transition_btn_ekd 0s;
+        transition: transform $transition_btn_ekd 0s,background $transition_btn_ekd 0s,-webkit-transform $transition_btn_ekd 0s;
+    }
+    .button, /*button,*/ input[type="submit"], input[type="reset"], input[type="button"] {
+        position: relative;
+        line-height: 1.4;
+        text-decoration: none;
+        white-space: nowrap;
+        background-color: transparent;
+        border: 0;
+        cursor: pointer;
+        -webkit-transition: all $transition_btn_ekd 0s;
+        transition: all $transition_btn_ekd 0s;
+        color: $color;
+        display: -webkit-inline-box;
+        display: -webkit-inline-flex;
+        display: -ms-inline-flexbox;
+        display: inline-flex;
+        margin: 0;
+        padding: 0.875em 1.428571429em;
+    }
+    a {
+        position: relative;
+        text-decoration: none;
+        color: $color;
+        opacity: 1;
+        line-height: inherit;
+        -webkit-transition: color 100ms cubic-bezier(0.2, 0.3, 0.25, 0.9) 0ms;
+        transition: color 100ms cubic-bezier(0.2, 0.3, 0.25, 0.9) 0ms;
+    }
+
+    .button:hover, /*button:hover,*/ input[type="submit"]:hover, input[type="reset"]:hover, input[type="button"]:hover {
+        opacity: 1;
+        outline: 0;
+        color: $color !important; /*hover color*/
+        text-decoration: none;
+        -webkit-transition: color $transition_btn_ekd 0s;
+        transition: color $transition_btn_ekd 0s;
+    }
+    .button:hover span:first-child::before, .button:hover span:first-child::after,/* button:hover span:first-child::before, button:hover span:first-child::after,*/ input[type="submit"]:hover span:first-child::before, input[type="submit"]:hover span:first-child::after, input[type="reset"]:hover span:first-child::before, input[type="reset"]:hover span:first-child::after, input[type="button"]:hover span:first-child::before, input[type="button"]:hover span:first-child::after {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+        background: $color;
+        -webkit-transition: background $transition_btn_ekd 0s,-webkit-transform $transition_btn_ekd $time_btn_ekd;
+        transition: background $transition_btn_ekd 0s,-webkit-transform $transition_btn_ekd $time_btn_ekd;
+        transition: transform $transition_btn_ekd $time_btn_ekd,background $transition_btn_ekd 0s;
+        transition: transform $transition_btn_ekd $time_btn_ekd,background $transition_btn_ekd 0s,-webkit-transform $transition_btn_ekd $time_btn_ekd;
+    }
+
+    .button:hover span:last-child::before, .button:hover span:last-child::after,/* button:hover span:last-child::before, button:hover span:last-child::after,*/input[type="submit"]:hover span:last-child::before, input[type="submit"]:hover span:last-child::after, input[type="reset"]:hover span:last-child::before, input[type="reset"]:hover span:last-child::after, input[type="button"]:hover span:last-child::before, input[type="button"]:hover span:last-child::after {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+        background: $color;
+        -webkit-transition: background $transition_btn_ekd 0s,-webkit-transform $transition_btn_ekd $time_btn_ekd*2;
+        transition: background $transition_btn_ekd 0s,-webkit-transform $transition_btn_ekd $time_btn_ekd*2;
+        transition: transform $transition_btn_ekd $time_btn_ekd*2,background $transition_btn_ekd 0s;
+        transition: transform $transition_btn_ekd $time_btn_ekd*2,background $transition_btn_ekd 0s,-webkit-transform $transition_btn_ekd $time_btn_ekd*2;
+    }
+
+    .button:hover::after, /*button:hover::after,*/ input[type="submit"]:hover::after, input[type="reset"]:hover::after, input[type="button"]:hover::after {
+        width: 100%;
+        background: $color;
+        -webkit-transition: width $transition_btn_ekd 0s,background $transition_btn_ekd 0s;
+        transition: width $transition_btn_ekd 0s,background $transition_btn_ekd 0s;
+    }
+  }
+  span.mobile {
+    position: absolute;
+    width: 20%;
+    height: 1px;
+    background: $color;
+    bottom: -10px;
+    left: 50%;
+    @include transform (translateX(-50%));
+  }
+  a{
+    position:relative;
+    color: $color;
+    padding: 0;
+    &:active{
+      box-shadow: none;
+    }
+  }
+
+}
+
+.btn-blue{
+    /*button*/
+  $color: #323F4F;
+  @media (min-width: $tabletV) { 
+    .button span::before, .button span::after,/* button span::before, button span::after,*/ input[type="submit"] span::before, input[type="submit"] span::after, input[type="reset"] span::before, input[type="reset"] span::after, input[type="button"] span::before, input[type="button"] span::after {
+        content: '';
+        display: block;
+        position: absolute;
+        background: $color;
+        -webkit-transition: -webkit-transform $transition_btn_ekd;
+        transition: -webkit-transform $transition_btn_ekd;
+        transition: transform $transition_btn_ekd;
+        transition: transform $transition_btn_ekd, -webkit-transform $transition_btn_ekd;
+    }
+    .button::after, /*button::after,*/ input[type="submit"]::after, input[type="reset"]::after, input[type="button"]::after {
+        content: '';
+        width: 20%;
+        left: 50%;
+        height: 1px;
+        bottom: 0;
+        -webkit-transform: translatex(-50%);
+        transform: translatex(-50%);
+        -webkit-transition: width $transition_btn_ekd $time_btn_ekd*2,background $transition_btn_ekd 0s;
+        transition: width $transition_btn_ekd $time_btn_ekd*2,background $transition_btn_ekd 0s;
+        display: block;
+        position: absolute;
+        background: $color;
+    }
+
+    .button span:first-child, /*button span:first-child,*/ input[type="submit"] span:first-child, input[type="reset"] span:first-child, input[type="button"] span:first-child {
+        height: 100%;
+    }
+    .button span,/* button span,*/ input[type="submit"] span, input[type="reset"] span, input[type="button"] span {
+        display: block;
+        position: absolute;
+        -webkit-transition: all $transition_btn_ekd;
+        transition: all $transition_btn_ekd;
+        width: 100%;
+        top: 0;
+        left: 0;
+    }
+    a>span {
+        color: inherit;
+        font: inherit;
+        text-decoration: inherit;
+        line-height: inherit;
+    }
+    .button span:last-child, /*button span:last-child,*/ input[type="submit"] span:last-child, input[type="reset"] span:last-child, input[type="button"] span:last-child {
+        width: 100%;
+        height: 1px;
+    }
+
+    .button span:first-child::before,/* button span:first-child::before,*/ input[type="submit"] span:first-child::before, input[type="reset"] span:first-child::before, input[type="button"] span:first-child::before {
+        left: 0;
+    }
+    .button span:first-child::before, .button span:first-child::after,/* button span:first-child::before, button span:first-child::after,*/ input[type="submit"] span:first-child::before, input[type="submit"] span:first-child::after, input[type="reset"] span:first-child::before, input[type="reset"] span:first-child::after, input[type="button"] span:first-child::before, input[type="button"] span:first-child::after {
+        width: 1px;
+        height: 100%;
+        bottom: 0;
+        -webkit-transform: scale3d(1, 0, 1);
+        transform: scale3d(1, 0, 1);
+        -webkit-transform-origin: bottom center;
+        transform-origin: bottom center;
+        -webkit-transition: background $transition_btn_ekd 0s,-webkit-transform $transition_btn_ekd $time_btn_ekd;
+        transition: background $transition_btn_ekd 0s,-webkit-transform $transition_btn_ekd $time_btn_ekd;
+        transition: transform $transition_btn_ekd $time_btn_ekd,background $transition_btn_ekd 0s;
+        transition: transform $transition_btn_ekd $time_btn_ekd,background $transition_btn_ekd 0s,-webkit-transform $transition_btn_ekd $time_btn_ekd;
+    }
+    .button span:first-child::after,/* button span:first-child::after,*/ input[type="submit"] span:first-child::after, input[type="reset"] span:first-child::after, input[type="button"] span:first-child::after {
+        right: 0;
+    }
+    .button span:last-child::before, /*button span:last-child::before,*/ input[type="submit"] span:last-child::before, input[type="reset"] span:last-child::before, input[type="button"] span:last-child::before {
+        left: 0;
+        -webkit-transform-origin: bottom left;
+        transform-origin: bottom left;
+    }
+    .button span:last-child::after, /*button span:last-child::after,*/ input[type="submit"] span:last-child::after, input[type="reset"] span:last-child::after, input[type="button"] span:last-child::after {
+        right: 0;
+        -webkit-transform-origin: bottom right;
+        transform-origin: bottom right;
+    }
+    .button span:last-child::before, .button span:last-child::after,/* button span:last-child::before, button span:last-child::after,*/ input[type="submit"] span:last-child::before, input[type="submit"] span:last-child::after, input[type="reset"] span:last-child::before, input[type="reset"] span:last-child::after, input[type="button"] span:last-child::before, input[type="button"] span:last-child::after {
+        height: 1px;
+        width: 100%;
+        bottom: 0;
+        -webkit-transform: scale3d(0, 1, 1);
+        transform: scale3d(0, 1, 1);
+        -webkit-transition: background $transition_btn_ekd 0s,-webkit-transform $transition_btn_ekd 0s;
+        transition: background $transition_btn_ekd 0s,-webkit-transform $transition_btn_ekd 0s;
+        transition: transform $transition_btn_ekd 0s,background $transition_btn_ekd 0s;
+        transition: transform $transition_btn_ekd 0s,background $transition_btn_ekd 0s,-webkit-transform $transition_btn_ekd 0s;
+    }
+    .button, /*button,*/ input[type="submit"], input[type="reset"], input[type="button"] {
+        position: relative;
+        line-height: 1.4;
+        text-decoration: none;
+        white-space: nowrap;
+        background-color: transparent;
+        border: 0;
+        cursor: pointer;
+        -webkit-transition: all $transition_btn_ekd 0s;
+        transition: all $transition_btn_ekd 0s;
+        color: $color;
+        display: -webkit-inline-box;
+        display: -webkit-inline-flex;
+        display: -ms-inline-flexbox;
+        display: inline-flex;
+        margin: 0;
+        padding: 0.875em 1.428571429em;
+    }
+    a {
+        position: relative;
+        text-decoration: none;
+        color: $color;
+        opacity: 1;
+        line-height: inherit;
+        -webkit-transition: color 100ms cubic-bezier(0.2, 0.3, 0.25, 0.9) 0ms;
+        transition: color 100ms cubic-bezier(0.2, 0.3, 0.25, 0.9) 0ms;
+    }
+
+    .button:hover, /*button:hover,*/ input[type="submit"]:hover, input[type="reset"]:hover, input[type="button"]:hover {
+        opacity: 1;
+        outline: 0;
+        color: $color !important; /*hover color*/
+        text-decoration: none;
+        -webkit-transition: color $transition_btn_ekd 0s;
+        transition: color $transition_btn_ekd 0s;
+    }
+    .button:hover span:first-child::before, .button:hover span:first-child::after,/* button:hover span:first-child::before, button:hover span:first-child::after,*/ input[type="submit"]:hover span:first-child::before, input[type="submit"]:hover span:first-child::after, input[type="reset"]:hover span:first-child::before, input[type="reset"]:hover span:first-child::after, input[type="button"]:hover span:first-child::before, input[type="button"]:hover span:first-child::after {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+        background: $color;
+        -webkit-transition: background $transition_btn_ekd 0s,-webkit-transform $transition_btn_ekd $time_btn_ekd;
+        transition: background $transition_btn_ekd 0s,-webkit-transform $transition_btn_ekd $time_btn_ekd;
+        transition: transform $transition_btn_ekd $time_btn_ekd,background $transition_btn_ekd 0s;
+        transition: transform $transition_btn_ekd $time_btn_ekd,background $transition_btn_ekd 0s,-webkit-transform $transition_btn_ekd $time_btn_ekd;
+    }
+
+    .button:hover span:last-child::before, .button:hover span:last-child::after,/* button:hover span:last-child::before, button:hover span:last-child::after,*/input[type="submit"]:hover span:last-child::before, input[type="submit"]:hover span:last-child::after, input[type="reset"]:hover span:last-child::before, input[type="reset"]:hover span:last-child::after, input[type="button"]:hover span:last-child::before, input[type="button"]:hover span:last-child::after {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+        background: $color;
+        -webkit-transition: background $transition_btn_ekd 0s,-webkit-transform $transition_btn_ekd $time_btn_ekd*2;
+        transition: background $transition_btn_ekd 0s,-webkit-transform $transition_btn_ekd $time_btn_ekd*2;
+        transition: transform $transition_btn_ekd $time_btn_ekd*2,background $transition_btn_ekd 0s;
+        transition: transform $transition_btn_ekd $time_btn_ekd*2,background $transition_btn_ekd 0s,-webkit-transform $transition_btn_ekd $time_btn_ekd*2;
+    }
+
+    .button:hover::after, /*button:hover::after,*/ input[type="submit"]:hover::after, input[type="reset"]:hover::after, input[type="button"]:hover::after {
+        width: 100%;
+        background: $color;
+        -webkit-transition: width $transition_btn_ekd 0s,background $transition_btn_ekd 0s;
+        transition: width $transition_btn_ekd 0s,background $transition_btn_ekd 0s;
+    }
+  }
+  span.mobile {
+    position: absolute;
+    width: 20%;
+    height: 1px;
+    background: $color;
+    bottom: -10px;
+    left: 50%;
+    @include transform (translateX(-50%));
+  }
+  a{
+    position:relative;
+    color: $color;
+    padding: 0;
+    &:active{
+      box-shadow: none;
+    }
+  }
+}

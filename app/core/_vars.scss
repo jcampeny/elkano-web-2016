@@ -1,3 +1,22 @@
-$primary-color: #505050;
-$primary-font: sans-serif;
-$transition_spring: 750ms cubic-bezier(0.455, 0.03, 0.515, 0.955)
+$primary-blue : #323F4F; 
+$secundary-blue : #34393E;
+$header-blue : #334A79;
+$grey-f: #F7F7F7;
+$grey-0: #D6D7D8;
+
+$time_transition: 750ms;
+$transition_spring: $time_transition cubic-bezier(0.455, 0.03, 0.515, 0.955);
+
+$time_btn_ekd: 350ms;
+$transition_btn_ekd: $time_btn_ekd cubic-bezier(0.455, 0.03, 0.515, 0.955);
+
+$mobileV : 320px;
+$mobileH : 480px;
+$tabletV : 768px;
+$tabletH : 1024px;
+$desktop : 1320px;
+
+$font-Sabon : serif;
+$font-Calibre : sans-serif;
+
+$margin-mobile-H : 100% / 12;

@@ -1,4 +1,74 @@
+<section id="home-section-1" header-changer  value="Welcome">
+	<div>
+		<h1>We are Elkanodata,<br> a global information design <br> agency based in Barcelona</h1>
+	</div>
+	<article>
+		<h2>We partner with our clients to craft world <br> class visual experiences that convey information in <br> engaging, beautiful and insightful ways.</h2>
+		<figure><img src="/assets/img/logo.png"></figure>
+		<p class="btn-ekd">
+			<a href="" class="btn button ajax">
+				Learn More
+				<span></span>
+				<span class="mobile"></span>
+				<span></span>
+			</a>
+		</p>
+	</article>
+</section>
 
+<section id="home-section-2" id="home-section-1" header-changer  value="Work">
+	<div class="col-xs-12 col-sm-6" style="background-image: url({{item1.img}});">
+		<article>
+			<h4>{{item1.title}}</h4>
+			<h6>{{item1.subtitle}}</h6>
+		</article>
+	</div>
+	<div class="col-xs-12 col-sm-6" style="background-image: url({{item2.img}});">
+		<article>
+			<h4>{{item1.title}}</h4>
+			<h6>{{item1.subtitle}}</h6>
+		</article>
+	</div>
+	<div class="col-xs-12 col-sm-6" style="background-image: url({{item3.img}});">
+		<article>
+			<h4>{{item1.title}}</h4>
+			<h6>{{item1.subtitle}}</h6>
+		</article>
+	</div>
+	<article class="view-more" >
+		<p class="btn-ekd">
+			<a href="" class="btn button ajax">
+				View all projects
+				<span></span>
+				<span class="mobile"></span>
+				<span></span>
+			</a>
+		</p>
+	</article>
+</section>
+
+<section id="home-section-3" header-changer  value="Client">
+	<h3>Our clients are innovative brands, thought leaders and international organizations who believe that quality relationships bring quality results.</h3>
+	<article>
+		<ul>
+			<li ng-repeat="logo in client_logos"><img src="{{logo}}"></li>
+		</ul>
+	</article>
+	<article ng-repeat='(i, cite) in cites' state="{{i}}">
+		<cite>{{cite.cite}}</cite>
+		<hr>
+		<p><strong>{{cite.name}}</strong></p>
+		<p>{{cite.job}}</p>
+	</article>
+</section>
+
+<section id="home-section-4">
+	
+</section>
+
+<footer ng-footer></footer>
+
+<!--
 <div header-changer  value="test1"  style="height: 1000px" class="entrada">
 	<a ng-href="work/project/info" screen-detector>about</a>
 </div>
@@ -9,6 +79,4 @@
 		<div class="img"></div>
 	</a>
 </div>
-
-
-<footer header-changer  value="test3"  style="height: 1000px" ng-footer></footer>
+-->
