@@ -13,11 +13,17 @@ footer{
 			color: white;
 			text-align: center;
 			font-size: 24px;
+			@include transition(all $transition_btn_ekd);
 			@media (min-width: $tabletV) {
 				width: 50%;
 				height: 100%; 
 				position: absolute;
-				border-left: 2px solid $grey-0;
+				border-left: 1px solid $grey-0;
+				&:hover{
+					background-color: white;
+					color: $primary-blue;
+					text-decoration: none;
+				}
 			}
 			p{
 				line-height: $footer_height   * 0.8;
@@ -27,7 +33,7 @@ footer{
 		}
 		section.mobile{
 			background-color: $primary-blue;
-			border-top: 2px solid $grey-0;
+			border-top: 1px solid $grey-0;
 			color: white;
 			font-family: $font-Calibre;
 			@media (min-width: $tabletV) { display:none; }

@@ -1,0 +1,128 @@
+app-service{
+	section#services-section-1{
+		div{
+			position: relative;
+			//min-height: 100vh;
+			width: 100%;
+			background-image : url('/assets/img/home1-mobile.jpg');
+			background-size : cover;
+			@media (min-width: $tabletV) {
+				background-image : url('/assets/img/home1.jpg');
+			}
+			h1{
+				position: absolute;
+				width: 80%;
+				color: white;
+				top: 50%;
+				margin: auto $margin-mobile-H;
+				@include transform (translateY(-50%));
+				@media (max-width: $tabletH) { br {display: none} }
+			}
+		}
+		article{
+			background-color: $primary-blue;
+			text-align: left;
+			color: white;
+			@media (min-width: $tabletV) { text-align: center; }
+			h2{
+				margin: 0 $margin-mobile-H*1.2 0 $margin-mobile-H;
+				padding: $margin-mobile-H*1.5 0;
+				@media (max-width: $desktop) { br {display: none} }
+				@media (min-width: $tabletV) {
+					width: ((8*100%) / 12);
+					padding: 70px 0px 50px 0px;
+					margin: 0 auto;
+				}
+			}
+			p{
+				font-size: 22px;
+				line-height: 26px;
+				margin: auto $margin-mobile-H;
+				@media (min-width: $tabletV) {
+					width: 50%;
+					margin: auto;
+					font-size: 24px;
+					line-height: 28px;
+				}
+			}
+			a{
+				margin: 0 $margin-mobile-H;
+				@media (min-width: $tabletV) { margin: 0; }
+			}
+			p.btn-ekd{
+				width: 100%;
+				font-family: $font-Calibre;
+				padding: $margin-mobile-H 0 $margin-mobile-H*1.5 0;
+				margin: 0;
+				text-align: center;
+				@extend .btn-white;
+				@media (min-width: $tabletV) { padding: $margin-mobile-H*0.6 0 $margin-mobile-H*0.9 0; }
+			}
+		}
+	}
+	section#services-section-2{
+		article{
+			height: 105vw;
+			@media (min-width: $tabletV) { height: 36vw; }
+			&.row{
+				margin-left: 0;
+				margin-right: 0;
+			}
+			div.service{
+				position: relative;
+    			top: 10%;
+				padding: 0;
+				height: 100%;
+				overflow: hidden;
+				@media (min-width: $tabletH) { top: 30%; }
+				figure{
+					width: 20%;
+					max-width: 93px;
+					float: left;
+					margin-top: 10px;
+					margin-left: 7%;
+					@media (min-width: $tabletV) { width: 15%; margin-left: 15%; }
+					img{
+						width: 100%;
+						height: 100%;
+					}
+				}
+				div{
+					float: left;
+					margin-left: 7%;
+					h2{
+						margin-top: 0px;
+					}
+				}
+			}
+			div.project{
+				height: 100%;
+				padding: 0px;
+				overflow: hidden;
+				cursor: pointer;
+				@media (min-width: $tabletV) { 
+					min-height: 30vw; 
+					&:hover{
+						div{
+							transform:scale(1.1);
+						}
+					}
+				}
+				div.img{
+					width: 100%;
+					height: 100%;
+					position: absolute;
+					background-size: cover;
+					@include transition(transform 6s ease-in-out);
+				}
+				article{
+					position: absolute;
+					bottom: 0;
+					left: 15px;
+					height: auto;
+				}
+			}
+		}
+
+	}
+}

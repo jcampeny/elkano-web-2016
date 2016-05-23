@@ -51,13 +51,30 @@ app-home{
 		div{
 			min-height: 60vw;
 			background-size: cover;
-    		background-position: center center;
+    		//background-position: center center;
     		position: relative;
     		color: $secundary-blue;
-    		@media (min-width: $tabletV) { min-height: 30vw; }
+    		cursor: pointer;
+    		padding: 0;
+    		overflow: hidden;
+    		@include transition(transform 6s ease-in-out);
+    		div.img{
+    			position: absolute;
+    			width: 100%;
+    			min-height: 100% !important;
+    		}
+    		@media (min-width: $tabletV) { 
+    			min-height: 30vw; 
+    			&:hover{
+    				div{
+    					transform:scale(1.1);
+    				}
+    			}
+    		}
     		article{
     			position: absolute;
     			bottom: 0;
+    			left: 15px;
 	    		h4{
 	    			font-family: $font-Sabon;
 	    			font-size: 20px;
@@ -133,7 +150,7 @@ app-home{
 				display: block;
 			}
 			cite{
-				font-size: 18px;
+				font-size: 14px;
 				color: $primary-blue;
 				font-style: normal;
 				position: relative;

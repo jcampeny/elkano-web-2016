@@ -19,7 +19,7 @@ var app = angular.module("app",['templates-dist', 'ui.router', 'ui.bootstrap', '
 				.state('app', 				{url:'/', 						templateUrl: '../app/core/main.html', abstract: true})
 				.state('app.home', 			{url:'', 						template: '<app-home></app-home>'})
 				.state('app.about', 		{url:'about', 					template: '<app-about></app-about>'})
-				.state('app.service', 		{url:'service', 				template: '<app-service></app-service>'})
+				.state('app.services', 		{url:'services', 				template: '<app-service></app-service>'})
 				.state('app.work', 			{url:'work', 					template: '<app-work></app-work>'})
 				.state('app.project', 		{url:'work/project/:slug', 		template: '<app-project></app-project>'})
 				.state('app.caseStudy', 	{url:'work/case-study/:slug', 	template: '<app-case-study></app-case-study>'})
