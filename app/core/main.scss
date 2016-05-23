@@ -1,6 +1,7 @@
 @import 'vars';
 @import 'mixins';
 @import 'ekd-btn';
+@import 'animations';
 @import '../components/header/header';
 @import '../components/footer/footer';
 @import '../views/home/home';
@@ -13,6 +14,7 @@
 @import '../views/start-project/start-project';
 @import '../views/work/work';
 
+
 body {
 	margin:0;
 	padding:0;
@@ -22,17 +24,7 @@ body {
 main{
 	height: 100%;
 }
-header{
-	width: 70px;
-	position: fixed;
-	height: 100%;
-	top: 0%;
-	left: 0%;
-	z-index: 100;
-	background-color: white;
-	display: none;	//TODO
-	@media (min-width: $tabletV)  { display: block; }
-}
+
 #the-content{
 	position: relative;
 	margin-left: 0px;
@@ -43,28 +35,7 @@ header{
 		position: absolute;
 		width: 100%;
     	height: 100%;
-	}
-	footer{
-		width: 100%;
-		clear: both;
-		height: 287px;
-		background-color: $primary-blue;
-		position: relative;
-		a{
-			font-family: $font-Sabon;
-			width: 50%;
-			height: 100%;
-			position: absolute;
-			right: 0;
-			color: white;
-			text-align: center;
-			font-size: 24px;
-			p{
-				line-height: 287px;
-				margin: 0;
-			}
-		}
-	}
+	}			
 }
 
 
@@ -107,3 +78,4 @@ h3{
 	}
 
 }
+

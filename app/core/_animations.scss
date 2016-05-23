@@ -1,0 +1,20 @@
+@include keyframes(arrow1) {
+  0% { @include transform(translateY(0px));}
+  50% { @include transform(translateY(40px)); }
+  100% { @include transform(translateY(40px)); }
+}
+@include keyframes(arrow2) {
+  0% { @include transform(translateY(-40px));}
+  50% { @include transform(translateY(0px)); }
+  100% { @include transform(translateY(0px)); }
+}
+
+.arrow-1{
+  @include transform(translateY(0px));
+  @include animation('arrow1 2s infinite ease-in-out');
+}
+.arrow-2{
+  @include transform(translateY(-40px));
+  @include animation('arrow2 2s infinite ease-in-out');
+}
+

@@ -1,10 +1,13 @@
 var app = angular.module("app",['templates-dist', 'ui.router', 'ui.bootstrap', 'ngAnimate', 'ngResource', 'pascalprecht.translate'])
 
-	.controller("mainController", [ '$document', '$scope', 'ArrayService', '$sce', 'DataService', function($document, $scope, ArrayService,$sce,DataService) {
+	.controller("mainController", [ '$document', '$scope', 'ArrayService', '$sce', 'DataService', function($document, $scope, ArrayService,$sce,DataService, $location, $anchorScroll) {
 		
 		//DataService.all("type", "per_page", "page").then(function(post) {
 			//ex: posts , int || "all", int
 		//});
+		$scope.scrollTop = function () {
+			$('html, body').animate({ scrollTop: 0 }, 'slow');
+		};
 
 	}])
 

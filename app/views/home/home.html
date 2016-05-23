@@ -1,5 +1,5 @@
 <section id="home-section-1" header-changer  value="Welcome">
-	<div>
+	<div full-screen>
 		<h1>We are Elkanodata,<br> a global information design <br> agency based in Barcelona</h1>
 	</div>
 	<article>
@@ -62,8 +62,13 @@
 	</article>
 </section>
 
-<section id="home-section-4">
-	
+<section id="home-section-4" header-changer  value="Press">
+	<h3>Press & Awards</h3>
+	<article>
+		<ul>
+			<li ng-repeat="logo in press_logos"><img src="{{logo}}"></li>
+		</ul>
+	</article>
 </section>
 
 <footer ng-footer></footer>
