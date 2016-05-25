@@ -39,6 +39,13 @@ footer{
 				}
 			}
 		}
+		a[ng-show]{
+			p{
+				border-bottom: 1px solid white; 
+				@media (min-width: $tabletV) { border: 0px solid transparent;}
+			}
+			@media (min-width: $tabletV) { left: 0px; border: 0px solid transparent;}
+		}
 		section.mobile{
 			background-color: $primary-blue;
 			border-top: 1px solid $grey-0;

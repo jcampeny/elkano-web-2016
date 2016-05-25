@@ -82,7 +82,8 @@ app-work{
 				cursor: pointer;
 				padding: 30px 0;
 	    		@media (min-width: $tabletV) {
-	    			padding: 30px;
+	    			padding: 0px;
+	    			border: 15px solid $grey-f;
 	    			height: 30vw; 
 	    			&:hover{
 	    				div.img{

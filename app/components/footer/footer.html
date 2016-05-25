@@ -1,8 +1,11 @@
 <div>
-	<section class="desktop">
+	<section ng-hide="isCase" class="desktop">
 		<article>NEW YORK <br> 230-240,  8-S <br> 10017 New York, United States </article>
 		<article>BARCELONA <br> Carrer Aribau 230 <br> 08003 Barcelona, Spain</article>
 	</section>
+	<a ng-show="isCase" ng-href="{{caseValues.ref}}">
+		<p>{{caseValues.value}}</p>
+	</a>
 	<a ng-href="{{ref}}">
 		<p>{{value}}</p>
 	</a>

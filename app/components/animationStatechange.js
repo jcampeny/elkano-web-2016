@@ -5,17 +5,18 @@ app.animation('.views-container', ['stateService', function(stateService) {
 
 		enter: function(e, doneFn) {
 			//stateService.getState();
-			TweenMax.set(e, {left : '100%'});
-			TweenMax.to(e, time, { left: '0%', onComplete: function() {doneFn();}});
-			$('html, body').animate({ scrollTop: 0 }, 'slow');
+
+			TweenMax.set(e, {opacity : 0});
+			TweenMax.to(e, time*2, { opacity: 1, delay: time, onComplete: function() {doneFn();}});
+			
 		},
 
 		move: function(e, doneFn) {
 		},
 
 		leave: function(e, doneFn) {
-			TweenMax.set(e, {  left : '0%'});
-			TweenMax.to(e, time, { left: '-100%', onComplete: function() {doneFn();}});
+			TweenMax.set(e, {  top : '0px', opacity: 1});
+			TweenMax.to(e, time, { top: '-400px', opacity: 0, onComplete: function() { $('html, body').animate({ scrollTop: 0 }, 0); doneFn();}});
 
 		}
 	};

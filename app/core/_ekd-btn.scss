@@ -346,3 +346,20 @@
     }
   }
 }
+
+.btn-blue-2{
+    $color: #34393E;
+    a{
+        color: $color;
+        padding: 0.875em 1.428571429em;
+        @include transition(all $transition_btn_ekd);
+        border-radius: 0;
+        border: 1px solid $color;
+        &:hover{
+            color: white;
+            text-decoration: none;
+            background-color: $color;
+
+        }
+    }
+}

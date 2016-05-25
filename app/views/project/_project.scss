@@ -1,3 +1,81 @@
+app-project{
+	section#project-section-1{
+		.white{
+			color: white;
+		}
+		div[full-screen]{
+			position: relative;
+			div{
+				background-size: cover;
+				height: 100%;
+				width: 100%;
+				article{
+					position: absolute;
+					bottom: $margin-mobile-H;
+					left: $margin-mobile-H;
+					p{
+						margin: 0;
+					}
+					h2{
+						@media (max-width: $tabletV){
+							font-size: 20px;
+							line-height: 24px;
+						}
+					}
+				}			
+			}
+		}	
+	}
+	section#project-section-2{
+		#video{
+			height: 70vw;
+			background-image: url('/assets/img/contact1.jpg'); background-size: cover;
+			@media (min-width: $tabletV){
+				height: 100vh;
+			}
+		}
+	}
+	section#project-section-3{
+		text-align: center;
+		div.btn-ekd{
+			font-family: $font-Calibre;
+			padding: $margin-mobile-H*1.5 0;
+			margin: 0;
+			@extend .btn-blue-2;
+			@media (min-width: $tabletV) { padding: 50px 0px; }
+		}
+		div.content{
+			margin: auto;
+			margin: 40px;
+			padding-bottom: 50px;
+			h2{
+				margin-top: 0px;
+				margin-bottom: 40px;
+			}
+			p{
+				margin: auto;
+				text-align: left;
+				padding: $margin-mobile-H 0;
+				@media (min-width: $tabletV) { width: 50%; padding: 0; }				
+			}
+
+		}
+	}
+	section#project-section-4{
+		div{
+			background-size: cover;
+			background-position: center center;
+			height: 350px;
+			@media (min-width: $tabletV) {
+				height: 30vw;
+				&:first-child{
+					height: 60vw;
+				}
+			}
+		}
+	}
+}
+
 /*
 *SLIDE
 */

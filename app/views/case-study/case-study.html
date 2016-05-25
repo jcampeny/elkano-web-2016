@@ -1,1 +1,85 @@
-<div>home</div>
+<div header-changer  value="{{slug}}">
+<section id="case-study-section-1">
+	<div full-screen>
+		<div style="background-image: url({{case.img1}})">
+			<article>
+				<h2 ng-class="case.img1color">Case Study {{case.title}}</h2>
+				<p ng-class="case.img1color">{{case.content}}</p>
+			</article>
+		</div>
+	</div>
+</section>
+<section id="case-study-section-2">
+	<div class="btn-ekd">
+		<p>Want to start a project?</p>
+		<a ng-href="contact" class="btn button ajax">
+			Contact Us
+		</a>
+	</div>
+	<div class="content">
+		<h2>{{case.title2}}</h2>
+		<p>{{case.content2}}</p>
+	</div>
+</section>
+<section id="case-study-section-3">
+	<article>
+	<cite>« {{case.cite}} »</cite>
+	<p>— {{case.citename}}</p>
+	</article>
+</section>
+<section id="case-study-section-4">
+	<article>
+		<h2 class="col-xs-12 col-sm-6">Our latest project for {{slug}}</h2>
+		<a class="col-xs-12 col-sm-6 project" ng-href="work/project/{{lastproject.slug}}">
+			<div class="img" style="background-image: url({{lastproject.img}})"></div>
+			<div class="content" ng-class="lastproject.imgcolor">
+				<h6>{{lastproject.title}}</h6>
+				<p>{{lastproject.category}}</p>				
+			</div>
+		</a>
+		<div></div>
+	</article>
+</section>
+<section id="case-study-section-5">
+	<article>
+		<h2>{{case.title3}}</h2>
+		<p>{{case.content3}}</p>
+		<div class="twice-img">
+			<img src="{{case.img2}}">
+			<img src="{{case.img3}}">
+		</div>
+	</article>
+	<article>
+		<h2>{{case.title4}}</h2>
+		<p>{{case.content4}}</p>
+	</article>
+</section>
+
+<section id="case-study-section-6">
+	<article ng-repeat="project in projects">
+		<div class="img" style="background-image: url({{project.img}})"></div>
+		<div class="content">
+			<div class="col-xs-12 col-sm-6 information">
+				<h2>{{project.title}}</h2>
+				<h6>{{project.category}}</h6>
+				<p>{{project.content}}</p>
+			</div>
+			<div class="col-xs-12 col-sm-6 images">
+				<img ng-repeat="image in project.imgs" src="{{image}}">
+			</div>
+			<div class="clear"></div>
+		</div>
+	</article>
+	<article class="view-more" >
+		<p class="btn-ekd">
+			<a ng-href="work" class="btn button ajax">
+				View all projects
+				<span></span>
+				<span class="mobile"></span>
+				<span></span>
+			</a>
+		</p>
+	</article>
+</section>
+</div>
+<footer ng-footer case="{{otherslug}}"></footer>

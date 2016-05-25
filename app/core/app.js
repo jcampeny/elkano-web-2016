@@ -5,10 +5,6 @@ var app = angular.module("app",['templates-dist', 'ui.router', 'ui.bootstrap', '
 		//DataService.all("type", "per_page", "page").then(function(post) {
 			//ex: posts , int || "all", int
 		//});
-		$scope.scrollTop = function () {
-			$('html, body').animate({ scrollTop: 0 }, 'slow');
-		};
-
 
 	}])
 
@@ -25,7 +21,6 @@ var app = angular.module("app",['templates-dist', 'ui.router', 'ui.bootstrap', '
 				.state('app.project', 		{url:'work/project/:slug', 		template: '<app-project></app-project>'})
 				.state('app.caseStudy', 	{url:'work/case-study/:slug', 	template: '<app-case-study></app-case-study>'})
 				.state('app.join', 			{url:'join-us', 				template: '<app-join-us></app-join-us>'})
-				.state('app.startProject',  {url:'start-a-project',			template: '<app-start-project></app-start-project>'})
 				.state('app.contact',		{url: 'contact', 				template: '<app-contact></app-contact>'})
 				.state('app.contact.start',	{url: '/start-a-project', 		template: '<start-a-project-form></start-a-project-form>'})
 				.state('app.contact.career',{url: '/career', 				template: '<career-form></career-form>'})

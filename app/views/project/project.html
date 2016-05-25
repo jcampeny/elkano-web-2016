@@ -1,5 +1,39 @@
-<div>
-<div ng-slide type="case" post="case" class="test-animation">
+<div header-changer  value="{{title1}}">
+<section id="project-section-1">
+	<div full-screen ng-class="project.imgColor">
+		<div style="background-image: url({{project.img1}})" >
+			<article>
+				<h2 ng-class="project.img1color">{{project.title}}</h2>
+				<p ng-class="project.img1color">{{project.content}}</p>
+			</article>
+		</div>
+	</div>
+</section>
+
+<section id="project-section-2" ng-hide="project.video ==  ''">
+	<div id="video"></div>
+</section>
+
+<section id="project-section-3"  ng-hide="project.title2 ==  ''">
+	<div class="btn-ekd">
+		<p>{{project.question}}</p>
+		<a ng-href="contact" class="btn button ajax">
+			Contact Us
+		</a>
+	</div>
+	<div class="content">
+		<h2>{{project.title2}}</h2>
+		<p>{{project.content2}}</p>
+	</div>
+</section>
+
+<section id="project-section-4"  ng-hide="project.img21 ==  ''">
+	<div class="col-xs-12 col-sm-6" style="background-image: url({{project.img21}});"></div>
+	<div class="col-xs-12 col-sm-6" style="background-image: url({{project.img22}});"></div>
+	<div class="col-xs-12 col-sm-6" style="background-image: url({{project.img23}});"></div>
+</section>
+
+<div ng-slide type="project" post="project">
 	<dots></dots>
 </div>
 </div>

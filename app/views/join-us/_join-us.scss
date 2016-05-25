@@ -144,11 +144,12 @@ app-join-us{
 			background-color: $grey-f;
 			img{
 				height: auto;
-				width: 50% - ($margin-mobile-H/3);
-				background-image:url(/assets/img/join-us1-mobile.jpg);
 				background-size: cover;
+				width: 100%;
+				@media (min-width: $tabletV) {width: 50% - ($margin-mobile-H/3);}
 				&:last-child{
-					@media (min-width: $tabletV) {float: right;}
+					margin-top: 30px;
+					@media (min-width: $tabletV) {float: right; margin-top:0;}
 				}
 			}
 
