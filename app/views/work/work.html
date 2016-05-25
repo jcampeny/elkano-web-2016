@@ -1,1 +1,31 @@
-<div>home</div>
+<div header-changer  value="Work">
+	<section id="work-section-1">
+		<div class='title'>
+			<h1>Quality relationships <br>bring quality results.</h1>
+		</div>	
+	</section>
+
+	<section id="work-section-2">
+		<article class="col-xs-12 col-sm-6" ng-repeat="case in cases">
+			<div class="img" style="background-image: url({{case.img}});"></div>
+			<div class="content" ng-class="case.color">
+				<h4>{{case.title}}</h4>
+				<h6>{{case.content}}</h6>
+			</div>
+		</article>
+	</section>
+
+	<section id="work-section-3">
+		<div class="projects">
+			<div class="project col-xs-12 col-sm-6" ng-repeat="project in projects">
+				<div class="img" style="background-image: url({{project.img}});"></div>
+				<div class="content" ng-class="project.color">
+					<h4>{{project.title}}</h4>
+					<h6>{{project.content}}</h6>
+				</div>
+			</div>
+			<div style="clear:both;"></div>
+		</div>
+	</section>
+</div>
+<footer ng-footer></footer>

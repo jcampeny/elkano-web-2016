@@ -9,6 +9,7 @@ var app = angular.module("app",['templates-dist', 'ui.router', 'ui.bootstrap', '
 			$('html, body').animate({ scrollTop: 0 }, 'slow');
 		};
 
+
 	}])
 
 	.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$resourceProvider', '$httpProvider',
@@ -24,8 +25,11 @@ var app = angular.module("app",['templates-dist', 'ui.router', 'ui.bootstrap', '
 				.state('app.project', 		{url:'work/project/:slug', 		template: '<app-project></app-project>'})
 				.state('app.caseStudy', 	{url:'work/case-study/:slug', 	template: '<app-case-study></app-case-study>'})
 				.state('app.join', 			{url:'join-us', 				template: '<app-join-us></app-join-us>'})
-				.state('app.contact', 		{url:'contact', 				template: '<app-contact></app-contact>'})
-				.state('app.startProject',  {url:'start-a-project',			template: '<app-start-project></app-start-project>'});
+				.state('app.startProject',  {url:'start-a-project',			template: '<app-start-project></app-start-project>'})
+				.state('app.contact',		{url: 'contact', 				template: '<app-contact></app-contact>'})
+				.state('app.contact.start',	{url: '/start-a-project', 		template: '<start-a-project-form></start-a-project-form>'})
+				.state('app.contact.career',{url: '/career', 				template: '<career-form></career-form>'})
+				.state('app.contact.press',	{url: '/press', 				template: '<press-form></press-form>'});
 
 			$locationProvider.html5Mode(true);
 			$resourceProvider.defaults.stripTrailingSlashes = false;
@@ -43,6 +47,7 @@ var app = angular.module("app",['templates-dist', 'ui.router', 'ui.bootstrap', '
 	.run(['$rootScope', '$location', '$window', '$state', 'stateService', function($rootScope, $location, $window, $state, stateService){
 	     $rootScope.$on('$stateChangeSuccess',
 	        function(event){
+	        	console.log($location);
 	            if (!$window.ga)
 	            return;
 	            //$window.ga('send', 'pageview', { page: $location.path() });

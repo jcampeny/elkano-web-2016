@@ -2,9 +2,11 @@ footer{
 		$footer_height : 287px;
 		width: 100%;
 		clear: both;
-		height: $footer_height ;
 		background-color: $primary-blue;
 		position: relative;
+		@media (min-width: $tabletV) {
+			height: $footer_height ;
+		}
 		a{
 			font-family: $font-Sabon;
 			width: 100%;
@@ -26,9 +28,15 @@ footer{
 				}
 			}
 			p{
-				line-height: $footer_height   * 0.8;
+				padding: $margin-mobile-H;
 				margin: 0;
-				@media (min-width: $tabletV) { line-height: $footer_height;}
+				@media (min-width: $tabletV) { 
+					position: absolute;
+					width: 75%;
+					top: 50%;
+					left: 50%;
+					@include transform(translate(-50%, -50%));
+				}
 			}
 		}
 		section.mobile{

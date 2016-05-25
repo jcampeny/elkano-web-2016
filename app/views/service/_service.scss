@@ -1,22 +1,16 @@
 app-service{
 	section#services-section-1{
-		div{
+		div.title{
+			min-height: 480px;
 			position: relative;
-			//min-height: 100vh;
-			width: 100%;
-			background-image : url('/assets/img/home1-mobile.jpg');
-			background-size : cover;
-			@media (min-width: $tabletV) {
-				background-image : url('/assets/img/home1.jpg');
-			}
 			h1{
+				color: $primary-blue;
 				position: absolute;
 				width: 80%;
-				color: white;
 				top: 50%;
 				margin: auto $margin-mobile-H;
 				@include transform (translateY(-50%));
-				@media (max-width: $tabletH) { br {display: none} }
+				@media (min-width: $tabletV) { br.mobile{display:none;} }
 			}
 		}
 		article{

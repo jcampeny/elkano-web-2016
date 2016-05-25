@@ -1,0 +1,157 @@
+app-join-us{
+	section#join-us-section-1{
+		div.title{
+			min-height: 480px;
+			position: relative;
+			color: white;
+			background-color: $primary-blue;
+			h1{
+				position: absolute;
+				width: 80%;
+				top: 50%;
+				margin: auto $margin-mobile-H;
+				@include transform (translateY(-50%));
+				@media (min-width: $tabletV) { br.mobile{display:none;} }
+			}
+		}
+		article{
+			p.btn-ekd{
+				width: 100%;
+				font-family: $font-Calibre;
+				padding: $margin-mobile-H 0 $margin-mobile-H*1.5 0;
+				margin: 0;
+				text-align: center;
+				@extend .btn-blue;
+				@media (min-width: $tabletV) { padding: $margin-mobile-H*0.6 0 $margin-mobile-H*0.9 0; }
+			}
+		}
+	}
+	section#join-us-section-2{
+		text-align: center;
+
+			article{
+				margin: 50px 0;
+				p{
+					margin: 0;
+				}
+				hr{
+					margin-top: 0;
+					width: 100px;
+					border: none;
+					border-top: 1px solid $primary-blue;
+					@media (min-width: $tabletV) { width: 380px;}
+				}
+				img{
+					width: 80%;
+   					height: auto;
+   					@media (min-width: $tabletV) { width: 350px;}
+				}
+				&.col-xs-6{
+					min-height: 220px;
+					margin: 0;
+					@media (min-width: $tabletV) { height: auto; margin: 50px 0;}
+				}
+				&.col-xs-12{
+					@media (min-width: $tabletV) { height: auto; margin: 50px 0;}
+					hr{
+						width: 250px;
+						@media (min-width: $tabletV) { width: 380px;}
+					}
+				}
+			}
+			hr{
+				border: 0px solid transparent;
+				width: 1px;
+			}
+		
+	}
+	section#join-us-section-3{
+		background-color: $grey-0;
+		article{
+			padding: $margin-mobile-H;
+			h2{
+				@media (min-width: $tabletV) { margin-top: 0;}
+				
+			}
+			div.right-column{
+				margin: 20px 0;
+				@media (min-width: $tabletV) { margin: 0; padding-left: $margin-mobile-H;}	
+				div.job{
+					border-top: 1px solid $primary-blue;
+					border-bottom: 1px solid $primary-blue;
+					cursor: pointer;
+					overflow: hidden;
+					&:first-child{border-bottom: 0px solid $primary-blue;}
+					&:last-child{border-top: 0px solid $primary-blue;}
+					.title{
+						margin: 25px 0;
+						position: relative;
+						.show-more{
+							position: absolute;
+							width: 30px;
+							height: 30px;
+							right: 15px;
+							top:50%;
+							@include transform(translateY(-50%));
+							.h, .v{
+								position: absolute;
+								background-color: $primary-blue;
+							}
+							.h{
+								top: 50%;
+								left: 0;
+								width: 100%;
+								height: 1px;
+							}
+							.v{
+								top: 50%;
+								left: 50%;
+								width: 1px;
+								height: 100%;
+								@include transform(translateY(-50%));
+							}
+						}
+					}
+					.content{
+						opacity: 0;
+						margin: 30px 0;
+						display: none;
+						@include transition(opacity $transition_btn_ekd);
+					}
+					&.active{
+						.content{
+							opacity: 1;
+						}
+					}
+				}
+
+			}
+			&.row{
+				margin-left: 0;
+				margin-right: 0;
+			}
+		}
+		div[full-screen]{
+			background-image:url(/assets/img/join-us1-mobile.jpg);
+			background-size: cover;
+			background-attachment: fixed;
+			@media (min-width: $tabletV) { 
+				background-image:url(/assets/img/join-us1.jpg);
+			}
+		}
+		div.twice-img{
+			padding: $margin-mobile-H;
+			background-color: $grey-f;
+			img{
+				height: auto;
+				width: 50% - ($margin-mobile-H/3);
+				background-image:url(/assets/img/join-us1-mobile.jpg);
+				background-size: cover;
+				&:last-child{
+					@media (min-width: $tabletV) {float: right;}
+				}
+			}
+
+		}
+	}
+}

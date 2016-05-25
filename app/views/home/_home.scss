@@ -17,6 +17,12 @@ app-home{
 				margin: auto $margin-mobile-H;
 				@include transform (translateY(-50%));
 				@media (max-width: $tabletH) { br {display: none} }
+				arrow-svg{
+					position: absolute;
+				    left: 7px;
+				    bottom: -100px;
+				    @include transform (scale(1.5));
+				}
 			}
 		}
 		article{
