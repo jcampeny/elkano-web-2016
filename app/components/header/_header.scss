@@ -1,11 +1,134 @@
-header{
-	width: 70px;
-	position: fixed;
-	height: 100%;
-	top: 0%;
-	left: 0%;
-	z-index: 100;
-	background-color: white;
-	display: none;	//TODO
-	@media (min-width: $tabletV)  { display: block; }
+header {
+	display: none;
+	color: $header-blue;
 }
+@media (min-width: $tabletV){
+	header{
+		@include transition($transition_menu_in);
+		display: block; 
+		width: 70px;
+		position: fixed;
+		height: 100%;
+		top: 0%;
+		left: 0%;
+		z-index: 100;
+		background-color: white;
+		.burger-menu{
+			position: absolute;
+			top: -13px; right: 0;
+			font-size: 11px;
+			cursor: pointer;
+			div{
+				position: absolute;
+			    top: 60px;
+			    left: 40%;
+			}
+			svg{
+				path, line{
+					stroke: #334A79; 
+				}
+			}
+		}
+		figure{
+			width: 70px;
+			height: 70px;
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			background-image: url('/assets/img/logo-header.jpg');
+			background-size: cover;
+		}
+		&.active{
+			width: 33vw;
+			@include transition($transition_menu_out);
+			@media (max-width: $tabletH){
+				width: 50vw;
+				ul{min-width: calc(50vw - 140px);}
+			}
+		}
+		#menu{
+			position: fixed;
+			width: 70px;
+			background-color: white;
+			left: 0; top:0; height: 100%;
+			overflow: hidden;
+			@include transition($transition_menu_in);
+			div#header-controller{
+				height: 100%;
+				width: 70px;
+				right: 0;
+				top: 0;
+				position: absolute;
+				cursor: pointer;
+				header-state{
+					position: absolute;
+				    top: 50%;
+				    left: 50%;
+				    white-space: nowrap;
+				    @include transform (rotate(-90deg) translate(85%, -13px));
+				    height: 70px;
+    				width: 70px;
+				}
+			}
+			ul{
+				font-family: $font-Sabon;
+				margin: 0;
+				padding: 0;
+				list-style: none;
+				position: absolute;
+				left: 70px;
+				min-width: calc(35vw - 140px);
+				top: 50%;
+				@include transform(translateY(-50%));
+				li{
+					white-space: nowrap;
+					cursor: pointer;
+					@include transition($time_btn_ekd opacity ease-in-out);
+					&:hover, &.active{
+						opacity: 1 !important;
+					}
+					font-size: 40px;
+					line-height: 60px;
+					a{
+						width: 100%;
+						display: block;
+						white-space: nowrap;
+						color: $header-blue;
+						&:hover, &.active, &:active, &:focus{
+							opacity: 1 !important;
+							text-decoration: none;
+							color: $header-blue;
+						}
+					}
+				}
+			}
+		}
+		div#black-layer{
+			position: fixed;
+			top: 0; left: 0; width: 100%; height: 100%;
+			pointer-events: none;
+			opacity: 0;
+			background-color: #000000;
+			@include transition(0.5s opacity ease-in-out);
+		}
+
+		&.active{
+			@include transition($transition_menu_out);
+			#black-layer{
+				pointer-events: all;
+				opacity: .5 !important;
+				@include transition(0.5s opacity ease-in-out);
+			}
+			#menu{
+				width: 33vw;
+				@include transition($transition_menu_out);
+				@media (max-width: $tabletH){
+					width: 50vw;
+					ul{min-width: calc(50vw - 140px);}
+				}
+
+			}
+		}
+	}	
+}
+

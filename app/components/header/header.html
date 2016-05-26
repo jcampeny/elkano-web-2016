@@ -1,4 +1,28 @@
-<div>
-<header-state>{{state}}</header-state>
-
+<div id="black-layer" ng-click="menuOpen()"></div>
+<div id="menu" ng-click="menuOpen()">
+	<ul>
+		<li state="home"><a ng-href="/home">Home</a></li>
+		<li state="about"><a ng-href="/about">About</a></li>
+		<li state="services"><a ng-href="/services">Services</a></li>
+		<li state="work"><a ng-href="/work">Work</a></li>
+		<li state="join-us"><a ng-href="/join-us">Join Us</a></li>
+		<li state="contact"><a ng-href="/contact">Contact</a></li>
+	</ul>
+	<div id="header-controller" >
+		<header-state>{{state}}</header-state>
+	</div>
+</div>
+<a ng-href="/" ng-click="backHome()">
+	<figure></figure>
+</a>
+<div class="burger-menu" ng-click="menuOpen()">
+	<svg width="80px" height="65px">
+		<path id="mov1" d="M35,38 C39,38 41,38 45,38" fill="none" stroke-width="2px"></path>
+		<path id="mov2" d="M45,38 C49,38 51,38 55,38" fill="none" stroke-width="2px"></path>
+		<line id="mov3" x1="35" y1="45" x2="45" y2="45" x="0" fill="none" stroke-width="2px" stroke-opacity="1"></line>
+		<line id="mov4" x1="45" y1="45" x2="55" y2="45" x="10" fill="none" stroke-width="2px" stroke-opacity="1"></line>
+		<path id="mov5" d="M35,52 C39,52 41,52 45,52" fill="none" stroke-width="2px"></path>
+		<path id="mov6" d="M45,52 C49,52 51,52 55,52" fill="none" stroke-width="2px"></path>
+	</svg>
+	<div>{{textOpenClose}}</div>
 </div>

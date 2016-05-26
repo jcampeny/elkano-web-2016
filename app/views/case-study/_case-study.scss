@@ -78,7 +78,7 @@ app-case-study{
 			padding: 0;
 			margin: 0;
 			font-family: $font-Sabon;
-			@media (min-width: $tabletV) { padding: $margin-mobile-H; }
+			//@media (min-width: $tabletV) { padding: $margin-mobile-H; }
 			div:last-child{
 				clear: both;
 			}
@@ -90,22 +90,23 @@ app-case-study{
 					padding:0;			
 				}
 			}
-			a.project{
+			div.project{
 				position: relative;
 				overflow: hidden;
-				cursor: pointer;
-				height: 70vw;
+				//cursor: pointer;
+				height: 70vw; 
 				padding: 0;
+				display: block;
 				.white{
 					color: white;
 				}
 				@media (min-width: $tabletV) {
-					height: 25vw; 
-					&:hover{
+					height: 100vh;
+					/*&:hover{
 						div.img{
 							transform:scale(1.1);
 						}
-					}
+					}*/
 				}				
 				div.img{
 					position: absolute;
@@ -116,12 +117,15 @@ app-case-study{
 				}
 				div.content{
 					position: absolute;
-					bottom: 0px;
-					left: 15px;
-					h6{
-						font-size: 20px; line-height: 26px;
+					bottom: 50%;
+					@include transform(translateY(50%));
+					@media (min-width: $tabletV) {
+						transform: none;
+						bottom: $margin-mobile-H;
+						left: $margin-mobile-H;
+					}
+					h2{
 						margin: 0;
-						@media (min-width: $tabletV) { font-size: 26px; line-height: 31px; }
 					}
 					p{
 						font-size: 12px;
@@ -130,6 +134,54 @@ app-case-study{
 				}
 			}
 		}
+			article.project-content{
+				div.content{
+					padding: $margin-mobile-H;
+					div.images{
+						padding: 0;
+						@media (min-width: $tabletV) { /*margin: 0; padding-left: $margin-mobile-H;*/}
+						img{
+							width: 100%;
+							height: auto;
+							margin-bottom: 30px;
+						}	
+					}
+					div.information{
+						 padding: 0;
+						h2{
+							padding: 0; margin: 0;
+							@media (min-width: $tabletV) { margin-top: 0; margin-bottom: 5px;}
+						}
+		    			h6{
+			    			font-size: 18px;
+			    			line-height: 22px;
+			    			margin: 0;
+		    			}
+						p{
+							margin: 30px 0;
+							//@media (min-width: $tabletV) { padding-right: $margin-mobile-H; }
+						}
+						div.btn-ekd{
+							font-family: $font-Calibre;
+							padding-bottom: $margin-mobile-H*1.5;
+							margin: 0;
+							@extend .btn-blue-2;
+							@media (min-width: $tabletV) { padding: 0px; }
+						}
+					}
+					.clear{clear: both;}			
+				}
+
+				div.img{
+					width: 100%;
+					height: 210px;
+					background-size: cover;
+					background-position: center center;
+					@media (min-width: $tabletV) {
+						height: 80vh;
+					}
+				}
+			}
 	}
 	section#case-study-section-5{
 		text-align: center;
@@ -144,12 +196,16 @@ app-case-study{
 				font-size: 18px; 
 				line-height: 22px;
 				@media (min-width: $tabletV) { 
-					width: 50% + ($margin-mobile-H*2);
+					width: 100%;
 					margin: auto; 
 					font-size: 24px; 
 					line-height:30px;
 					margin-top: 20px;
 				}
+				@media (min-width: $tabletH) { 
+					width: 60%;
+				}
+
 			}
 			div.twice-img{
 				padding: 0px;
@@ -183,7 +239,7 @@ app-case-study{
 				padding: $margin-mobile-H;
 				div.images{
 					padding: 0;
-					@media (min-width: $tabletV) { margin: 0; padding-left: $margin-mobile-H;}
+					@media (min-width: $tabletV) { /*margin: 0; padding-left: $margin-mobile-H;*/}
 					img{
 						width: 100%;
 						height: auto;
@@ -192,7 +248,7 @@ app-case-study{
 				}
 				div.information{
 					 padding: 0;
-					@media (min-width: $tabletV) { width: 50%;}
+					//@media (min-width: $tabletV) { width: 50%;}
 					h2{
 						@media (min-width: $tabletV) { margin-top: 0; margin-bottom: 5px;}
 					}

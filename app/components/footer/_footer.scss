@@ -51,6 +51,7 @@ footer{
 			border-top: 1px solid $grey-0;
 			color: white;
 			font-family: $font-Calibre;
+			clear: both;
 			@media (min-width: $tabletV) { display:none; }
 			figure:first-child{
     			padding: 40px 25px;
@@ -89,13 +90,24 @@ footer{
 					margin-left: 6%;
 					padding-bottom: 50px;
 				}
-				@media (max-width: $tabletH) {  			
-					
-				}
 				@media (max-width: $desktop) {  			
 					font-size: 14px;
 					line-height: 16px;
 					margin-left: 5%;
+				}
+			}
+		}
+		div[ng-show="isProject"]{
+			@media (max-width: $tabletV) {  			
+				p{
+					width: 50%;
+					float: left;
+					border-bottom: 0px solid transparent;
+				}
+				a[ng-show]{
+					p{
+						border-right: 1px solid
+					}
 				}
 			}
 		}

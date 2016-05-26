@@ -27,6 +27,15 @@ angular.module('app')
     				img21 : '/assets/img/home1.jpg',
     				img22 : '/assets/img/home2.jpg',
     				img23 : '/assets/img/contact1.jpg',
+    				title3 : 'Title 3',
+    				content3 : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur aperiam rem dolorum, eos iste repudiandae quasi quaerat harum quidem animi at qui fuga, consequuntur facilis, nam eligendi neque sequi hic.',
+    				gifs : ['/assets/img/home2.jpg', '/assets/img/join-us2.jpg'],
+    				title4 : 'Title 4',
+    				content4 : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur, doloremque? Odio ad aliquid ipsam quo consectetur, blanditiis libero ab assumenda inventore porro voluptate mollitia veniam nostrum. Officiis esse, laborum labore.',
+    				styleFrames : ['/assets/img/home2.jpg', '/assets/img/join-us2.jpg'],
+    				nextProjectSlug : 'UNWomen',
+    				previousProjectSlug : 'RandomName'
+
 		    	};
 		    }
 		};

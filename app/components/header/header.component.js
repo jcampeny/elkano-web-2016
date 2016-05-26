@@ -1,16 +1,94 @@
-angular.module('app').directive('ngHeader', function () {
+angular.module('app').directive('ngHeader', function ($location, $document) {
   return {
     restrict: 'EA',
     templateUrl: '../app/components/header/header.html',
     controllerAs: 'header',
     controller: function ($scope) {
     	//code
+    	
+    	$scope.open = false;
+    	$scope.textOpenClose = 'Menu';
+    },
+    link : function (s,e,a,c){
+    	var tl = new TimelineLite();
+    	var t3 = new TimelineLite();
+    	var t2 = new TimelineLite();
+
+		$document.bind('mousewheel DOMMouseScroll touchmove scroll', function(){
+			if(s.open){
+				s.open = false;	
+				animateMenu('close');					
+			}
+		});
+
+    	s.backHome = function(){
+    		s.open = false;
+    		if($location.$$path === '/'){
+    			$('html, body').animate({ scrollTop: 0 }, 'slow');
+    		}
+    	};
+
+    	s.menuOpen = function (){
+    		var state = $location.$$path.split('/')[1] || 'home';
+
+    		s.open = !s.open;
+    		if(s.open){ 
+    			tl.set('ul li',{x:'650px', opacity: '0'});
+				t3.staggerTo('ul li', 0.5, {
+					x: '0px',
+			    	opacity: '0.5',
+			    	ease:Circ.easeOut,
+			    	onComplete : function(){    		
+			    		$('li[state="'+state+'"]').css({
+    						opacity: '1'
+    					});}
+			  	}, 0.06);
+
+			 	t2.set('ul', {x: '250px', opacity: '1'});
+			   	t2.to('ul',0.8,{
+			   		x: '0px',
+			    	ease:Circ.easeOut
+			   	});
+				animateMenu('open');
+    		}else{
+    			t2.to('ul',0.4,{
+    				x: '50px',
+    			   	opacity: '0',
+    			    ease:Circ.easeIn,
+    			    delay : 0.2
+    			});
+    			animateMenu('close');
+    		}
+    	};
+    	function animateMenu(state){
+    		if(state == 'close'){
+    			TweenMax.to("#mov1", 0.5, {attr:{d:"M35,38 C39,38 41,38 45,38"}});
+    			TweenMax.to("#mov2", 0.5, {attr:{d:"M45,38 C49,38 51,38 55,38"}});
+
+    			TweenMax.to("#mov3", 0.5, {attr:{x1:"35", 'stroke-opacity' : "1"}});
+    			TweenMax.to("#mov4", 0.5, {attr:{x2:"55", 'stroke-opacity' : "1"}});
+
+    			TweenMax.to("#mov5", 0.5, {attr:{d:"M35,52 C39,52 41,52 45,52"}});
+    			TweenMax.to("#mov6", 0.5, {attr:{d:"M45,52 C49,52 51,52 55,52"}});
+    			s.textOpenClose = 'Menu';
+    		}else{
+    			TweenMax.to("#mov1", 0.5, {attr:{d:"M35,35 C39,39 41,41 45,45"}});
+				TweenMax.to("#mov2", 0.5, {attr:{d:"M45,45 C49,41 51,39 55,35"}});
+
+				TweenMax.to("#mov3", 0.5, {attr:{x1:"45", 'stroke-opacity' : "1"}});
+				TweenMax.to("#mov4", 0.5, {attr:{x2:"45", 'stroke-opacity' : "1"}});
+
+				TweenMax.to("#mov5", 0.5, {attr:{d:"M35,55 C39,51 41,49 45,45"}});
+				TweenMax.to("#mov6", 0.5, {attr:{d:"M45,45 C49,49 51,51 55,55"}});
+				s.textOpenClose = "Close";
+    		}
+    	}
     }
   };
 });
 
 angular.module('app')
-	.directive('headerState', ['screenService', '$document', '$timeout', function(screenService, $document, $timeout) {
+	.directive('headerState', ['screenService', '$document', '$timeout','$interval', function(screenService, $document, $timeout, $interval) {
 		return{
 			restrict: 'EA',
 			link : function (s, e, a) {
@@ -23,16 +101,28 @@ angular.module('app')
 				    delay: 50 //++ to improve performance
 				};
 
-				$document.bind('mousewheel DOMMouseScroll touchmove scroll', function(){
+				function changeHeader(){
 					if(scrollHandling.allow){
 						scrollHandling.allow = false;
 						$timeout(function() {
 							scrollHandling.reallow();
-							//console.log(screenService.getHeaderState());
-							s.state = screenService.getHeaderState();
+							if(s.state != screenService.getHeaderState()){
+								TweenLite.to('header-state', 0.35, {opacity: '0', onComplete: function(){
+									s.state = screenService.getHeaderState();
+									s.$digest();
+									TweenLite.to('header-state', 0.35, {opacity: '1'});
+								}});
+							}
 						}, scrollHandling.delay);
-						
 					}
+				}
+
+				var aa = $interval(function(){
+					changeHeader();
+				}, 1000);
+
+				$document.bind('mousewheel DOMMouseScroll touchmove scroll', function(){
+					changeHeader();
 				});
 			}
 		};

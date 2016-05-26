@@ -29,15 +29,31 @@
 </section>
 <section id="case-study-section-4">
 	<article>
-		<h2 class="col-xs-12 col-sm-6">Our latest project for {{slug}}</h2>
-		<a class="col-xs-12 col-sm-6 project" ng-href="work/project/{{lastproject.slug}}">
+		<div class="project" ng-href="work/project/{{lastproject.slug}}">
 			<div class="img" style="background-image: url({{lastproject.img}})"></div>
 			<div class="content" ng-class="lastproject.imgcolor">
-				<h6>{{lastproject.title}}</h6>
-				<p>{{lastproject.category}}</p>				
+				<h2>Our latest project <br> for {{lastproject.name}}</h2>			
 			</div>
-		</a>
+		</div>
 		<div></div>
+	</article>
+	<article class="project-content">
+		<div class="content">
+			<div class="col-xs-12 col-sm-5 col-lg-3 information">
+				<h2>{{lastproject.title}}</h2>
+				<h6>{{lastproject.category}}</h6>
+				<p>{{lastproject.content}}</p>
+				<div class="btn-ekd">
+					<a ng-href="work/case-study/{{lastproject.slug}}" class="btn button ajax">
+						View project
+					</a>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-sm-offset-1 col-lg-6 col-lg-offset-3 images">
+				<img ng-repeat="image in lastproject.imgs" src="{{image}}">
+			</div>
+			<div class="clear"></div>
+		</div>
 	</article>
 </section>
 <section id="case-study-section-5">
@@ -57,14 +73,15 @@
 
 <section id="case-study-section-6">
 	<article ng-repeat="project in projects">
-		<div class="img" style="background-image: url({{project.img}})"></div>
+		<div ng-show="project.important" class="img" style="background-image: url({{project.img}})"></div>
 		<div class="content">
-			<div class="col-xs-12 col-sm-6 information">
+			<div class="col-xs-12 col-sm-5 col-lg-3 information">
 				<h2>{{project.title}}</h2>
 				<h6>{{project.category}}</h6>
 				<p>{{project.content}}</p>
+
 			</div>
-			<div class="col-xs-12 col-sm-6 images">
+			<div class="col-xs-12 col-sm-6 col-sm-offset-1 col-lg-5 col-lg-offset-4 images">
 				<img ng-repeat="image in project.imgs" src="{{image}}">
 			</div>
 			<div class="clear"></div>

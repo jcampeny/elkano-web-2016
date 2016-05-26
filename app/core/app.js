@@ -42,7 +42,7 @@ var app = angular.module("app",['templates-dist', 'ui.router', 'ui.bootstrap', '
 	.run(['$rootScope', '$location', '$window', '$state', 'stateService', function($rootScope, $location, $window, $state, stateService){
 	     $rootScope.$on('$stateChangeSuccess',
 	        function(event){
-	        	console.log($location);
+	        	//console.log($location);
 	            if (!$window.ga)
 	            return;
 	            //$window.ga('send', 'pageview', { page: $location.path() });

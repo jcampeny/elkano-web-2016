@@ -10,6 +10,11 @@ $transition_spring: $time_transition cubic-bezier(0.455, 0.03, 0.515, 0.955);
 $time_btn_ekd: 350ms;
 $transition_btn_ekd: $time_btn_ekd cubic-bezier(0.455, 0.03, 0.515, 0.955);
 
+$time_menu_out: .5s;
+$time_menu_in: .5s;
+$transition_menu_out: width $time_menu_out cubic-bezier(.645,.045,.355,1) 0ms;
+$transition_menu_in: width $time_menu_in cubic-bezier(.9,0,.33,1) .2s;
+
 $mobileV : 320px;
 $mobileH : 480px;
 $tabletV : 768px;

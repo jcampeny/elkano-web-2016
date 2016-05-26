@@ -36,7 +36,7 @@ app-join-us{
 				}
 				hr{
 					margin-top: 0;
-					width: 100px;
+					width: 140px;
 					border: none;
 					border-top: 1px solid $primary-blue;
 					@media (min-width: $tabletV) { width: 380px;}
@@ -54,7 +54,7 @@ app-join-us{
 				&.col-xs-12{
 					@media (min-width: $tabletV) { height: auto; margin: 50px 0;}
 					hr{
-						width: 250px;
+						width: 300px;
 						@media (min-width: $tabletV) { width: 380px;}
 					}
 				}

@@ -1,14 +1,27 @@
 <div>
-	<section ng-hide="isCase" class="desktop">
-		<article>NEW YORK <br> 230-240,  8-S <br> 10017 New York, United States </article>
-		<article>BARCELONA <br> Carrer Aribau 230 <br> 08003 Barcelona, Spain</article>
-	</section>
-	<a ng-show="isCase" ng-href="{{caseValues.ref}}">
-		<p>{{caseValues.value}}</p>
-	</a>
-	<a ng-href="{{ref}}">
-		<p>{{value}}</p>
-	</a>
+
+	<div ng-hide="isProject">
+		<section ng-hide="isCase" class="desktop">
+			<article screen-detector value="up">NEW YORK <br> 230-240,  8-S <br> 10017 New York, United States </article>
+			<article screen-detector value="up">BARCELONA <br> Carrer Aribau 230 <br> 08003 Barcelona, Spain</article>
+		</section>
+		<a ng-show="isCase" ng-href="{{caseValues.ref}}">
+			<p>{{caseValues.value}}</p>
+		</a>
+		<a ng-href="{{ref}}">
+			<p>{{value}}</p>
+		</a>
+	</div>
+
+	<div ng-show="isProject">
+		<a ng-show="isProject" ng-href="{{projectSlug.prev}}">
+			<p>Previous Project</p>
+		</a>
+		<a ng-href="{{projectSlug.next}}">
+			<p>Next Project</p>
+		</a>
+	</div>
+
 	<section class='mobile'>
 		<figure>
 			<img src="/assets/img/logo.png">

@@ -24,16 +24,21 @@ angular.module('app').directive('appCaseStudy', function ($stateParams, DataServ
     	};
 
     	$scope.lastproject = {
+            name : 'Spotify',
     		title : 'Project 1',
     		category : 'Interactive',
-    		img : '/assets/img/home1.jpg',
+            img : '/assets/img/home2.jpg',
+    		imgs : ['/assets/img/home1.jpg', '/assets/img/join-us3.jpg'],
     		imgcolor : 'white',
-    		slug : 'project-1'
+    		slug : 'project-1',
+            content : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat beatae laudantium, est! Doloribus ipsam nemo expedita natus sit assumenda ea ullam fugit similique eum laborum, aperiam eveniet amet nisi illo.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium minus dolore aut ut esse libero suscipit explicabo quo neque, eos facere tempore laborum iure, animi fugit quidem, exercitationem fugiat eveniet.'
     	};
 
     	$scope.projects = [
     		{
     			title : 'Project Title 1',
+                important : true,
+                isPublic : false,
     			category : 'Infographics',
     			content : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore similique minus sunt dolorum sed inventore iusto cum, ad assumenda, nisi reprehenderit veritatis distinctio alias voluptates provident molestias ex voluptas nobis.',
     			slug : 'random-slug',
@@ -42,6 +47,8 @@ angular.module('app').directive('appCaseStudy', function ($stateParams, DataServ
     		},
     		{
     			title : 'Project Title 2',
+                important : false,
+                isPublic : true,
     			category : 'Interactive',
     			content : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore similique minus sunt dolorum sed inventore iusto cum, ad assumenda, nisi reprehenderit veritatis distinctio alias voluptates provident molestias ex voluptas nobis.',
     			slug : 'random-slug',
@@ -50,6 +57,8 @@ angular.module('app').directive('appCaseStudy', function ($stateParams, DataServ
     		},
     		{
     			title : 'Project Title 3',
+                important : true,
+                isPublic : true,
     			category : 'Motion',
     			content : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore similique minus sunt dolorum sed inventore iusto cum, ad assumenda, nisi reprehenderit veritatis distinctio alias voluptates provident molestias ex voluptas nobis.',
     			slug : 'random-slug',

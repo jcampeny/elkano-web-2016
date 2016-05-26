@@ -20,8 +20,11 @@ angular.module('app').service("animateService", [function( ) {
 	    		case "right":
 	    			TweenLite.fromTo(e,time,{ left: "-30px"},{left: "0px", delay:delay});
 	    			break;
+	    		case "up":
+	    			TweenLite.fromTo(e,time,{opacity: '0', y : '40px' },{ ease : Circ.easeOut, opacity: "1", y : '0px', delay:delay});
+	    			break;
 	    		default:
-	    			TweenLite.to(e,time,{ ease : Power1.easeInOut, opacity: "1", delay:delay});
+	    			TweenLite.fromTo(e,time,{opacity: '0'},{ ease : Circ.easeOut, opacity: "1", delay:delay});
 	    	}
 	    	
 	    }

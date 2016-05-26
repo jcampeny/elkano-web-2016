@@ -12,7 +12,7 @@ app.directive('screenDetector', ['$window', '$document','$timeout', 'animateServ
 		var animated = false;
 
 		var type = s.type || "fade";
-		var time = s.time || 0.75;
+		var time = s.time || 0.750;
 		var delay = s.delay || 0;
 		var timeout;
 		var element = $(e);
@@ -25,7 +25,12 @@ app.directive('screenDetector', ['$window', '$document','$timeout', 'animateServ
 		    delay: 100 //++ to improve performance
 		};
 
+		TweenLite.set(e, {opacity: 0});
+
 		$document.bind('mousewheel DOMMouseScroll touchmove scroll', function(){
+			checkToScreen();				
+		});
+		function checkToScreen(){
 			if(scrollHandling.allow){
 				//evita scroll
 				scrollHandling.allow = false;
@@ -43,8 +48,9 @@ app.directive('screenDetector', ['$window', '$document','$timeout', 'animateServ
 						animated = false;
 					}
 				}, scrollHandling.delay);
-			}				
-		});
+			}
+		}
+		checkToScreen();
 		}
 	};
 }]);
@@ -67,16 +73,21 @@ angular.module('app')
 				    delay: 50 //++ to improve performance
 				};
 
-				$document.bind('mousewheel DOMMouseScroll touchmove scroll', function(){
+				function changeHeader() {
 					if(scrollHandling.allow && screenService.inScreenHeader(element)){
 						scrollHandling.allow = false;
 						$timeout(function() {
 							scrollHandling.reallow();
 							screenService.setHeaderState(s.value);
 						}, scrollHandling.delay);
-						
 					}
+				}
+
+				$document.bind('mousewheel DOMMouseScroll touchmove scroll', function(){
+					changeHeader();
 				});
+
+				changeHeader();
 			}
 		};
 	}]);

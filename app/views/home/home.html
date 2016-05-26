@@ -1,14 +1,15 @@
 <section id="home-section-1" header-changer  value="Welcome">
 	<div full-screen>
+	<div screen-detector value="up">
 		<h1>We are Elkanodata,<br> a global information design <br> agency based in Barcelona<arrow-svg></arrow-svg>
 		</h1>
-
+	</div>
 	</div>
 	<article>
-		<h2>We partner with our clients to craft world <br> class visual experiences that convey information in <br> engaging, beautiful and insightful ways.</h2>
-		<figure><img src="/assets/img/logo.png"></figure>
-		<p class="btn-ekd">
-			<a ng-href="about" class="btn button ajax">
+		<h2 screen-detector value="up" >We partner with our clients to craft world <br> class visual experiences that convey information in <br> engaging, beautiful and insightful ways.</h2>
+		<figure screen-detector value="up" delay="0.2"><img src="/assets/img/logo.png"></figure>
+		<p screen-detector value="up" delay="0.3" class="btn-ekd">
+			<a ng-href="/about" class="btn button ajax">
 				Learn More
 				<span></span>
 				<span class="mobile"></span>
@@ -19,29 +20,29 @@
 </section>
 
 <section id="home-section-2" id="home-section-1" header-changer  value="Work">
-	<div class="col-xs-12 col-sm-6" >
-		<div class="img" style="background-image: url({{item1.img}});"></div>
+	<div screen-detector delay="0.5" class="col-xs-12 col-sm-6" >
+		<div  class="img" style="background-image: url({{item1.img}});"></div>
 		<article>
 			<h4>{{item1.title}}</h4>
 			<h6>{{item1.subtitle}}</h6>
 		</article>
 	</div>
-	<div class="col-xs-12 col-sm-6">
-		<div class="img" style="background-image: url({{item2.img}});"></div>
+	<div screen-detector delay="0.5" class="col-xs-12 col-sm-6">
+		<div  class="img" style="background-image: url({{item2.img}});"></div>
 		<article>
 			<h4>{{item1.title}}</h4>
 			<h6>{{item1.subtitle}}</h6>
 		</article>
 	</div>
-	<div class="col-xs-12 col-sm-6">
-		<div class="img" style="background-image: url({{item3.img}});"></div>
+	<div screen-detector delay="0.5" class="col-xs-12 col-sm-6">
+		<div  class="img" style="background-image: url({{item3.img}});"></div>
 		<article>
 			<h4>{{item1.title}}</h4>
 			<h6>{{item1.subtitle}}</h6>
 		</article>
 	</div>
 	<article class="view-more" >
-		<p class="btn-ekd">
+		<p class="btn-ekd" screen-detector value="up">
 			<a href="" class="btn button ajax">
 				View all projects
 				<span></span>
@@ -53,13 +54,13 @@
 </section>
 
 <section id="home-section-3" header-changer  value="Client">
-	<h3>Our clients are innovative brands, thought leaders and international organizations who believe that quality relationships bring quality results.</h3>
+	<h3  screen-detector value="up" >Our clients are innovative brands, thought leaders and international organizations who believe that quality relationships bring quality results.</h3>
 	<article>
-		<ul>
+		<ul  screen-detector value="up" delay="0.2">
 			<li ng-repeat="logo in client_logos"><img src="{{logo}}"></li>
 		</ul>
 	</article>
-	<article ng-repeat='(i, cite) in cites' state="{{i}}">
+	<article ng-repeat='(i, cite) in cites' state="{{i}}" screen-detector value="up" delay="0.4">
 		<cite>{{cite.cite}}</cite>
 		<hr>
 		<p><strong>{{cite.name}}</strong></p>
@@ -68,25 +69,12 @@
 </section>
 
 <section id="home-section-4" header-changer  value="Press">
-	<h3>Press & Awards</h3>
+	<h3 screen-detector value="up" delay="0">Press & Awards</h3>
 	<article>
-		<ul>
+		<ul screen-detector value="up" delay="0.2">
 			<li ng-repeat="logo in press_logos"><img src="{{logo}}"></li>
 		</ul>
 	</article>
 </section>
 
 <footer ng-footer></footer>
-
-<!--
-<div header-changer  value="test1"  style="height: 1000px" class="entrada">
-	<a ng-href="work/project/info" screen-detector>about</a>
-</div>
-
-
-<div header-changer  value="test2"  style="height: 1000px" class="test">
-	<a ng-href="work/project/case">
-		<div class="img"></div>
-	</a>
-</div>
--->

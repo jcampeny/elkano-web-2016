@@ -21,12 +21,12 @@ angular.module('app')
 
 				function init (){
 					var imgs = s.$parent.project.styleFrames;
-
+/*
 					angular.forEach(imgs, function(img, i){//creamos las imágenes (DOM)
 						var link = $(img).attr('src');
 						$(e).append('<div slide="'+i+'" style=" background-image : url('+link+');"></div>');
 						controllers.dots++;
-					});
+					});*/
 					createArrows();
 					$compile( e )(s);
 				}

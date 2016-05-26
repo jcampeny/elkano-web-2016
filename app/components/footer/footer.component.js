@@ -6,14 +6,22 @@ angular.module('app').directive('ngFooter', function () {
     scope: {
     	value : '@',
     	ref : '@',
-        case : '@'
+        case : '@',
+        prev : '@',
+        next : '@'
     },
     controller: function ($scope) {
         $scope.isCase = false;
+        $scope.isProject = false;
         $scope.caseValues = {
             ref : '',
             value : ''
         };
+        $scope.projectSlug = {
+            prev: '',
+            next: ''
+        };
+        
     	if($scope.value === undefined){
     		$scope.value = 'Start a project';
     	}
@@ -24,6 +32,11 @@ angular.module('app').directive('ngFooter', function () {
             $scope.isCase = true;
             $scope.caseValues.ref = 'work/case-study/' + $scope.case;
             $scope.caseValues.value = 'Case Study ' + $scope.case;
+        }
+        if($scope.prev !== undefined && $scope.next !== undefined){
+           $scope.isProject = true;
+           $scope.projectSlug.prev = 'work/project/' + $scope.prev;
+           $scope.projectSlug.next = 'work/project/' + $scope.next; 
         }
         
         $scope.scrollTop = function () {
