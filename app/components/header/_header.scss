@@ -1,9 +1,137 @@
 header {
-	display: none;
-	color: $header-blue;
+	#black-layer, #menu, #logo-desktop, .burger-menu{
+		display: none;	
+	}
+	#header-mobile{		
+		position: fixed;	
+		color: $header-blue;
+		width: 100%;
+		z-index: 100;
+		height: 50px;
+		overflow: hidden;
+		top: 0px;
+		@include transition3(height .5s cubic-bezier(.9,0,.33,1) .2s, background-color .5s cubic-bezier(.9,0,.33,1) .2s, top .4s cubic-bezier(0.455, 0.03, 0.515, 0.955) );
+		
+		#menu-mobile{
+			position: fixed;
+		    top: 50%;
+		    left: 5%;
+		    font-size: 35px;
+		    font-family: serif;
+		    line-height: 50px;
+		    @include transform (translateY(-50%));
+		    pointer-events: none;
+			ul{
+				@media (max-height: 321px){
+					-webkit-columns: 2;
+					-moz-columns: 2;
+					columns: 2;
+				}
+				pointer-events: none;
+				list-style: none;
+				transition-delay: 0s;
+				li{	
+					opacity: 0;
+					transition-delay: 0s;
+					
+					a{
+						width: 100%;
+						display: block;
+						white-space: nowrap;
+						color: $header-blue;
+						&:hover, &.active, &:active, &:focus{
+							opacity: 1 !important;
+							text-decoration: none;
+							color: $header-blue;
+						}
+					}
+				}
+			}
+		}
+		line{
+			@include transition (stroke .5s cubic-bezier(.9,0,.33,1));
+			stroke: #FFFFFF;
+		}
+		path{
+			@include transition (all .8s cubic-bezier(.9,0,.33,1));
+			fill: transparent;
+		}
+		figure{
+			position: absolute;
+			top: 14px;
+			right: 14px;
+		}
+		.burger-menu-mobile{
+			div{
+				font-size: 9px;
+				color: #FFFFFF;
+				position: absolute;
+			    top: 33px;
+			    left: 15px;
+			   	@include transition (color .5s cubic-bezier(.9,0,.33,1));
+			}
+			svg{
+				position: absolute;
+				top: 10px;
+				left: 14px;
+			}
+		}
+		&.have-background{
+			background-color: #FFFFFF;
+			line{
+				stroke: $header-blue;
+			}
+			path{
+				fill: $header-blue;
+			}
+			.burger-menu-mobile{
+				div{
+					color: $header-blue;
+				}
+			}
+		}
+		&.hide-menu{
+			top: -50px;
+			@include transition (top .5s cubic-bezier(0.455, 0.03, 0.515, 0.955));
+		}
+		&.active{
+			height: 100vh;
+			background-color: #FFFFFF;
+			@include transition (all .5s cubic-bezier(.645,.045,.355,1) .2s);
+			#menu-mobile{
+				pointer-events: all;
+				ul{
+					pointer-events: all;
+					transition-delay: 0s;
+					li{
+						transition-delay: 0s;
+					}
+				}
+			}
+			line{
+				@include transition (stroke .5s cubic-bezier(.645,.045,.355,1) .2s);
+				stroke: $header-blue;
+			}
+			path{
+				@include transition (all .5s cubic-bezier(.645,.045,.355,1) .2s);
+				fill: $header-blue;
+			}
+			.burger-menu-mobile{
+				div{
+					@include transition (color .5s cubic-bezier(.645,.045,.355,1) .2s);
+					color: $header-blue;
+				}
+			}
+		}
+	}
+
 }
 @media (min-width: $tabletV){
+	#header-mobile{display:none;}
 	header{
+		#black-layer, #menu, #logo-desktop, .burger-menu{
+			display: block;	
+		}
 		@include transition($transition_menu_in);
 		display: block; 
 		width: 70px;

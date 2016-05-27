@@ -14,7 +14,9 @@ module.exports = function(grunt) {
     "bower_components/jquery/dist/jquery.min.js",
     "bower_components/bootstrap/dist/js/bootstrap.min.js",
     "bower_components/angular-translate/angular-translate.min.js",
-    "bower_components/gsap/src/minified/*"
+    "bower_components/gsap/src/minified/*",
+    "bower_components/ng-device-detector/ng-device-detector.min.js",
+    "bower_components/re-tree/re-tree.min.js"
   ];
 
   var vendorStyles = [

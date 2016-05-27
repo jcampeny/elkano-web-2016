@@ -11,6 +11,19 @@
       -ms-transition: $time;
           transition: $time;
 }
+@mixin transition2($time, $time2) {
+  -webkit-transition: $time, $time2;
+     -moz-transition: $time, $time2;
+      -ms-transition: $time, $time2;
+          transition: $time, $time2;
+}
+
+@mixin transition3($time, $time2, $time3) {
+  -webkit-transition: $time, $time2, $time3;
+     -moz-transition: $time, $time2, $time3;
+      -ms-transition: $time, $time2, $time3;
+          transition: $time, $time2, $time3;
+}
 
 @mixin animate($animate){
   -webkit-animation: $animate;

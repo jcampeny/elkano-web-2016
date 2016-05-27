@@ -1,4 +1,4 @@
-angular.module('app').directive('ngHeader', function ($location, $document) {
+angular.module('app').directive('ngHeader', function ($location, $document, scrollService, $window) {
   return {
     restrict: 'EA',
     templateUrl: '../app/components/header/header.html',
@@ -8,18 +8,37 @@ angular.module('app').directive('ngHeader', function ($location, $document) {
     	
     	$scope.open = false;
     	$scope.textOpenClose = 'Menu';
+    	$scope.hideOnScroll = false;
+    	$scope.withBackground = false;
     },
     link : function (s,e,a,c){
     	var tl = new TimelineLite();
     	var t3 = new TimelineLite();
     	var t2 = new TimelineLite();
 
-		$document.bind('mousewheel DOMMouseScroll touchmove scroll', function(){
+		$document.bind('mousewheel DOMMouseScroll touchmove scroll', function(e){
 			if(s.open){
 				s.open = false;	
-				animateMenu('close');					
+				animateMenu('close');
+				animateMenuMobile(s.open);					
 			}
 		});
+
+		$document.bind('touchmove', function(e){
+			var dir = scrollService.getDirectionOnTouchMove(e);
+
+			s.hideOnScroll = (dir == "down") ? true : false;
+			printBackground();
+		});
+
+		function printBackground(){
+			var state = $location.$$path.split('/')[1] || 'home';
+
+			s.withBackground = (($(window).scrollTop() > $(window).height()) || state == 'about' || state == 'services' || state == 'work') ? true : false;
+		}
+
+		setTimeout(function(){printBackground();},200);
+		
 
     	s.backHome = function(){
     		s.open = false;
@@ -83,10 +102,69 @@ angular.module('app').directive('ngHeader', function ($location, $document) {
 				s.textOpenClose = "Close";
     		}
     	}
+
+    	function animateMenuMobile(state){
+    		if(state){ //open
+    			TweenMax.to("#mov12", 0.5, {attr:{y2:"12", x1: "6"}});
+    			TweenMax.to("#mov22", 0.5, {attr:{y1:"12", x2: "18"}});
+
+    			TweenMax.to("#mov32", 0.5, {attr:{x1:"12", 'stroke-opacity' : "0"}});
+    			TweenMax.to("#mov42", 0.5, {attr:{x2:"12", 'stroke-opacity' : "0"}});
+
+    			TweenMax.to("#mov52", 0.5, {attr:{y2:"12", x1: "6"}});
+    			TweenMax.to("#mov62", 0.5, {attr:{y1:"12", x2: "18"}});
+
+ 				s.textOpenClose = "Close";   			
+    		}else{//close
+    			TweenMax.to("#mov12", 0.5, {attr:{y2:"6", x1: "2"}});
+				TweenMax.to("#mov22", 0.5, {attr:{y1:"6", x2: "22"}});
+
+				TweenMax.to("#mov32", 0.5, {attr:{x1:"2", 'stroke-opacity' : "1"}});
+				TweenMax.to("#mov42", 0.5, {attr:{x2:"22", 'stroke-opacity' : "1"}});
+
+				TweenMax.to("#mov52", 0.5, {attr:{y2:"18", x1: "2"}});
+				TweenMax.to("#mov62", 0.5, {attr:{y1:"18", x2: "22"}});
+
+				s.textOpenClose = 'Menu';
+    		}
+    	}
+
+    	s.openMobileMenu = function(){
+    		s.open = !s.open;
+    		animateMenuMobile(s.open);
+    		setTimeout(function(){printBackground();},800);
+    		if(s.open){
+    			var state = $location.$$path.split('/')[1] || 'home';
+    			tl.set('ul li',{y:'100px', opacity: '0'});
+				t3.staggerTo('ul li', 0.3, {
+					y: '0px',
+			    	opacity: '0.5',
+			    	ease:Circ.easeOut,
+			    	onComplete : function(){    		
+			    		$('li[state="'+state+'"]').css({
+    						opacity: '1'
+    					});}
+			  	}, 0.05);
+    		}else{
+				t2.staggerTo('ul li', 0.3, {
+					y: '100px',
+			    	opacity: '0',
+			    	ease:Circ.easeIn,
+			    	delay: 0.2
+			  	}, -0.05);
+    		}
+    	};
     }
   };
 });
-
+/*
+d="M29,26.688l10,5"/>
+d="M39,31.688l9.8-5"/>
+x1="29" y1="31.688" x2="39" y2="31.688"/>
+x1="38.8" y1="31.688" x2="48.8" y2="31.688"/>
+d="M29,36.688l10-5"/>
+d="M39,31.688l9.8,5"/>
+*/
 angular.module('app')
 	.directive('headerState', ['screenService', '$document', '$timeout','$interval', function(screenService, $document, $timeout, $interval) {
 		return{

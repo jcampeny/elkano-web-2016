@@ -1,4 +1,4 @@
-var app = angular.module("app",['templates-dist', 'ui.router', 'ui.bootstrap', 'ngAnimate', 'ngResource', 'pascalprecht.translate'])
+var app = angular.module("app",['templates-dist', 'ui.router', 'ui.bootstrap', 'ngAnimate', 'ngResource', 'pascalprecht.translate', 'ng.deviceDetector'])
 
 	.controller("mainController", [ '$document', '$scope', 'ArrayService', '$sce', 'DataService', function($document, $scope, ArrayService,$sce,DataService, $location, $anchorScroll) {
 		

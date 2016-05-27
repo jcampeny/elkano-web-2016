@@ -12,7 +12,7 @@
 		<header-state>{{state}}</header-state>
 	</div>
 </div>
-<a ng-href="/" ng-click="backHome()">
+<a id="logo-desktop" ng-href="/" ng-click="backHome()">
 	<figure></figure>
 </a>
 <div class="burger-menu" ng-click="menuOpen()">
@@ -25,4 +25,37 @@
 		<path id="mov6" d="M45,52 C49,52 51,52 55,52" fill="none" stroke-width="2px"></path>
 	</svg>
 	<div>{{textOpenClose}}</div>
+</div>
+
+
+
+<div id="header-mobile" ng-click="openMobileMenu()" ng-class="{'active' : open, 'hide-menu' : hideOnScroll, 'have-background' : withBackground}">
+	<figure>
+		<svg width="24.75px" height="24.75px">
+			<path fill="none" stroke="#FFFFFF" stroke-width="1.5px" stroke-miterlimit="10" d="M23.761,12.364c0,6.357-5.133,11.5-11.494,11.5  c-6.352,0-11.507-5.143-11.507-11.5c0-6.35,5.155-11.477,11.507-11.477h11.494V12.364L23.761,12.364L23.761,12.364z M23.988,12.364   M12.238,17.215c-2.642,0-4.781-2.135-4.781-4.777c0-2.639,2.139-4.784,4.781-4.784 M13.87,17.146  c2.327-0.336,4.109-2.334,4.109-4.737c0-2.409-1.782-4.408-4.109-4.733V17.146L13.87,17.146L13.87,17.146z M13.87,17.146   M14.068,12.011H9.372 M13.87,7.676c2.215,0.401,4.128,2.072,4.109,4.733c-0.02,2.839-2.395,4.604-4.109,4.737"/>
+		</svg>
+	</figure>
+	<div class="burger-menu-mobile">
+		<svg width="24px" height="25px">
+			<line id="mov12" stroke-width="1.5px" x1="2" y1="6" x2="12" y2="6"/>
+			<line id="mov22" stroke-width="1.5px" x1="12" y1="6" x2="22" y2="6"/>
+
+			<line id="mov32" stroke-width="1.5px" x1="2" y1="12" x2="12" y2="12"/>
+			<line id="mov42" stroke-width="1.5px" x1="12" y1="12" x2="22" y2="12"/>
+
+			<line id="mov52" stroke-width="1.5px" x1="2" y1="18" x2="12" y2="18"/>
+			<line id="mov62" stroke-width="1.5px" x1="12" y1="18" x2="22" y2="18"/>
+		</svg>
+		<div>{{textOpenClose}}</div>
+	</div>
+	<div id="menu-mobile">
+		<ul>
+			<li state="home"><a ng-href="/home">Home</a></li>
+			<li state="about"><a ng-href="/about">About</a></li>
+			<li state="services"><a ng-href="/services">Services</a></li>
+			<li state="work"><a ng-href="/work">Work</a></li>
+			<li state="join-us"><a ng-href="/join-us">Join Us</a></li>
+			<li state="contact"><a ng-href="/contact">Contact</a></li>
+		</ul>
+	</div>
 </div>
