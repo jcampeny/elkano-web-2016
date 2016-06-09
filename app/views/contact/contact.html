@@ -6,26 +6,23 @@
 </section>
 <section id="contact-section-2" header-changer  value="Enquiries">
 	<article class="row">
-		<h2 class="col-xs-12 col-sm-4 col-md-6">Enquiries</h2>
-		<div class="col-xs-12 col-sm-8 col-md-6 right-column">
-			<div>
+		<div class="col-xs-12 col-sm-6 col-md-6 left-column">
+			<a ng-href="/contact/start-a-project" ng-class="state=='start-a-project' ? 'active' : 'un-active'">
 				<span>Become a client</span>
-				<span>contact@elkanodata.com</span> 
-			</div>
-			<div>
+				<span><arrow-svg-un-animated></arrow-svg-un-animated></span> 
+			</a>
+			<a ng-href="/contact/career" ng-class="state=='career' ? 'active' : 'un-active'">
 				<span>Careers</span>
-				<span>careers@elkanodata.com</span> 
-			</div>
-			<div>
+				<span><arrow-svg-un-animated></arrow-svg-un-animated></span> 
+			</a>
+			<a ng-href="/contact/press" ng-class="state=='press' ? 'active' : 'un-active'">
 				<span>Media Enquiries</span>
-				<span>press@elkanodata.com</span> 
-			</div>
+				<span><arrow-svg-un-animated></arrow-svg-un-animated></span> 
+			</a>
 		</div>
+		<div class="col-xs-12 col-sm-6 col-md-6 contact-forms" ui-view></div>
 	</article>
 </section>
 <section id="contact-section-3" header-changer  value="Ofﬁces">
-
-		<a ng-href="contact/start-a-project">link</a>
-	<div class="contact-forms" ui-view></div>
 </section>
-<footer ng-footer></footer>
+<footer ng-footer show="false"></footer>

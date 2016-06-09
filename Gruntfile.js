@@ -16,7 +16,11 @@ module.exports = function(grunt) {
     "bower_components/angular-translate/angular-translate.min.js",
     "bower_components/gsap/src/minified/*",
     "bower_components/ng-device-detector/ng-device-detector.min.js",
-    "bower_components/re-tree/re-tree.min.js"
+    "bower_components/re-tree/re-tree.min.js",
+    "bower_components/videogular/videogular.min.js",
+    "bower_components/videogular-controls/vg-controls.min.js",
+    "bower_components/videogular-themes-default/videogular.min.js",
+    "bower_components/videogular-poster/vg-poster.js"
   ];
 
   var vendorStyles = [

@@ -33,7 +33,6 @@ angular.module('app').directive('ngHeader', function ($location, $document, scro
 
 		function printBackground(){
 			var state = $location.$$path.split('/')[1] || 'home';
-
 			s.withBackground = (($(window).scrollTop() > $(window).height()) || state == 'about' || state == 'services' || state == 'work') ? true : false;
 		}
 

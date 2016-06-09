@@ -1,4 +1,4 @@
-var app = angular.module("app",['templates-dist', 'ui.router', 'ui.bootstrap', 'ngAnimate', 'ngResource', 'pascalprecht.translate', 'ng.deviceDetector'])
+var app = angular.module("app",['templates-dist', 'ui.router', 'ui.bootstrap', 'ngAnimate', 'ngResource', 'pascalprecht.translate', 'ng.deviceDetector', "com.2fdevs.videogular", "com.2fdevs.videogular.plugins.controls", "com.2fdevs.videogular.plugins.poster"])
 
 	.controller("mainController", [ '$document', '$scope', 'ArrayService', '$sce', 'DataService', function($document, $scope, ArrayService,$sce,DataService, $location, $anchorScroll) {
 		

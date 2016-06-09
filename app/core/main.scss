@@ -4,6 +4,7 @@
 @import 'animations';
 @import '../components/header/header';
 @import '../components/footer/footer';
+@import '../components/loading/loading';
 @import '../views/home/home';
 @import '../views/about/about';
 @import '../views/case-study/case-study';
@@ -20,7 +21,7 @@ body {
 	margin:0;
 	padding:0;
 	@include opacity(1); 
-	background-color: $grey-f;
+	background-color: $primary-blue;
 	color: $secundary-blue;
 }
 main{
@@ -81,3 +82,30 @@ h3{
 
 }
 
+/*
+*
+*/
+#background-mobile{
+	background-size: cover;
+	position: absolute;
+	top: 0; left: 0;
+	height: 100%;
+	width: 100%;
+}
+videogular{
+	display: none !important;
+}
+vg-media{
+	video{
+		object-fit: cover;
+		object-position: center;
+	}
+}
+@media (min-width: $tabletV) {
+	videogular{
+		display:block !important;
+	}
+	#background-mobile{
+		display:none;
+	}
+}

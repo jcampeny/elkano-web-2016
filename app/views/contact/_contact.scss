@@ -37,17 +37,43 @@ app-contact{
 				margin-left: 0;
 				margin-right: 0;
 			}
-			div.right-column{
+			div.left-column{
 				margin: 20px 0;
-				@media (min-width: $tabletV) { margin: 0; padding-left: $margin-mobile-H;}	
-				div{
+				@media (min-width: $tabletV) { margin: 0; padding-right: $margin-mobile-H;}	
+				&:hover > a, &:active > a, &:focus > a, a.un-active{
+					opacity: 0.2;
+				}
+				a{
+					text-decoration: none;
+					color: $secundary-blue;
+					display: block;
 					padding: 25px 0;
 					clear: both;
 					border-top: 1px solid $primary-blue;
 					border-bottom: 1px solid $primary-blue;
-					&:first-child{border-bottom: 0px solid $primary-blue;}
-					&:last-child{border-top: 0px solid $primary-blue;}
-					span:last-child{ float: right;}
+					cursor: pointer;
+					@include transition(all $transition_btn_ekd);
+					&:first-child{border-bottom: 1px solid transparent;}
+					&:last-child{border-top: 1px solid transparent;}
+					span:last-child{ 
+						float: right;
+						position: relative;
+    					top: 1px;
+						//@include transform(rotate(-90deg) scale(1.1) translateX(40%));
+						@media (max-width: $tabletV) {
+							svg{
+								@include transform (rotate(90deg));
+							}
+	
+						}
+					}
+					&:hover, &:active, &:focus, &.active{
+						opacity: 1;
+						color: $secundary-blue;
+						border-top: 1px solid $primary-blue;
+						border-bottom: 1px solid $primary-blue;
+						text-decoration: none;
+					}
 				}
 			}
 		}

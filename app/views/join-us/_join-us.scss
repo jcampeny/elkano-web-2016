@@ -117,6 +117,14 @@ app-join-us{
 						margin: 30px 0;
 						display: none;
 						@include transition(opacity $transition_btn_ekd);
+						div.btn-ekd{
+							font-family: $font-Calibre;
+							padding-bottom: $margin-mobile-H*1.5;
+							margin: 0;
+							@extend .btn-blue-2;
+							padding-top: 30px !important;
+							@media (min-width: $tabletV) { padding: 0px; }
+						}
 					}
 					&.active{
 						.content{

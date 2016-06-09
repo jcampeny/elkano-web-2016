@@ -1,9 +1,32 @@
 angular.module('app').service("preloader",[ '$q', function($q) {
-
+    var stateLoad = {
+        window: false,
+        db : false
+    };
     return {
         preload : preload,
-        foo : foo
+        foo : foo,
+        load : load
     };
+    function load(from){
+        var allLoaded = false;
+        switch(from) {
+            case 'db':
+                stateLoad.db = true;
+                break;
+            case 'window':
+                stateLoad.window = true;
+                break;
+            default:
+                allLoaded = true;
+        }
+        
+        if(stateLoad.db == stateLoad.window){ 
+            allLoaded = true;
+        }
+
+        return allLoaded;
+    }
     function loadImg(img) {
         var defered = $q.defer();
         var promise = defered.promise;

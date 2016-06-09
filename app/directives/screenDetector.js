@@ -1,4 +1,4 @@
-app.directive('screenDetector', ['$window', '$document','$timeout', 'animateService', 'screenService', function($window, $document, $timeout, animateService, screenService){
+app.directive('screenDetector', ['$window', '$document','$timeout', 'animateService', 'screenService','deviceDetector', function($window, $document, $timeout, animateService, screenService, deviceDetector){
 	return {
 		restrict : 'EA',
 		scope: {
@@ -25,11 +25,18 @@ app.directive('screenDetector', ['$window', '$document','$timeout', 'animateServ
 		    delay: 100 //++ to improve performance
 		};
 
-		TweenLite.set(e, {opacity: 0});
+		
+		if(!deviceDetector.isMobile()){//check is mobile
 
-		$document.bind('mousewheel DOMMouseScroll touchmove scroll', function(){
-			checkToScreen();				
-		});
+			TweenLite.set(e, {opacity: 0}); //all hide
+
+			$document.bind('mousewheel DOMMouseScroll touchmove scroll', function(){
+				checkToScreen();				
+			});
+			
+			checkToScreen();
+		}
+
 		function checkToScreen(){
 			if(scrollHandling.allow){
 				//evita scroll
@@ -50,7 +57,7 @@ app.directive('screenDetector', ['$window', '$document','$timeout', 'animateServ
 				}, scrollHandling.delay);
 			}
 		}
-		checkToScreen();
+		
 		}
 	};
 }]);

@@ -8,7 +8,8 @@ angular.module('app').directive('ngFooter', function () {
     	ref : '@',
         case : '@',
         prev : '@',
-        next : '@'
+        next : '@',
+        show : '@'
     },
     controller: function ($scope) {
         $scope.isCase = false;
@@ -38,7 +39,17 @@ angular.module('app').directive('ngFooter', function () {
            $scope.projectSlug.prev = 'work/project/' + $scope.prev;
            $scope.projectSlug.next = 'work/project/' + $scope.next; 
         }
-        
+        $scope.$watch(function(){return $scope.prev;}, function(){
+            $scope.projectSlug.prev = 'work/project/' + $scope.prev;
+            $scope.projectSlug.next = 'work/project/' + $scope.next; 
+        });
+        $scope.$watch(function(){return $scope.case;}, function(){
+            if($scope.case !== undefined){
+                $scope.caseValues.ref = 'work/case-study/' + $scope.case.toLowerCase();
+                $scope.caseValues.value = 'Case Study ' + $scope.case;
+            }
+
+        });
         $scope.scrollTop = function () {
             $('html, body').animate({ scrollTop: 0 }, 'slow');
         };

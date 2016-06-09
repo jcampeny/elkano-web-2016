@@ -15,10 +15,9 @@
             var d = new DOMParser();
             var p = d.parseFromString(img, "text/html");
             var imgDOM = $('img', p); 
-
             return imgDOM;
         }
-
+/*
         function createInfographicContent(customPost){
             return {
                 firstImg    : getMedia(customPost.first_img),
@@ -76,13 +75,53 @@
                 styleFrames : getMedia(customPost.styleframes),
                 category    : customPost.embed_categories[0]
             };
-        }
+        }*/
+        var parentCategories = [
+            'animation',
+            'brand',
+            'interactive'
+        ];
+
         return {
             all     : all,
-            getById : getById,
             getMediaFromCustomPost  : getMediaFromCustomPost,
-            getInfoFromCategory     : getInfoFromCategory
+            getInfoFromCategory     : getInfoFromCategory,
+            getItemById             : getItemById,
+            getChildCategory        : getChildCategory,
+            getAttrFromImg          : getAttrFromImg,
+            getParentCategory       : getParentCategory
         };
+
+        function getAttrFromImg(e, attr){
+            var img = getMedia(e);
+            return img[0][attr];
+        }
+
+        //retorna categorias como Motion, ignorando las parentCategories
+        function getChildCategory(project){ 
+            var categoryName = 'project';
+            if(project.pure_taxonomies.categories !== undefined){
+                angular.forEach(project.pure_taxonomies.categories, function(category, i){
+                    
+                    if(parentCategories.indexOf(category.slug) < 0){
+                        categoryName = category.name;
+                    }
+                });                
+            }
+            return categoryName;
+        }
+        function getParentCategory(project){ 
+            var categoryName = 'project';
+            if(project.pure_taxonomies.categories !== undefined){
+                angular.forEach(project.pure_taxonomies.categories, function(category, i){
+                    
+                    if(parentCategories.indexOf(category.slug) >= 0){
+                        categoryName = category;
+                    }
+                });                
+            }
+            return categoryName;
+        }
 
         function getInfoFromCategory(customPost){
             var category = customPost.embed_categories[0];
@@ -116,7 +155,11 @@
                 }
                 
             }
-            return getData(type+"?_embed"+pagination);
+            //return getData(type+"?_embed"+pagination);
+            return getData(type);
+        }
+        function getItemById(type, id){
+            return getData(type +"/"+id);
         }
 
         // function allByTag(type, tag) {
@@ -130,10 +173,6 @@
         // function featuredPosts() {
         //     return getData('posts?filter[category_name]=post%2Bfeatured');
         // }
-
-        function getById(type, id) {
-            return getData(type+'/' + id + '?_embed');
-        }
 
         function getData(url) {
             var path = "/wordpress/wp-json/wp/v2/";

@@ -1,70 +1,124 @@
-angular.module('app').directive('appCaseStudy', function ($stateParams, DataService) {
+angular.module('app').directive('appCaseStudy', function ($stateParams, DataService, $location, $sce, mediaManager,$rootScope, preloader) {
   return {
     restrict: 'E',
     templateUrl: '../app/views/case-study/case-study.html',
     controllerAs: 'appCaseStudy',
-    controller: function ($scope) {
-    	$scope.slug = $stateParams.slug;
-    	$scope.otherslug = 'UNWomen';
+    controller: function ($scope,  htmlToPlaintext) {
+        $( window ).load( function(){
+            $rootScope.loaded = preloader.load('window');
+        });
+        DataService.all('case', 'all', 0).then(function(cases){
+            var exists = false;//404
+            angular.forEach(cases, function(cs, i){
+                //slug existe y estamos en su página
+                if(cs.slug == $stateParams.slug){
+                    exists = true;
+                    $scope.slug = cs.content.rendered;
+
+                    // Común case study
+                    $scope.case = {
+                        title :  htmlToPlaintext(cs.title.rendered),
+                        content : htmlToPlaintext(cs.content.rendered),
+                        img1 : (cs.first_img !== '') ? DataService.getAttrFromImg(cs.first_img, 'src') : '',
+                        img1color : (cs.first_img !== '') ? DataService.getAttrFromImg(cs.first_img, 'alt') : '',
+                        title2 : cs.title_2,
+                        content2 : cs.content_2,
+                        cite : cs.images.split(';;;')[0],
+                        citename : cs.images.split(';;;')[1],
+                        title3 : cs.title_3,
+                        content3 : cs.content_3,
+                        img2 : (cs.gifs !== '') ? DataService.getAttrFromImg(cs.gifs.split(';;;')[0], 'src') : '',
+                        img3 : (cs.gifs !== '') ? DataService.getAttrFromImg(cs.gifs.split(';;;')[1], 'src') : '',
+                        title4 : cs.title_4,
+                        content4 : cs.content_4,
+                    };
+                    // end común
+                    var ids = [];
+                    // Projects
+                    //get project id
+                    angular.forEach(cs.project, function(idProject, j){
+                        ids.push(idProject.ID);
+                    });
+
+                    DataService.all('project', 'all', 0).then(function(projects){
+                        angular.forEach(projects, function (project, j){
+                            if(ids.indexOf(project.id) >= 0){
+                                if(ids.indexOf(project.id) === 0){//main project
+                                    var gifs = mediaManager.detectTypeMedia(project.gifs.split(";;;"));
+                                    $scope.lastproject = {
+                                        name : htmlToPlaintext(cs.content.rendered),
+                                        title : project.title_2,
+                                        content : project.content_2,
+                                        category : DataService.getChildCategory(project),
+                                        img : (project.video !== '') ? DataService.getAttrFromImg(project.video.split(';;;')[1], 'src') : '',
+                                        imgcolor : (project.video !== '') ? DataService.getAttrFromImg(project.video.split(';;;')[1], 'alt') : '',
+                                        gifs : gifs,
+                                        slug : project.slug
+                                    }; 
+                                    $rootScope.loaded = preloader.load('db');
+                                }else{//others
+                                    var imgs = mediaManager.detectTypeMedia(project.gifs.split(";;;"));
+                                    var img = mediaManager.detectTypeMedia(project.video);
+                                    var aProject = {
+                                        title : project.title_2,
+                                        important : isImportant(project.pure_taxonomies.other),
+                                        isPublic : isPublic(project.pure_taxonomies.other),
+                                        category : DataService.getChildCategory(project),
+                                        content : project.content_2,
+                                        slug : project.slug,
+                                        img : img,
+                                        imgs : imgs
+                                    };
+                                    $scope.projects.push(aProject);
+                                }
+                            }
+                        });
+                    });
+                    //end projects
+                }else{//the other case study
+                    $scope.otherslug = cs.content.rendered;
+                } 
+                if(!exists && (i == cases.length - 1)){
+                    //future 404
+                    $location.path('/404');
+                }             
+            });
+
+        });
+
+        function isImportant(category){
+            var important = false;
+            if(category !== undefined){
+                angular.forEach(category, function(c, i){
+                    if(c.slug == 'important'){
+                        important = true;
+                    }
+                });
+            }
+            return important;
+        }
+        function isPublic(category){
+            var public = true;
+            if(category !== undefined){
+                angular.forEach(category, function(c, i){
+                    if(c.slug == 'private'){
+                        public = false;
+                    }
+                });
+            }
+            return public;
+        }
+
     	$scope.case = {
-    		title : 'Title 1',
-            content : 'Spotify content',
-    		img1 : '/assets/img/home1.jpg',
-    		img1color : 'white',
-    		title2 : 'Start of a relationship',
-    		content2 : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum dicta alias illo pariatur ipsa totam itaque, ut unde, est nostrum natus assumenda eaque illum ea nobis eveniet delectus aliquam laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum dicta alias illo pariatur ipsa totam itaque, ut unde, est nostrum natus assumenda eaque illum ea nobis eveniet delectus aliquam laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum dicta alias illo pariatur ipsa totam itaque, ut unde, est nostrum natus assumenda eaque illum ea nobis eveniet delectus aliquam laborum.',
-    		cite : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-    		citename : 'Client Name',
-    		title3 : 'Challenge',
-    		content3 : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla a corporis laudantium deserunt ad quisquam aspernatur quo, eum, nihil, minima perspiciatis nobis. Mollitia ullam quo consectetur qui pariatur quasi voluptates! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt dolor commodi ullam sint cupiditate dolorum beatae doloribus. Et, quas ratione. Assumenda earum hic doloremque odit itaque, iure facere, harum consequatur?',
-    		img2 : '/assets/img/join-us2.jpg',
-    		img3 : '/assets/img/join-us3.jpg',
-    		title4 : 'Our response',
-    		content4 : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla a corporis laudantium deserunt ad quisquam aspernatur quo, eum, nihil, minima perspiciatis nobis. Mollitia ullam quo consectetur qui pariatur quasi voluptates! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt dolor commodi ullam sint cupiditate dolorum beatae doloribus. Et, quas ratione. Assumenda earum hic doloremque odit itaque, iure facere, harum consequatur?',
-    	};
+
+        };
 
     	$scope.lastproject = {
-            name : 'Spotify',
-    		title : 'Project 1',
-    		category : 'Interactive',
-            img : '/assets/img/home2.jpg',
-    		imgs : ['/assets/img/home1.jpg', '/assets/img/join-us3.jpg'],
-    		imgcolor : 'white',
-    		slug : 'project-1',
-            content : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat beatae laudantium, est! Doloribus ipsam nemo expedita natus sit assumenda ea ullam fugit similique eum laborum, aperiam eveniet amet nisi illo.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium minus dolore aut ut esse libero suscipit explicabo quo neque, eos facere tempore laborum iure, animi fugit quidem, exercitationem fugiat eveniet.'
-    	};
+
+        };
 
     	$scope.projects = [
-    		{
-    			title : 'Project Title 1',
-                important : true,
-                isPublic : false,
-    			category : 'Infographics',
-    			content : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore similique minus sunt dolorum sed inventore iusto cum, ad assumenda, nisi reprehenderit veritatis distinctio alias voluptates provident molestias ex voluptas nobis.',
-    			slug : 'random-slug',
-    			img : '/assets/img/join-us2.jpg',
-    			imgs : ['/assets/img/join-us1.jpg', '/assets/img/join-us3.jpg']
-    		},
-    		{
-    			title : 'Project Title 2',
-                important : false,
-                isPublic : true,
-    			category : 'Interactive',
-    			content : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore similique minus sunt dolorum sed inventore iusto cum, ad assumenda, nisi reprehenderit veritatis distinctio alias voluptates provident molestias ex voluptas nobis.',
-    			slug : 'random-slug',
-    			img : '/assets/img/join-us3.jpg',
-    			imgs : ['/assets/img/join-us2.jpg', '/assets/img/join-us1.jpg']
-    		},
-    		{
-    			title : 'Project Title 3',
-                important : true,
-                isPublic : true,
-    			category : 'Motion',
-    			content : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore similique minus sunt dolorum sed inventore iusto cum, ad assumenda, nisi reprehenderit veritatis distinctio alias voluptates provident molestias ex voluptas nobis.',
-    			slug : 'random-slug',
-    			img : '/assets/img/join-us1.jpg',
-    			imgs : ['/assets/img/join-us2.jpg', '/assets/img/join-us1.jpg', '/assets/img/join-us3.jpg']
-    		}
+ 
     	];
     }
   };

@@ -89,14 +89,20 @@ app-service{
 					}
 				}
 			}
-			div.project{
+			.white{
+				color: white !important;
+			}
+			a.project{
+				display: block;
 				height: 100%;
 				padding: 0px;
 				overflow: hidden;
 				cursor: pointer;
+				color: $secundary-blue;
 				@media (min-width: $tabletV) { 
 					min-height: 30vw; 
 					&:hover{
+						color: $secundary-blue;
 						div{
 							transform:scale(1.1);
 						}
@@ -107,6 +113,7 @@ app-service{
 					height: 100%;
 					position: absolute;
 					background-size: cover;
+					background-position: center center;
 					@include transition(transform 6s ease-in-out);
 				}
 				article{

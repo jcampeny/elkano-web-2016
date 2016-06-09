@@ -15,15 +15,15 @@ app-work{
 		}
 	}
 	section#work-section-2{
-		article{
-			height: 70vw;
+		a{
+			height: 60vw;
 			padding: 0;
 			margin: 0;
 			position: relative;
 			overflow: hidden;
 			cursor: pointer;
     		@media (min-width: $tabletV) {
-    			height: 35vw; 
+    			height: 30vw; 
     			&:hover{
     				div.img{
     					transform:scale(1.1);
@@ -35,6 +35,7 @@ app-work{
 				width: 100%;
 				height: 100%;
 				background-size: cover;
+				background-position: center center;
 				@include transition(transform 6s ease-in-out);
 			}
 			.white{
@@ -76,16 +77,19 @@ app-work{
 			width: 100% - ($margin-mobile-H*2);	
 			margin: 0 auto;
 			padding: $margin-mobile-H 0;
-			div.project	{
-				height: 60vw;
+			a.project	{
+				display: block;
+				height: 50vw;
 				overflow: hidden;
 				cursor: pointer;
 				padding: 30px 0;
+				color: $secundary-blue;
 	    		@media (min-width: $tabletV) {
 	    			padding: 0px;
 	    			border: 15px solid $grey-f;
-	    			height: 30vw; 
+	    			height: 25vw; 
 	    			&:hover{
+	    				color: $secundary-blue;
 	    				div.img{
 	    					transform:scale(1.1);
 	    				}
@@ -96,6 +100,7 @@ app-work{
 					width: 100%;
 					height: 100%;
 					background-size: cover;
+					background-position: center center;
 					@include transition(transform 6s ease-in-out);
 				}
 				.white{

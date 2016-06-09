@@ -6,8 +6,8 @@ app.animation('.views-container', ['stateService', function(stateService) {
 		enter: function(e, doneFn) {
 			//stateService.getState();
 
-			TweenMax.set(e, {opacity : 0});
-			TweenMax.to(e, time*2, { opacity: 1, delay: time, onComplete: function() {doneFn();}});
+			TweenMax.set(e, {scale: 0.95, opacity : 0});
+			TweenMax.to(e, time, { scale: 1, opacity: 1, delay: time, onComplete: function() {doneFn();}});
 			
 		},
 
@@ -30,16 +30,16 @@ app.animation('.contact-forms', ['stateService', function(stateService) {
 
 		enter: function(e, doneFn) {
 			//stateService.getState();
-			TweenMax.set(e, {opacity : '0'});
-			TweenMax.to(e, time, { opacity: '1', onComplete: function() {doneFn();}});
+			h = $(e).height() +"px";
+			TweenMax.set(e, {opacity : '0', height: '200px', display: 'none'});
+			TweenMax.to(e, time, { opacity: '1', height: h, display: 'block', delay : time, onComplete: function() {doneFn();}});
 		},
 
 		move: function(e, doneFn) {
 		},
 
 		leave: function(e, doneFn) {
-			TweenMax.set(e, {  left : '0%'});
-			TweenMax.to(e, time, { left: '-100%', onComplete: function() {doneFn();}});
+			TweenMax.to(e, time, { opacity : '0', height: '200px', onComplete: function() {doneFn();}});
 
 		}
 	};

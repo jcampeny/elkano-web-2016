@@ -4,14 +4,20 @@
 		<div style="background-image: url({{project.img1}})" >
 			<article>
 				<h2 ng-class="project.img1color">{{project.title}}</h2>
-				<p ng-class="project.img1color">{{project.content}}</p>
+				<p ng-class="project.img1color" ng-bind-html="project.content"></p>
 			</article>
 		</div>
 	</div>
 </section>
 
-<section id="project-section-2" ng-hide="project.video ==  ''">
-	<div id="video"></div>
+<section id="project-section-2" ng-hide="project.video ==  ''" ng-if="!isBrand">
+	<div ng-if="isVideo(project.video) == 'video'">
+		<ng-video link="{{project.video.src}}" play="screen" loop="true" controls="false" img="{{project.video.img}}"></ng-video>	
+	</div>
+	<div ng-if="isVideo(project.video) == 'img'" full-screen>
+		<div style="background-image: url({{project.video}})" ></div>
+	</div>
+	<iframe ng-if="isVideo(project.video) == 'iframe'" src="{{project.video}}" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 </section>
 
 <section id="project-section-3"  ng-hide="project.title2 ==  ''">
@@ -27,10 +33,22 @@
 	</div>
 </section>
 
-<section id="project-section-4"  ng-hide="project.img21 ==  ''">
+<section id="project-section-4"  ng-hide="project.img21 ==  '' || isBrand">
 	<div class="col-xs-12 col-sm-6" style="background-image: url({{project.img21}});"></div>
 	<div class="col-xs-12 col-sm-6" style="background-image: url({{project.img22}});"></div>
 	<div class="col-xs-12 col-sm-6" style="background-image: url({{project.img23}});"></div>
+</section>
+
+<section id="project-section-brand"  ng-show="project.img21 !=  '' && isBrand">
+	<img class="first-img-brand" src="{{project.img21}}">
+	<div class="small">
+	<div ng-repeat="gif in project.gifs" ng-class="(gif.indexOf('player.vimeo') > 0) ? 'isvideo' : ''">
+		<img ng-if="gif.indexOf('player.vimeo.com') < 0"  src="{{gif}}">
+		<ng-video ng-if="gif.value != undefined && gif.value == 'video'" link="{{gif.src}}" play="screen" loop="true" controls="false" img="{{gif.img}}"></ng-video>
+		<iframe ng-if="gif.value != undefined && gif.value == 'iframe'" src="{{gif.src}}" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+	</div>
+		<span></span>
+	</div>
 </section>
 
 <section id="project-section-5"  ng-hide="project.title3 ==  ''">
@@ -41,15 +59,25 @@
 		<p class="hide-mobile" ng-hide="project.content4 ==  ''">{{project.content4}}</p>
 	</div>
 	<div class=" col-xs-12 col-sm-6">
-		<img ng-repeat="gif in project.gifs" src="{{gif}}">
+		<div ng-repeat="gif in project.gifs" ng-class="(gif.indexOf('player.vimeo') > 0) ? 'isvideo' : ''">
+			<img ng-if="gif.indexOf('player.vimeo.com') < 0"  src="{{gif}}">
+			<ng-video ng-if="gif.value != undefined && gif.value == 'video'" link="{{gif.src}}" play="screen" loop="true" controls="false" img="{{gif.img}}"></ng-video>
+			<iframe ng-if="gif.value != undefined && gif.value == 'iframe'" src="{{gif.src}}" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+		</div>
 		<h3 ng-hide="project.title4 ==  ''">{{project.title4}}</h3>
 		<p ng-hide="project.content4 ==  ''">{{project.content4}}</p>
 	</div>
 </section>
 <section id="project-section-7"  ng-hide="project.styleFrames ==  ''">
-<div ng-slide type="project" post="project">
-	<dots></dots>
-</div>
+	<div ng-if="project.styleFrames.length > 0">
+		<div ng-slide type="project" post="project">
+			<dots></dots>
+		</div>
+	</div>
+	<div class="video" ng-if="project.styleFrames.value == 'video'">
+		<ng-video  link="{{project.styleFrames.src}}" play="screen" loop="true" controls="false" img="{{project.styleFrames.img}}"></ng-video>
+	</div>
+	<iframe ng-if="project.styleFrames.value == 'iframe'" src="{{project.styleFrames.src}}" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 </section>
 <section id="project-section-7"  ng-hide="project.slide ==  ''">
 	<div class="btn-ekd">

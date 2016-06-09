@@ -1,10 +1,15 @@
-angular.module('app').directive('appJoinUs', function () {
+angular.module('app').directive('appJoinUs', function ($rootScope, preloader, $location, $anchorScroll) {
   return {
     restrict: 'E',
     templateUrl: '../app/views/join-us/join-us.html',
     controllerAs: 'appJoinUs',
     controller: function ($scope) {
-
+        $( window ).load( function(){
+            $rootScope.loaded = preloader.load('all');
+        });
+        $scope.goOffers = function(){
+            $("html, body").animate({ scrollTop: $('#join-us-section-3').offset().top }, 1000);
+        };
     	$scope.active = function(e){
     		var element = $(e.currentTarget).find('.content');
     		var v = $(e.currentTarget).find('.v');

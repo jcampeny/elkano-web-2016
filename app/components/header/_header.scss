@@ -1,4 +1,5 @@
 header {
+	color: $header-blue;
 	#black-layer, #menu, #logo-desktop, .burger-menu{
 		display: none;	
 	}
@@ -54,6 +55,7 @@ header {
 		}
 		path{
 			@include transition (all .8s cubic-bezier(.9,0,.33,1));
+			stroke : #FFFFFF;
 			fill: transparent;
 		}
 		figure{
@@ -82,7 +84,7 @@ header {
 				stroke: $header-blue;
 			}
 			path{
-				fill: $header-blue;
+				stroke: $header-blue;
 			}
 			.burger-menu-mobile{
 				div{
@@ -114,7 +116,7 @@ header {
 			}
 			path{
 				@include transition (all .5s cubic-bezier(.645,.045,.355,1) .2s);
-				fill: $header-blue;
+				stroke: $header-blue;
 			}
 			.burger-menu-mobile{
 				div{
@@ -144,12 +146,12 @@ header {
 		.burger-menu{
 			position: absolute;
 			top: -13px; right: 0;
-			font-size: 11px;
+			font-size: 9px;
 			cursor: pointer;
 			div{
 				position: absolute;
-			    top: 60px;
-			    left: 40%;
+			    top: 58px;
+			    left: 43%;
 			}
 			svg{
 				path, line{
@@ -196,6 +198,11 @@ header {
 				    @include transform (rotate(-90deg) translate(85%, -13px));
 				    height: 70px;
     				width: 70px;
+    				span{
+    					margin-left: -60%;
+    					margin-right: -100%;
+    					text-align: center;
+    				}
 				}
 			}
 			ul{
