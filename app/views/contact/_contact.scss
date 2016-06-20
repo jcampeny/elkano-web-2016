@@ -1,32 +1,24 @@
 app-contact{
 	section#contact-section-1{
-		div{
+		div.title{
+			min-height: 480px;
 			position: relative;
-			//min-height: 100vh;
-			width: 100%;
-			background-image : url('/assets/img/contact1-mobile.jpg');
-			background-size : cover;
-			@media (min-width: $tabletV) {
-				background-image : url('/assets/img/contact1.jpg');
-			}
+			color: white;
+			background-color: $primary-blue;
 			h1{
 				position: absolute;
 				width: 80%;
-				color: white;
 				top: 50%;
 				margin: auto $margin-mobile-H;
 				@include transform (translateY(-50%));
-				@media (max-width: $tabletH) { br {display: none} }
-				arrow-svg{
-					position: absolute;
-				    left: 7px;
-				    bottom: -100px;
-				    @include transform (scale(1.5));
-				}
+				@media (min-width: $tabletV) { br.mobile{display:none;} }
 			}
 		}
 	}
 	section#contact-section-2{
+		#message{
+			display: none;
+		}
 		article{
 			padding: $margin-mobile-H;
 			h2{
@@ -39,9 +31,34 @@ app-contact{
 			}
 			div.left-column{
 				margin: 20px 0;
-				@media (min-width: $tabletV) { margin: 0; padding-right: $margin-mobile-H;}	
+				padding: 0;
+				@media (min-width: $tabletV) { margin: 0; /*padding-right: $margin-mobile-H;*/}	
 				&:hover > a, &:active > a, &:focus > a, a.un-active{
 					opacity: 0.2;
+				}
+				&.all-active{
+					a{
+						opacity: 1;
+						&:hover, &:active, &:focus, &.active{
+							opacity: 1;
+							color: $secundary-blue;
+							////border-top: 1px solid $primary-blue;
+							//border-bottom: 1px solid $primary-blue;
+							text-decoration: none;
+						}
+						&:first-child{
+							border-bottom: 1px solid transparent;
+							&:hover, &:active, &:focus, &.active{
+								border-bottom: 1px solid $secundary-blue;
+							}
+						}
+						&:last-child{
+							border-top: 1px solid transparent;
+							&:hover, &:active, &:focus, &.active{
+								border-top: 1px solid $secundary-blue;
+							}
+						}
+					}
 				}
 				a{
 					text-decoration: none;
@@ -53,8 +70,6 @@ app-contact{
 					border-bottom: 1px solid $primary-blue;
 					cursor: pointer;
 					@include transition(all $transition_btn_ekd);
-					&:first-child{border-bottom: 1px solid transparent;}
-					&:last-child{border-top: 1px solid transparent;}
 					span:last-child{ 
 						float: right;
 						position: relative;
@@ -70,11 +85,63 @@ app-contact{
 					&:hover, &:active, &:focus, &.active{
 						opacity: 1;
 						color: $secundary-blue;
-						border-top: 1px solid $primary-blue;
-						border-bottom: 1px solid $primary-blue;
+						////border-top: 1px solid $primary-blue;
+						//border-bottom: 1px solid $primary-blue;
 						text-decoration: none;
 					}
+					&:first-child{
+						border-bottom: 1px solid transparent;
+						&:hover, &:active, &:focus, &.active{
+							border-bottom: 1px solid $primary-blue;
+						}
+					}
+					&:last-child{
+						border-top: 1px solid transparent;
+						&:hover, &:active, &:focus, &.active{
+							border-top: 1px solid $primary-blue;
+						}
+					}
 				}
+				a.active + a{
+					border-top: 1px solid transparent !important;
+				}
+			}
+			div.career{
+				a:first-child:hover{
+					border-bottom: 1px solid transparent !important;
+				}
+			}
+			div.press{
+				a.career-a{
+					border-bottom: 1px solid transparent !important;
+				}
+			}
+		}
+		div.contact-forms{
+			padding: 0;
+			@media (max-width: $tabletV) {
+				margin-top: 40px;
+			}
+		}
+	}
+	section#contact-section-3{
+		color: white;
+		background-color: $primary-blue;
+		padding: $margin-mobile-H 0;
+		div{
+			padding: 0 $margin-mobile-H;
+			@media (min-width: $tabletV){
+				padding: 0;
+			}
+		}
+		span{
+			clear:both;
+			display: block;
+		}
+		figure{
+			margin: $margin-mobile-H 0;
+			img{
+				width: 90px;
 			}
 		}
 	}

@@ -44,14 +44,10 @@ angular.module('app')
 					var exists = false;//404
 			    	
 			        $rootScope.loaded = preloader.load('db');
-			        
+
 					angular.forEach(posts, function (post, i){
-						var prevPost = posts[posts.length-1].slug;
-						var nextPost = posts[0].slug;
-						
 						//encontrado el post
 						if(post.slug == $scope.slug){
-
 							var category = DataService.getParentCategory(post);
 							var images = DataService.getMediaFromCustomPost(post, 'images');
 							var gifs = mediaManager.detectTypeMedia(post.gifs.split(";;;"));
@@ -98,10 +94,11 @@ angular.module('app')
 									$('.first-img-brand').css({width : '50%', padding: '0 20px;'});
 								}
 							}
+
 							//create object
 					    	$scope.project = {
-					    		title : post.title.rendered,
-					    		content : post.content.rendered,
+					    		title : post.content.rendered,
+					    		content : post.pure_taxonomies.client[0].name,
 					    		img1 : (post.first_img !== '') ? DataService.getAttrFromImg(post.first_img, 'src') : '',
 					    		imgColor : (post.first_img !== '') ? DataService.getAttrFromImg(post.first_img, 'alt') : '',
 					    		video : post.video.split(';;;')[0],
@@ -117,8 +114,8 @@ angular.module('app')
 			    				title4 : post.title_4,
 			    				content4 : post.content_4,
 			    				styleFrames : styleframes,
-			    				nextProjectSlug : (posts[i + 1]) ? posts[i + 1].slug : nextPost,
-			    				previousProjectSlug : (posts[i - 1]) ? posts[i - 1].slug : prevPost
+			    				nextProjectSlug : (posts[i + 1]) ? posts[i + 1].slug : getSeqPost(posts, i, "next"),
+			    				previousProjectSlug : (posts[i - 1]) ? posts[i - 1].slug : getSeqPost(posts, i, "prev")
 					    	};
 						}
 						if(!exists && (i == posts.length - 1)){
@@ -127,6 +124,32 @@ angular.module('app')
 						}
 					});
 				});
+				
+		    	function getSeqPost(posts, position, direction){
+		    		var post;
+		    		var len = posts.length - 1;
+		    		switch(direction) {
+		    		    case "next":
+			    		    for (var i = len; i >= 0; i--) {
+			    		    	position = ((position + 1) > len) ? 0 : position + 1;
+			    		    	if(DataService.isPublic(posts[position])){
+			    		    		post = posts[position];
+			    		    		i = 0;
+			    		    	}
+			    		    }
+		    		        break;
+		    		    case "prev":
+			    		    for (var j = len; j >= 0; j--) {
+			    		    	position = ((position - 1) > 0) ?  position-1 : len;
+			    		    	if(DataService.isPublic(posts[position])){
+			    		    		post = posts[position];
+			    		    		j = 0;
+			    		    	}
+			    		    }
+		    		        break;
+		    		}
+		    		return post.slug;
+		    	}
 		    }
 		};
 	}]);

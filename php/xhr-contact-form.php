@@ -11,19 +11,50 @@
 
 $postdata = file_get_contents("php://input");
 $request = json_decode($postdata);
-$fromEmail = $request->email;
-$message = "
-	Nombre: ".$request->name."
-	Empresa: ".$request->company."
-	Interés: ".$request->interest."
-	Mensaje:".$request->textarea;
+//----------
+switch ($request->type) {
+    case 'press':
+    	$fromEmail = $request->email;
+        $message = "
+			Nombre: ".$request->name."
+			Email: ".$request->email."
+			Mensaje:".$request->message;
+        break;
+    case 'career':
+        $fromEmail = $request->email;
+        $message = "
+			Nombre: ".$request->name." ".$request->last."
+			Email:".$request->email."
+			Phone: ".$request->phone."
+			Company: ".$request->company."
+			Portofolio: ".$request->portofolio."
+			Linkedin: ".$request->linkedin."
+			Website: ".$request->website."
+			How did you hear about this job?: ".$request->hear;
+        break;
+    case 'client':
+        $fromEmail = $request->email;
+        $message = "
+			Nombre: ".$request->name."
+			Email:".$request->email."
+			Phone: ".$request->phone."
+			Company: ".$request->company."
+			How did you hear about us?: ".$request->hear."
+			What is your project about?: ".$request->about."
+			What's your budget?: ".$request->budget."
+			When do you want your project to start?: ".$request->start."
+			When do you want your project to launch?: ".$request->launch;
+        break;
+}
+//--------
 
-$subject = "Contacto Web";
+
+$subject = "Mensaje procedente de web Elkanodata.com";
 $headers = "From: $fromEmail\r\n";
 $mail = "jordicampeny12@gmail.com";
 
 if(mail($mail, $subject, $message, $headers)) {
-	insertToDB($request);
+	//insertToDB($request);
 	echo 1;
 
 }

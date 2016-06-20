@@ -51,8 +51,11 @@ app.directive('screenDetector', ['$window', '$document','$timeout', 'animateServ
 							animated = true;
 						}
 					}else{
-						TweenLite.set(e, {opacity: 0});
-						animated = false;
+						if(!animated){
+							TweenLite.set(e, {opacity: 0});
+						}
+						
+						//animated = false;
 					}
 				}, scrollHandling.delay);
 			}
@@ -63,7 +66,7 @@ app.directive('screenDetector', ['$window', '$document','$timeout', 'animateServ
 }]);
 
 angular.module('app')
-	.directive('headerChanger', ['screenService', '$document', '$timeout', function (screenService, $document, $timeout) {
+	.directive('headerChanger', ['screenService', '$document', '$timeout', '$interval', function (screenService, $document, $timeout, $interval) {
 		return {
 			restrict : 'EA',
 			scope : {
@@ -92,8 +95,14 @@ angular.module('app')
 
 				$document.bind('mousewheel DOMMouseScroll touchmove scroll', function(){
 					changeHeader();
+					if(screenService.getHeaderState() !== ""){
+						$interval.cancel(aa);
+					}
 				});
 
+				var aa = $interval(function(){
+					changeHeader();
+				}, 1000);
 				changeHeader();
 			}
 		};

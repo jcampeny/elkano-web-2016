@@ -1,3 +1,21 @@
+@font-face {
+    font-family: Sabon;
+    src: url('../assets/fonts/Sabon.eot'); /* IE9 Compat Modes */
+    src: url('../assets/fonts/Sabon.woff2') format('woff2'), /* Super Modern Browsers */
+         url('../assets/fonts/Sabon.woff') format('woff'), /* Pretty Modern Browsers */
+         url('../assets/fonts/Sabon.ttf')  format('truetype'), /* Safari, Android, iOS */
+}
+@font-face {
+    font-family: Calibre;
+    src: url('../assets/fonts/Calibre.eot'); /* IE9 Compat Modes */
+    src: url('../assets/fonts/Calibre.woff2') format('woff2'), /* Super Modern Browsers */
+         url('../assets/fonts/Calibre.woff') format('woff'), /* Pretty Modern Browsers */
+}
+@font-face {
+    font-family: Calibre-semibold;
+    src: url(../assets/fonts/Calibre-Semibold.woff);
+}
+
 @import 'vars';
 @import 'mixins';
 @import 'ekd-btn';
@@ -23,6 +41,11 @@ body {
 	@include opacity(1); 
 	background-color: $primary-blue;
 	color: $secundary-blue;
+	font-family: $font-Calibre;
+	font-size: 18px;
+	line-height: 22px;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
 }
 main{
 	height: 100%;
@@ -41,7 +64,9 @@ main{
 	}			
 }
 
-
+.btn{
+	font-size: 18px;
+}
 .entrada{
 	width: 100%;
 	height: 50vw;
@@ -57,11 +82,19 @@ h1{
 
 h2{
 	font-size: 30px;
-	line-height: 36px;
+	line-height: 38px;
 }
 h3{
-	font-size: 24px;
-	line-height: 30px;
+	font-size: 28px;
+	line-height: 32px;
+}
+h4{
+	font-size: 26px;
+	line-height: 32px;
+}
+h6{
+	font-size: 18px;
+	line-height: 22px;
 }
 /*
 * MOBILE <768
@@ -70,7 +103,7 @@ h3{
 @media (min-width: $tabletV) {
 	h1{
 		font-size: 60px;
-		line-height: 64px;
+		line-height: 70px;
 	}
 	h2{
 		font-size: 40px;

@@ -11,6 +11,9 @@ angular.module('app').service("animateService", [function( ) {
 				case "number":
 					number(e, time, delay, value);
 					break;
+				case "none":
+					TweenLite.set(e,{opacity: "1"});
+					break;
 				default:
 					fade(e, time, delay);
 			}
@@ -21,8 +24,11 @@ angular.module('app').service("animateService", [function( ) {
 	    			TweenLite.fromTo(e,time,{ left: "-30px"},{left: "0px", delay:delay});
 	    			break;
 	    		case "up":
-	    			TweenLite.fromTo(e,time,{opacity: '0', y : '40px' },{ ease : Circ.easeOut, opacity: "1", y : '0px', delay:delay});
+	    			TweenLite.fromTo(e,time,{opacity: '0', y : '20px' },{ ease : Circ.easeOut, opacity: "1", y : '0px', delay:delay});
 	    			break;
+    			case "down":
+    				TweenLite.fromTo(e,time,{opacity: '0', y : '-20px' },{ ease : Circ.easeOut, opacity: "1", y : '0px', delay:delay});
+    				break;
 	    		default:
 	    			TweenLite.fromTo(e,time,{opacity: '0'},{ ease : Circ.easeOut, opacity: "1", delay:delay});
 	    	}

@@ -1,28 +1,39 @@
 <section id="contact-section-1" header-changer  value="Contact">
-	<div full-screen>
-		<h1>Contact.<arrow-svg></arrow-svg>
-		</h1>
-	</div>
+	<div class='title' >
+		<h1><typed value="Need a project?, Want to work with us?, Any media enquiries?"></typed><br>Contact us</h1>
+	</div>	
 </section>
 <section id="contact-section-2" header-changer  value="Enquiries">
 	<article class="row">
-		<div class="col-xs-12 col-sm-6 col-md-6 left-column">
-			<a ng-href="/contact/start-a-project" ng-class="state=='start-a-project' ? 'active' : 'un-active'">
+		<div class="col-xs-12 col-sm-5 col-md-5 left-column" ng-class="state">
+			<a class="client-a" ng-href="/contact/start-a-project" ng-class="state=='start-a-project' ? 'active' : 'un-active'">
 				<span>Become a client</span>
 				<span><arrow-svg-un-animated></arrow-svg-un-animated></span> 
 			</a>
-			<a ng-href="/contact/career" ng-class="state=='career' ? 'active' : 'un-active'">
+			<a class="career-a" ng-href="/contact/career" ng-class="state=='career' ? 'active' : 'un-active'">
 				<span>Careers</span>
 				<span><arrow-svg-un-animated></arrow-svg-un-animated></span> 
 			</a>
-			<a ng-href="/contact/press" ng-class="state=='press' ? 'active' : 'un-active'">
+			<a class="press-a" ng-href="/contact/press" ng-class="state=='press' ? 'active' : 'un-active'">
 				<span>Media Enquiries</span>
 				<span><arrow-svg-un-animated></arrow-svg-un-animated></span> 
 			</a>
 		</div>
-		<div class="col-xs-12 col-sm-6 col-md-6 contact-forms" ui-view></div>
+		<div class="col-xs-12 col-sm-offset-2 col-sm-5 contact-forms" ui-view></div>
 	</article>
 </section>
 <section id="contact-section-3" header-changer  value="Ofﬁces">
+	<div class="col-xs-12 col-sm-3 col-sm-offset-1"><h2 screen-detector value="up">Ofﬁces</h2></div>
+	<div class="col-xs-12 col-sm-4" screen-detector value="up">
+		<h2 >Barcelona</h2>
+		<p >C. Aribau, 230-240 8S <br>08006 Barcelona <br>SPAIN</p>
+		<figure><img src="/assets/img/bcn-icon.png"></figure>
+	</div>
+	<div class="col-xs-12 col-sm-4" screen-detector value="up">
+		<h2>New York</h2>
+		<p >C. Aribau, 230-240 8S <br>08006 Barcelona <br>SPAIN</p>
+		<figure><img src="/assets/img/ny-icon.png"></figure>
+	</div>
+	<span></span>
 </section>
-<footer ng-footer show="false"></footer>
+<!--<footer ng-footer show="false"></footer>-->

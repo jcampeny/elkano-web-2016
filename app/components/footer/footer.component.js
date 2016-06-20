@@ -9,7 +9,8 @@ angular.module('app').directive('ngFooter', function () {
         case : '@',
         prev : '@',
         next : '@',
-        show : '@'
+        show : '@',
+        casehref : '@'
     },
     controller: function ($scope) {
         $scope.isCase = false;
@@ -31,7 +32,7 @@ angular.module('app').directive('ngFooter', function () {
     	}
         if($scope.case !== undefined){
             $scope.isCase = true;
-            $scope.caseValues.ref = 'work/case-study/' + $scope.case;
+            $scope.caseValues.ref = 'work/case-study/' + $scope.casehref;
             $scope.caseValues.value = 'Case Study ' + $scope.case;
         }
         if($scope.prev !== undefined && $scope.next !== undefined){
@@ -45,7 +46,7 @@ angular.module('app').directive('ngFooter', function () {
         });
         $scope.$watch(function(){return $scope.case;}, function(){
             if($scope.case !== undefined){
-                $scope.caseValues.ref = 'work/case-study/' + $scope.case.toLowerCase();
+                $scope.caseValues.ref = 'work/case-study/' + $scope.casehref;
                 $scope.caseValues.value = 'Case Study ' + $scope.case;
             }
 

@@ -1,11 +1,13 @@
-angular.module('app').directive('appJoinUs', function ($rootScope, preloader, $location, $anchorScroll) {
+angular.module('app').directive('appJoinUs', function ($rootScope, preloader, $location, $anchorScroll, $sce) {
   return {
     restrict: 'E',
     templateUrl: '../app/views/join-us/join-us.html',
     controllerAs: 'appJoinUs',
     controller: function ($scope) {
         $( window ).load( function(){
-            $rootScope.loaded = preloader.load('all');
+            setTimeout(function(){
+                $rootScope.loaded = preloader.load('all');  
+            },1000);
         });
         $scope.goOffers = function(){
             $("html, body").animate({ scrollTop: $('#join-us-section-3').offset().top }, 1000);
@@ -45,55 +47,64 @@ angular.module('app').directive('appJoinUs', function ($rootScope, preloader, $l
     	{
     		name: 'Pau Cuervo',
     		job : 'Founder & CEO',
-    		video : '/assets/img/video-thumb.png',
+    		video : 'https://player.vimeo.com/external/170437537.sd.mp4?s=22a53709bf844d03a09fcc023126f47df176dbc8&profile_id=164',
+            img : '/assets/img/busto-pau.jpg',
     		main : true
     	},
     	{
     		name: 'Michael Richey ',
     		job : 'Creative Director',
-    		video : '/assets/img/video-thumb.png',
-    		main : true
-    	},    	
+    		video : 'https://player.vimeo.com/external/170437617.sd.mp4?s=afeb95db4defdfbec40afbbc63757bd47e2a0e23&profile_id=164',
+            img : '/assets/img/busto-michael.jpg',
+    		main : false
+    	},   
+        {
+            name: 'Sofia Soldevila',
+            job : 'Project Manager',
+            video : 'https://player.vimeo.com/external/170437562.sd.mp4?s=fe6c7f7e6f286cf62fb1048cacbf18dd25731503&profile_id=164',
+            img : '/assets/img/busto-sofia.jpg',
+            main : false
+        }, 	
     	{
     		name: 'Cristiam Da Silva',
     		job : 'CTO',
-    		video : '/assets/img/video-thumb.png',
-    		main : true
+    		video : 'https://player.vimeo.com/external/170437419.sd.mp4?s=62a908795a5bc1d4ee0d9df17c26ba481d61acfa&profile_id=165',
+            img : '/assets/img/busto-cristiam.jpg',
+    		main : false
     	},
     	{
     		name: 'Oscar Girones',
-    		job : 'Senior Motion Designer',
-    		video : '/assets/img/video-thumb.png',
+    		job : 'Lead Motion Designer',
+    		video : 'https://player.vimeo.com/external/170437521.sd.mp4?s=0b2c47f41b48db96d6f61d1e48e623ee17445318&profile_id=165',
+            img : '/assets/img/busto-oscar.jpg',
     		main : false
     	},
     	{
     		name: 'Andrea',
     		job : 'Illustrator',
-    		video : '/assets/img/video-thumb.png',
-    		main : false
-    	},
-    	{
-    		name: 'Sofia Soldevila',
-    		job : 'Project Manage',
-    		video : '/assets/img/video-thumb.png',
+    		video : 'https://player.vimeo.com/external/170437337.sd.mp4?s=497639fc770b01dbf918d4f050ab25d1dac56d1d&profile_id=164',
+            img : '/assets/img/busto-andrea.jpg',
     		main : false
     	},
     	{
     		name: 'Maud Cassiere',
-    		job : 'Graphic Designer',
-    		video : '/assets/img/video-thumb.png',
+    		job : 'Lead Designer',
+    		video : 'https://player.vimeo.com/external/170437493.sd.mp4?s=d372d9bc1ab93bfdf661c1de31fe7697bb699adb&profile_id=165',
+            img : '/assets/img/busto-maud.jpg',
     		main : false
     	},
     	{
     		name: 'Jordi Campeny',
     		job : 'Front End Developer',
-    		video : '/assets/img/video-thumb.png',
+    		video : 'https://player.vimeo.com/external/170437480.sd.mp4?s=4e9270cd51895d3e17a515ee7cbf5526f3926d20&profile_id=165',
+            img : '/assets/img/busto-jordi.jpg',
     		main : false
     	},
     	{
     		name: 'Berta Terassa',
     		job : 'Motion Designer',
-    		video : '/assets/img/video-thumb.png',
+    		video : 'https://player.vimeo.com/external/170437397.sd.mp4?s=fcf6c436cc1b65e86f88b3dd8338ea7c585f5deb&profile_id=165',
+            img : '/assets/img/busto-berta.jpg',
     		main : false
     	}];
     

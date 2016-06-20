@@ -47,21 +47,25 @@ angular.module('app')
 					    },
 					    delay: 100 //++ to improve performance
 					};
+					setTimeout(function(){animateScreen();},2000);
 					$document.bind('mousewheel DOMMouseScroll touchmove scroll', function(){
-						var video = $(e).find('video');
-						
-						if(scrollHandling.allow && $(video[0]).attr('src') !== ''){
-							scrollHandling.allow = false;
-
-							if(screenService.inScreen(video)){
-								video[0].play();
-							}else{
-								video[0].pause();
-							}
-							setTimeout(function(){scrollHandling.reallow();},scrollHandling.delay);
-						}
+						animateScreen();
 					});
 				}	
+				function animateScreen(){
+					var video = $(e).find('video');
+					
+					if(scrollHandling.allow && $(video[0]).attr('src') !== ''){
+						scrollHandling.allow = false;
+
+						if(screenService.inScreen(video)){
+							video[0].play();
+						}else{
+							video[0].pause();
+						}
+						setTimeout(function(){scrollHandling.reallow();},scrollHandling.delay);
+					}
+				}
 			}
 		};
 	}]);	

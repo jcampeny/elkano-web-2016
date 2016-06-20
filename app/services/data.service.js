@@ -89,7 +89,8 @@
             getItemById             : getItemById,
             getChildCategory        : getChildCategory,
             getAttrFromImg          : getAttrFromImg,
-            getParentCategory       : getParentCategory
+            getParentCategory       : getParentCategory,
+            isPublic                : isPublic
         };
 
         function getAttrFromImg(e, attr){
@@ -109,6 +110,17 @@
                 });                
             }
             return categoryName;
+        }
+        function isPublic(project){ 
+            var isPublicProject = true;
+            if(project.pure_taxonomies.other !== undefined){
+                angular.forEach(project.pure_taxonomies.other, function(category, i){
+                    if(category.slug == "private"){
+                        isPublicProject = false;
+                    }
+                });                
+            }
+            return isPublicProject;
         }
         function getParentCategory(project){ 
             var categoryName = 'project';

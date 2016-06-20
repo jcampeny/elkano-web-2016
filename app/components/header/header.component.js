@@ -22,6 +22,10 @@ angular.module('app').directive('ngHeader', function ($location, $document, scro
 				animateMenu('close');
 				animateMenuMobile(s.open);					
 			}
+			if($(window).scrollTop() < 50){
+				printBackground();
+				s.hideOnScroll = false;
+			}
 		});
 
 		$document.bind('touchmove', function(e){
@@ -33,7 +37,7 @@ angular.module('app').directive('ngHeader', function ($location, $document, scro
 
 		function printBackground(){
 			var state = $location.$$path.split('/')[1] || 'home';
-			s.withBackground = (($(window).scrollTop() > $(window).height()) || state == 'about' || state == 'services' || state == 'work') ? true : false;
+			s.withBackground = (($(window).scrollTop() > $(window).height()) || state == 'home' || state == 'about' || state == 'services' || state == 'work') ? true : false;
 		}
 
 		setTimeout(function(){printBackground();},200);
@@ -41,6 +45,14 @@ angular.module('app').directive('ngHeader', function ($location, $document, scro
 
     	s.backHome = function(){
     		s.open = false;
+    		t2.to('ul.header-ul',0.4,{
+    			x: '50px',
+    		   	opacity: '0',
+    		    ease:Circ.easeIn,
+    		    delay : 0.2
+    		});
+    		animateMenu('close');
+
     		if($location.$$path === '/'){
     			$('html, body').animate({ scrollTop: 0 }, 'slow');
     		}
@@ -51,8 +63,8 @@ angular.module('app').directive('ngHeader', function ($location, $document, scro
 
     		s.open = !s.open;
     		if(s.open){ 
-    			tl.set('ul li',{x:'650px', opacity: '0'});
-				t3.staggerTo('ul li', 0.5, {
+    			tl.set('ul.header-ul li',{x:'650px', opacity: '0'});
+				t3.staggerTo('ul.header-ul li', 0.5, {
 					x: '0px',
 			    	opacity: '0.5',
 			    	ease:Circ.easeOut,
@@ -62,14 +74,14 @@ angular.module('app').directive('ngHeader', function ($location, $document, scro
     					});}
 			  	}, 0.06);
 
-			 	t2.set('ul', {x: '250px', opacity: '1'});
-			   	t2.to('ul',0.8,{
+			 	t2.set('ul.header-ul', {x: '250px', opacity: '1'});
+			   	t2.to('ul.header-ul',0.8,{
 			   		x: '0px',
 			    	ease:Circ.easeOut
 			   	});
 				animateMenu('open');
     		}else{
-    			t2.to('ul',0.4,{
+    			t2.to('ul.header-ul',0.4,{
     				x: '50px',
     			   	opacity: '0',
     			    ease:Circ.easeIn,
@@ -134,7 +146,7 @@ angular.module('app').directive('ngHeader', function ($location, $document, scro
     		setTimeout(function(){printBackground();},800);
     		if(s.open){
     			var state = $location.$$path.split('/')[1] || 'home';
-    			tl.set('ul li',{y:'100px', opacity: '0'});
+    			tl.set('ul.header-ul li',{y:'100px', opacity: '0'});
 				t3.staggerTo('ul li', 0.3, {
 					y: '0px',
 			    	opacity: '0.5',
@@ -200,6 +212,9 @@ angular.module('app')
 
 				$document.bind('mousewheel DOMMouseScroll touchmove scroll', function(){
 					changeHeader();
+					if(screenService.getHeaderState() !== ""){
+						$interval.cancel(aa);
+					}
 				});
 			}
 		};

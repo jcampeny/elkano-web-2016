@@ -41,42 +41,54 @@ angular.module('app').directive('appCaseStudy', function ($stateParams, DataServ
                     });
 
                     DataService.all('project', 'all', 0).then(function(projects){
-                        angular.forEach(projects, function (project, j){
-                            if(ids.indexOf(project.id) >= 0){
-                                if(ids.indexOf(project.id) === 0){//main project
-                                    var gifs = mediaManager.detectTypeMedia(project.gifs.split(";;;"));
-                                    $scope.lastproject = {
-                                        name : htmlToPlaintext(cs.content.rendered),
-                                        title : project.title_2,
-                                        content : project.content_2,
-                                        category : DataService.getChildCategory(project),
-                                        img : (project.video !== '') ? DataService.getAttrFromImg(project.video.split(';;;')[1], 'src') : '',
-                                        imgcolor : (project.video !== '') ? DataService.getAttrFromImg(project.video.split(';;;')[1], 'alt') : '',
-                                        gifs : gifs,
-                                        slug : project.slug
-                                    }; 
-                                    $rootScope.loaded = preloader.load('db');
-                                }else{//others
-                                    var imgs = mediaManager.detectTypeMedia(project.gifs.split(";;;"));
-                                    var img = mediaManager.detectTypeMedia(project.video);
-                                    var aProject = {
-                                        title : project.title_2,
-                                        important : isImportant(project.pure_taxonomies.other),
-                                        isPublic : isPublic(project.pure_taxonomies.other),
-                                        category : DataService.getChildCategory(project),
-                                        content : project.content_2,
-                                        slug : project.slug,
-                                        img : img,
-                                        imgs : imgs
-                                    };
-                                    $scope.projects.push(aProject);
+                        angular.forEach(ids, function(id, idCount){
+                            angular.forEach(projects, function (project, j){
+                                if(id == project.id){
+                                    if(ids.indexOf(project.id) === 0){//main project
+                                        var gifs = mediaManager.detectTypeMedia(project.gifs.split(";;;"));
+                                        $scope.lastproject = {
+                                            name : htmlToPlaintext(cs.content.rendered),
+                                            title : project.title_2,
+                                            content : project.content_2,
+                                            category : DataService.getChildCategory(project),
+                                            img : mediaManager.detectTypeMedia(project.video.split(";;;")[1]),
+                                            imgcolor : project.video.split('---')[1] ,
+                                            gifs : gifs,
+                                            slug : project.slug
+                                        }; 
+                                        $rootScope.loaded = preloader.load('db');
+                                    }else{//others
+                                        var imgs = mediaManager.detectTypeMedia(project.gifs.split(";;;"));
+                                        var img;
+                                        if(isImportant(project.pure_taxonomies.other)){
+                                            img = mediaManager.detectTypeMedia(project.video.split(";;;")[1]);
+                                        }else{
+                                            img = (project.video === '') ? '' : mediaManager.detectTypeMedia(project.video);
+                                        }
+                                        var aProject = {
+                                            title : project.title_2,
+                                            important : isImportant(project.pure_taxonomies.other),
+                                            isPublic : isPublic(project.pure_taxonomies.other),
+                                            category : DataService.getChildCategory(project),
+                                            content : project.content_2,
+                                            slug : project.slug,
+                                            img : img,
+                                            imgs : imgs
+                                        };
+                                        $scope.projects.push(aProject);
+                                    }
                                 }
-                            }
+
+                            });                            
                         });
+
                     });
                     //end projects
                 }else{//the other case study
-                    $scope.otherslug = cs.content.rendered;
+                    $scope.otherslug = {
+                        text : cs.content.rendered,
+                        src : cs.slug
+                    };
                 } 
                 if(!exists && (i == cases.length - 1)){
                     //future 404

@@ -19,15 +19,19 @@ module.exports = function(grunt) {
     "bower_components/re-tree/re-tree.min.js",
     "bower_components/videogular/videogular.min.js",
     "bower_components/videogular-controls/vg-controls.min.js",
-    "bower_components/videogular-themes-default/videogular.min.js",
-    "bower_components/videogular-poster/vg-poster.js"
+    "bower_components/videogular-poster/vg-poster.js",
+    "bower_components/ng-file-upload-shim/ng-file-upload-shim.min.js",
+    "bower_components/ng-file-upload/ng-file-upload.min.js",
+    "bower_components/typed.js/dist/typed.min.js",
+    "bower_components/bower-froogaloop/froogaloop.min.js"
   ];
 
   var vendorStyles = [
     "bower_components/bootstrap/dist/css/bootstrap.min.css",
     "bower_components/angular-bootstrap/ui-bootstrap-csp.css",
     "bower_components/font-awesome/css/font-awesome.min.css",
-    "bower_components/font-awesome/css/font-awesome.css"
+    "bower_components/font-awesome/css/font-awesome.css",
+    "bower_components/videogular-themes-default/videogular.css"
   ];
 
 

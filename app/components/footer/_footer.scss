@@ -1,4 +1,8 @@
 footer{
+		span[screen-detector]{
+			display: block;
+			position: relative;			
+		}
 		$footer_height : 287px;
 		width: 100%;
 		clear: both;
@@ -15,6 +19,7 @@ footer{
 			color: white;
 			text-align: center;
 			font-size: 24px;
+			line-height: 38px;
 			@include transition(all $transition_btn_ekd);
 			@media (min-width: $tabletV) {
 				width: 50%;
@@ -28,7 +33,7 @@ footer{
 				}
 			}
 			p{
-				padding: $margin-mobile-H;
+				padding: 50px;
 				margin: 0;
 				@media (min-width: $tabletV) { 
 					position: absolute;
@@ -59,6 +64,7 @@ footer{
     				float: right;
     				width: 20%;
     				text-align: right;
+    				margin-top: -15px;
     				svg{
      					@include transform(rotate(180deg));   					
     				}
@@ -66,6 +72,9 @@ footer{
     					display: block;
     				}
 
+    			}
+    			img{
+    				width: 40px;
     			}
 			}
 		}
@@ -106,7 +115,7 @@ footer{
 				}
 				a[ng-show]{
 					p{
-						border-right: 1px solid
+						//border-right: 1px solid
 					}
 				}
 			}

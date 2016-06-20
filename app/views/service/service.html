@@ -1,12 +1,12 @@
 <div header-changer  value="Services">
 	<section id="services-section-1">
-		<div class='title'>
-			<h1>We transform complex <br> information into high <br> quality visual content <br> that informs...</h1>
+		<div class='title' screen-detector value="up">
+			<h1>We transform complex <br> information into high quality</h1>
 		</div>	
 		<article>
-			<h2>Titulo</h2>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde pariatur, officia. Enim quidem dolor, ex recusandae dignissimos, quam, aliquam, porro esse nobis eum nesciunt. Pariatur, qui accusantium incidunt quia aut?</p>
-			<p class="btn-ekd">
+			<h2 screen-detector value="up">Designing for data</h2>
+			<p screen-detector value="up">As a partner agency, we focus on working with our clients to craft high quality visual content out of complex information. We offer a wide array of specialized solutions in information design that produce engaging, value-added products for forward-thinking companies and their clients.</p>
+			<p class="btn-ekd" screen-detector value="up">
 				<a href="" class="btn button ajax">
 					Learn More
 					<span></span>
@@ -19,30 +19,30 @@
 	<section id="services-section-2">
 		<article class="row">
 			<div class="service col-xs-12 col-sm-6">
-				<figure><img src="/assets/img/logo.png"></figure>
+				<figure screen-detector><img src="/assets/img/logo.png"></figure>
 				<div>
-					<h2>Design</h2>
-					<p>Infographics <br> Visual Reports <br>Presentation Design <br>Visual Brand Guidelines</p>
+					<h2 screen-detector value="up" >Design</h2>
+					<p  screen-detector value="up" delay="0.2">Infographics <br> Visual Reports <br>Presentation Design <br>Visual Brand Guidelines</p>
 				</div>
 			</div>
-			<a ng-href="/work/project/{{item1.slug}}" class="project col-xs-12 col-sm-6" ng-class="item1.color">
-				<div class="img" style="background-image: url({{item1.img}});"></div>
+			<a screen-detector ng-href="/work/project/{{item1.slug}}" class="project col-xs-12 col-sm-6" ng-class="item1.color">
+				<div class="img" ng-style="{'background-image': 'url('+item1.img+')'}"></div>
 				<article>
 					<h4>{{item1.title}}</h4>
 					<h6>{{item1.subtitle}}</h6>
 				</article>
 			</a>
 		</article>
-		<article class="row">
+		<article class="row grey">
 			<div class="service col-xs-12 col-sm-6">
-				<figure><img src="/assets/img/logo.png"></figure>
+				<figure screen-detector><img src="/assets/img/logo.png"></figure>
 				<div>
-					<h2>Animation</h2>
-					<p>Motion Graphics <br> Motion Infographics <br> Explainer Videos <br> Tutorials <br> Whiteboard Animations <br> Motion Storytelling</p>
+					<h2 screen-detector value="up" >Animation</h2>
+					<p screen-detector value="up" delay="0.2">Motion Graphics <br> Motion Infographics <br> Explainer Videos <br> Tutorials <br> Whiteboard Animations <br> Motion Storytelling</p>
 				</div>
 			</div>
-			<a ng-href="/work/project/{{item2.slug}}" class="project col-xs-12 col-sm-6" ng-class="item2.color">
-				<div class="img" style="background-image: url({{item2.img}});"></div>
+			<a screen-detector   ng-href="/work/project/{{item2.slug}}" class="project col-xs-12 col-sm-6" ng-class="item2.color">
+				<div class="img" ng-style="{'background-image': 'url('+item2.img+')'}"></div>
 				<article>
 					<h4>{{item2.title}}</h4>
 					<h6>{{item2.subtitle}}</h6>
@@ -51,14 +51,14 @@
 		</article>
 		<article class="row">
 			<div class="service col-xs-12 col-sm-6">
-				<figure><img src="/assets/img/logo.png"></figure>
+				<figure screen-detector><img src="/assets/img/logo.png"></figure>
 				<div>
-					<h2>Interactive</h2>
-					<p>Data Visualization <br> Interactive Infographics <br> Dashboards <br> HTML5 Presentations <br> Infographic <br> Reports <br> Presentation Builders <br> Data Storytelling</p>
+					<h2 screen-detector value="up" >Interactive</h2>
+					<p screen-detector value="up" delay="0.2">Data Visualization <br> Interactive Infographics <br> Dashboards <br> HTML5 Presentations <br> Infographic <br> Reports <br> Presentation Builders <br> Data Storytelling</p>
 				</div>
 			</div>
-			<a ng-href="/work/project/{{item3.slug}}" class="project col-xs-12 col-sm-6" ng-class="item3.color">
-				<div class="img" style="background-image: url({{item3.img}});"></div>
+			<a screen-detector ng-href="/work/project/{{item3.slug}}" class="project col-xs-12 col-sm-6" ng-class="item3.color">
+				<div class="img" ng-style="{'background-image': 'url('+item3.img+')'}"></div>
 				<article>
 					<h4>{{item3.title}}</h4>
 					<h6>{{item3.subtitle}}</h6>

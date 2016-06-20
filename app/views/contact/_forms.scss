@@ -1,88 +1,23 @@
+::-webkit-input-placeholder {
+   color: $secundary-blue;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: $secundary-blue;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: $secundary-blue;  
+}
+
+:-ms-input-placeholder {  
+   color: $secundary-blue;  
+}
 start-a-project-form{
 	form{
 		color: $secundary-blue;
 		@media (min-width: $tabletV) {
-			padding-left: $margin-mobile-H;
-		}
-		div:first-child{
-			margin-top: 0px;
-		}
-		div{
-			margin-top: 30px;
-			clear: both;
-		}
-		input, textarea{
-			background-color: rgba(216,216,216,0.5);
-			border: 1px solid transparent;
-			padding: 7px 15px;
-			width: 100%;
-			margin: 5px 0px;
-		}
-		textarea{
-			resize: vertical;
-		}
-		button#contact_button_send{
-			$color: #34393E;
-			color: $color;
-			padding: 0.875em 1.428571429em;
-			@include transition(all $transition_btn_ekd);
-			border-radius: 0;
-			border: 1px solid $color;
-			margin-top: 30px;
-			background-color: transparent;
-
-		}
-		article.budget + div{
-			    margin-top: 80px;
-		}
-		article.budget{
-			clear: both;
-			padding: 0 !important;
-			margin: 15px 0; 
-			&:last-child{
-				margin-bottom: 80px;
-			}
-			span{
-				font-size: 11px;
-				display: block;
-				cursor: pointer;
-				width: 110px;
-				float: left;
-				text-align: center;
-				border: 1px solid $secundary-blue;
-				padding: 5px 10px;
-				@include transition(all $transition_btn_ekd);
-				@media (min-width: 830px) {
-					width: 120px;
-					font-size: 12px;
-				}
-				&:first-child{
-					margin-right: 15px;
-				}
-				&:last-child{
-					clear: both;
-					border: none;
-				}
-				&.active{
-					background-color: $secundary-blue;
-					color: white; 
-				}
-				@media (min-width: $tabletV) {
-					&:hover{
-						background-color: $secundary-blue;
-						color: white; 
-					}
-				}
-			}
-		}
-	}
-}
-
-career-form{
-	form{
-		color: $secundary-blue;
-		@media (min-width: $tabletV) {
-			padding-left: $margin-mobile-H;
+			//padding-left: $margin-mobile-H;
 		}
 		div:first-child{
 			margin-top: 0px;
@@ -111,7 +46,137 @@ career-form{
 			margin-top: 30px;
 			background-color: transparent;
 			@media (min-width: $tabletV) {
-				padding-left: $margin-mobile-H;
+				//padding-left: $margin-mobile-H;
+				&:hover{
+					background-color: $secundary-blue;
+					color: white; 
+				}
+			}
+
+		}
+		article.budget + div{
+			    margin-top: 80px;
+		}
+		article.budget{ 
+			clear: both;
+			padding: 0 !important;
+			margin: 15px 0; 
+			&:last-child{
+				margin-bottom: 80px;
+			}
+			span{
+				font-size: 11px;
+				display: block;
+				cursor: pointer;
+				width: 110px;
+				float: left;
+				text-align: center;
+				border: 1px solid $secundary-blue;
+				padding: 5px 10px;
+				@include transition(all $transition_btn_ekd);
+				@media (min-width: 830px) {
+					width: 120px;
+					font-size: 12px;
+				}
+				&:first-child{
+					margin-right: 15px;
+				}
+				&:last-child{
+					clear: both;
+					border: none;
+					padding: 0;
+				}
+				&.active{
+					background-color: $secundary-blue;
+					color: white; 
+				}
+			}
+			span[ng-class]{
+				margin-bottom: 10px;
+			}
+			@media (min-width: $tabletV) {
+				span[ng-class]:hover{
+					background-color: $secundary-blue;
+					color: white; 
+				}
+			}
+		}
+	}
+}
+
+career-form{
+	form{
+		color: $secundary-blue;
+		div.input-file{
+			display: none;
+			position: relative;
+			$color: #34393E;
+			color: $color;
+			padding: 0.875em 1.428571429em;
+			@include transition(all $transition_btn_ekd);
+			border-radius: 0;
+			border: 1px solid $color;
+			margin-top: 30px;
+			width: 45%;
+			background-color: transparent;
+			cursor: pointer;
+			&:hover{
+				background-color: $color;
+				span{
+					color: white;
+				}
+			}
+			span{
+				text-align: center;
+				display: block;
+				pointer-events: none;
+				@include transition(all $transition_btn_ekd);
+			}
+			input[type="file"]{
+				cursor: pointer;
+				opacity: 0;
+				position: absolute;
+				top: 0;
+				left: 0;
+				padding-left: 150%;
+    			width: 200%;
+			}
+		}
+		@media (min-width: $tabletV) {
+			//padding-left: $margin-mobile-H;
+		}
+		div:first-child{
+			margin-top: 0px;
+		}
+		div{
+			margin-top: 30px;
+			clear: both;
+		}
+		input, textarea{
+			background-color: rgba(216,216,216,0.5);
+			border: 1px solid transparent;
+			padding: 7px 15px;
+			width: 100%;
+			margin: 5px 0px;
+		}
+		textarea{
+			resize: vertical;
+		}
+		button#contact_button_send{
+			$color: #34393E;
+			color: $color;
+			padding: 0.875em 1.428571429em;
+			@include transition(all $transition_btn_ekd);
+			border-radius: 0;
+			border: 1px solid $color;
+			margin-top: 30px;
+			background-color: transparent;
+			@media (min-width: $tabletV) {
+				//padding-left: $margin-mobile-H;
+				&:hover{
+					background-color: $secundary-blue;
+					color: white; 
+				}
 			}
 
 		}
@@ -165,7 +230,7 @@ press-form{
 	form{
 		color: $secundary-blue;
 		@media (min-width: $tabletV) {
-			padding-left: $margin-mobile-H;
+			//padding-left: $margin-mobile-H;
 		}
 		div:first-child{
 			margin-top: 0px;
@@ -183,6 +248,7 @@ press-form{
 		}
 		textarea{
 			resize: vertical;
+			margin-top: 30px;
 		}
 		button#contact_button_send{
 			$color: #34393E;
@@ -194,7 +260,11 @@ press-form{
 			margin-top: 30px;
 			background-color: transparent;
 			@media (min-width: $tabletV) {
-				padding-left: $margin-mobile-H;
+				//padding-left: $margin-mobile-H;
+				&:hover{
+					background-color: $secundary-blue;
+					color: white; 
+				}
 			}
 
 		}

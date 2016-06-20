@@ -60,7 +60,7 @@ angular.module('app')
 					var b = $("#line1").get(0).getTotalLength();
 					TweenLite.set("#line1",{'stroke-dasharray' : b, 'stroke-dashoffset': b, 'stroke' : '#323F4F'});
 					TweenLite.to('#line1', 0,{'stroke' : '#FFFFFF', delay : 0.4});
-					TweenLite.to('#line1', 0,{'stroke' : '#323F4F', delay : 3.9});
+					TweenLite.to('#line1', 0,{'stroke' : '#323F4F', delay : 3.6});
 
 					TweenLite.to("#line1",0.75,{ ease: Power2.easeInOut, 'stroke-dashoffset':  b*2, delay: 0.25});
 					if(!$rootScope.loaded){
@@ -76,7 +76,7 @@ angular.module('app')
 					var b = $("#line2").get(0).getTotalLength();
 					TweenLite.set("#line2",{'stroke-dasharray' : b, 'stroke-dashoffset': b, 'stroke' : '#323F4F'});
 					TweenLite.to('#line2', 0,{'stroke' : '#FFFFFF', delay : 0.4});
-					TweenLite.to('#line2', 0,{'stroke' : '#323F4F', delay : 3.9});
+					TweenLite.to('#line2', 0,{'stroke' : '#323F4F', delay : 3.6});
 
 					TweenLite.to("#line2",0.75,{ ease: Power2.easeInOut, 'stroke-dashoffset': b*2, delay: 0.25});
 					if(!$rootScope.loaded){
@@ -91,7 +91,7 @@ angular.module('app')
 					var b = $("#line3").get(0).getTotalLength();
 					TweenLite.set("#line3",{'stroke-dasharray' : b, 'stroke-dashoffset': b, 'stroke' : '#323F4F'});
 					TweenLite.to('#line3', 0,{'stroke' : '#FFFFFF', delay : 0.4});
-					TweenLite.to('#line3', 0,{'stroke' : '#323F4F', delay : 3.9});
+					TweenLite.to('#line3', 0,{'stroke' : '#323F4F', delay : 3.6});
 
 					TweenLite.to("#line3",0.75,{ ease: Power2.easeInOut, 'stroke-dashoffset': b*2, delay: 0.25, onComplete : function(){
 						if($rootScope.loaded){

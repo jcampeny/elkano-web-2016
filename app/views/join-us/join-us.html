@@ -1,12 +1,12 @@
 
 <section id="join-us-section-1"  header-changer  value="Join Us">
-	<div class='title'>
-		<h1>American working culture.<br> European Creativity.<br> Mediterranean Lifestyle.</h1>
+	<div class='title' >
+		<h1><typed value="American working culture,European Creativity,Mediterranean Lifestyle"></typed></h1>
 	</div>	
 	<article>
-		<p class="btn-ekd">
+		<p screen-detector value="up" class="btn-ekd">
 			<a ng-click="goOffers()" class="btn button ajax">
-				Current Job Offers
+				See Current Job Openings
 				<span></span>
 				<span class="mobile"></span>
 				<span></span>
@@ -17,16 +17,19 @@
 <section id="join-us-section-2"  header-changer  value="Meet the team">
 	<h2>Meet the team</h2>
 	<article ng-repeat="member in members" ng-class="member.main ? 'col-xs-12' : 'col-xs-6'">
-		<img src="{{member.video}}">
+		<div class="video">
+			<ng-video ng-show="member.name =='Pau Cuervo'" link="{{member.video}}" play="mouse" loop="true" controls="false" img="{{member.img}}"></ng-video>
+			<img ng-hide="member.name =='Pau Cuervo'" ng-src="{{member.img}}">
+		</div>
 		<hr>
-		<p><strong>{{member.name}}</strong></p>
-		<p>{{member.job}}</p>
+		<p screen-detector value="down"><strong>{{member.name}}</strong></p>
+		<p screen-detector value="down">{{member.job}}</p>
 	</article>
 	<hr>
 </section>
 <section id="join-us-section-3"  header-changer  value="Job Offers">
 	<article class="row">
-		<h2 class="col-xs-12 col-sm-6">Current job offers</h2>
+		<h2 class="col-xs-12 col-sm-6">Current job openings</h2>
 		<div class="col-xs-12 col-sm-6 right-column">
 			<div class="job" ng-repeat="job in jobs" ng-click="active($event)">
 				<div class="title">{{job.title}}
@@ -47,9 +50,13 @@
 	</article>
 	<div full-screen></div>
 	<div class="twice-img">
-		<img src="/assets/img/join-us2.jpg">
-		<img src="/assets/img/join-us3.jpg">
+		<div class="video-1 clip">		
+			<ng-video link="https://player.vimeo.com/external/170614198.sd.mp4?s=17475c0a6b53e93bbc5ccd8e134e1d38507eda25&profile_id=165" play="screen" loop="true" controls="false" img="/assets/img/join-us2.jpg"></ng-video>
+		</div>
+		<div class="video-2 clip">
+			<ng-video link="https://player.vimeo.com/external/170613855.sd.mp4?s=247c4d897d080d3157e5317e026ba22abde96980&profile_id=165" play="screen" loop="true" controls="false" img="/assets/img/join-us3.jpg"></ng-video>
+		</div>
 	</div>
 </section>
-<footer ng-footer value="We are always looking for new talents, send us your portfolio." ref="contact/career"></footer>
+<footer ng-footer value="We are always looking for new talent. Send us your portfolio." ref="contact/career"></footer>
 

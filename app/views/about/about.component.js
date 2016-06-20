@@ -5,7 +5,9 @@ angular.module('app').directive('appAbout', function ($rootScope, preloader) {
     controllerAs: 'appAbout',
     controller: function ($scope) {
 	    $( window ).load( function(){
-	        $rootScope.loaded = preloader.load('all');
+	        setTimeout(function(){
+              $rootScope.loaded = preloader.load('all');  
+          },1000);
 	    });
     }
   };

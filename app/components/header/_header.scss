@@ -1,11 +1,11 @@
 header {
-	color: $header-blue;
+	color: $primary-blue;
 	#black-layer, #menu, #logo-desktop, .burger-menu{
 		display: none;	
 	}
 	#header-mobile{		
 		position: fixed;	
-		color: $header-blue;
+		color: $primary-blue;
 		width: 100%;
 		z-index: 100;
 		height: 50px;
@@ -39,11 +39,11 @@ header {
 						width: 100%;
 						display: block;
 						white-space: nowrap;
-						color: $header-blue;
+						color: $primary-blue;
 						&:hover, &.active, &:active, &:focus{
 							opacity: 1 !important;
 							text-decoration: none;
-							color: $header-blue;
+							color: $primary-blue;
 						}
 					}
 				}
@@ -68,8 +68,8 @@ header {
 				font-size: 9px;
 				color: #FFFFFF;
 				position: absolute;
-			    top: 33px;
-			    left: 15px;
+			    top: 28px;
+			    left: 16px;
 			   	@include transition (color .5s cubic-bezier(.9,0,.33,1));
 			}
 			svg{
@@ -81,14 +81,14 @@ header {
 		&.have-background{
 			background-color: #FFFFFF;
 			line{
-				stroke: $header-blue;
+				stroke: $primary-blue;
 			}
 			path{
-				stroke: $header-blue;
+				stroke: $primary-blue;
 			}
 			.burger-menu-mobile{
 				div{
-					color: $header-blue;
+					color: $primary-blue;
 				}
 			}
 		}
@@ -112,16 +112,16 @@ header {
 			}
 			line{
 				@include transition (stroke .5s cubic-bezier(.645,.045,.355,1) .2s);
-				stroke: $header-blue;
+				stroke: $primary-blue;
 			}
 			path{
 				@include transition (all .5s cubic-bezier(.645,.045,.355,1) .2s);
-				stroke: $header-blue;
+				stroke: $primary-blue;
 			}
 			.burger-menu-mobile{
 				div{
 					@include transition (color .5s cubic-bezier(.645,.045,.355,1) .2s);
-					color: $header-blue;
+					color: $primary-blue;
 				}
 			}
 		}
@@ -150,7 +150,7 @@ header {
 			cursor: pointer;
 			div{
 				position: absolute;
-			    top: 58px;
+			    top: 53px;
 			    left: 43%;
 			}
 			svg{
@@ -193,10 +193,10 @@ header {
 				header-state{
 					position: absolute;
 				    top: 50%;
-				    left: 50%;
+				    left: 0%;
 				    white-space: nowrap;
 				    @include transform (rotate(-90deg) translate(85%, -13px));
-				    height: 70px;
+				    height: 0px;
     				width: 70px;
     				span{
     					margin-left: -60%;
@@ -214,6 +214,7 @@ header {
 				left: 70px;
 				min-width: calc(35vw - 140px);
 				top: 50%;
+				opacity: 0;
 				@include transform(translateY(-50%));
 				li{
 					white-space: nowrap;
@@ -228,11 +229,11 @@ header {
 						width: 100%;
 						display: block;
 						white-space: nowrap;
-						color: $header-blue;
+						color: $primary-blue;
 						&:hover, &.active, &:active, &:focus{
 							opacity: 1 !important;
 							text-decoration: none;
-							color: $header-blue;
+							color: $primary-blue;
 						}
 					}
 				}

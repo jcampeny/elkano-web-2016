@@ -76,7 +76,7 @@ angular.module('app')
 					controllers.position = i;
 					refreshPosition(last, controllers.position);
 				};
-				setInterval(function(){
+				/*setInterval(function(){
 					var last = controllers.position;
 					if(((controllers.position + 1) > controllers.dots - 1)){
 						controllers.position = 0;
@@ -86,9 +86,7 @@ angular.module('app')
 					if(!(last === 0 && controllers.position === 0)){
 						refreshPosition(last, controllers.position);
 					}
-					
-					
-				},3500);
+				},3500);*/
 				function refreshPosition(last, next){
 					$('[slide="'+last+'"]').css({opacity: 0});
 					$('[dot="'+last+'"]').css({'background-color' : 'transparent'});

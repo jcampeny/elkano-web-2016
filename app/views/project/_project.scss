@@ -18,6 +18,7 @@ app-project{
 						margin: 0;
 					}
 					h2{
+						margin: 0;
 						@media (max-width: $tabletV){
 							font-size: 20px;
 							line-height: 24px;
@@ -29,19 +30,32 @@ app-project{
 	}
 	section#project-section-2{
 		position: relative;
-		height: 70vw;
+		height: 51vw;
 		background-size: cover;
 		background-position: center center;
 		width: 100%;
     	overflow: hidden;
-		@media (min-width: $tabletV){
-			height: 100vh;
+    	//
+    	height: 0;
+    	padding-bottom: 56%;
+    	/*@media (min-width: 1650px){
+    		height: 53.5vw;
+    	}
+		@media (min-width: 1287px) and (max-width: 1650px){
+			height: 53vw;
 		}
+		@media (min-width: 914px) and (max-width: 1287px){
+			height: 52vw;
+		}
+		@media (min-width: $tabletV) and (max-width: 914px){
+			height: 51vw;
+		}*/
 		div{
 			width: 100%;
 			height: 100%;
+			position: absolute;
 		}
-		div[full-screen]{
+		div.img{
 			div{
 				width: 100%;
 				height: 100%;
@@ -53,6 +67,7 @@ app-project{
 		iframe{
 			width: 100%;
 			height: 100%;
+			position: absolute;
 			video{
 				object-fit: cover;
 				object-position: center;
@@ -72,14 +87,15 @@ app-project{
 			margin: auto;
 			margin: 40px;
 			padding-bottom: 50px;
-			h2{
+			h3{
 				margin-top: 0px;
-				margin-bottom: 40px;
+				margin-bottom: 0px;
 			}
 			p{
-				margin: auto;
+				margin: 15px auto;
 				text-align: left;
 				padding: $margin-mobile-H 0;
+				font-size: 20px;
 				@media (min-width: $tabletV) { width: 50%; padding: 0; }				
 			}
 
@@ -102,6 +118,7 @@ app-project{
 		text-align: center;
 		img{
 			margin: 0 auto;
+			margin-bottom: $margin-mobile-H;
 			display: block;
 			@media (max-width: $tabletV) {
 				width: 100% !important;
@@ -116,6 +133,7 @@ app-project{
 				position: relative;
 				margin: 30px 0;
 				background-position: center;
+				overflow:hidden;
 				iframe{
 					width: 100%;
 					height: 100%;
@@ -124,6 +142,7 @@ app-project{
 			@media (min-width: $tabletV){
 				width: 84%;
 				margin: $margin-mobile-H auto;
+				margin-top: 0;
 				div{
 					height: 22vw;
 					float: left;
@@ -147,10 +166,13 @@ app-project{
 		clear: both;
 		div.col-xs-12{
 			padding: $margin-mobile-H;
-			@media (min-width: $tabletV) { h3.hide-mobile{ margin-top: 100px; } }
+			@media (min-width: $tabletV) { h3.hide-mobile{ margin-top: 34%; } }
 			.hide-mobile{
 				display:none;
-				@media (min-width: $tabletV) { display: block; }
+				@media (min-width: $tabletV) { display: block;  }
+			}
+			p{
+				margin: 15px 0;
 			}
 			div{
 				img{
@@ -161,16 +183,18 @@ app-project{
 				    left: 50%;
 				    @include transform(translate(-50%,-50%));
 				}	
-				height: 18vw;
+				height: 20vw;
     			overflow: hidden;
     			margin: 30px 0px;
     			position: relative;	
+    			height: 0px;
+    			padding-bottom: 62%;
 				@media  (max-width: $tabletV){
 					width: 100%;
-				    min-height: 47vw;
+				    //min-height: 51vw;
 				    margin: 15px 0;
 				    /* margin: 0; */
-				    height: inherit;
+				   // height: inherit;
 				}
 				iframe{
 					position: absolute;
@@ -178,6 +202,14 @@ app-project{
 				iframe, object, embed { 
 				    width: 100%;
 				    height: 100%;
+				}
+				ng-video{
+					@media  (min-width: $tabletV){
+						position: absolute;
+					}
+					#background-mobile{
+						margin: 0;
+					}
 				}		
 			}
 			.isvideo{
@@ -198,6 +230,13 @@ app-project{
 	section#project-section-7{
 		text-align: center;
 		clear: both;
+		height: 0px;
+	    padding-bottom: 56%;
+	    width: 100%;
+	    position: relative;
+	    #background-mobile{
+	    	background-position: center center;
+	    }
 		div.btn-ekd{
 			font-family: $font-Calibre;
 			padding: $margin-mobile-H*1.5 0;
@@ -206,8 +245,9 @@ app-project{
 			@media (min-width: $tabletV) { padding: 50px 0px; }
 		}
 		.video{
-			height: 100vh;
-			position: relative;
+			position: absolute;
+			height: 100%;
+			width: 100%;			
 			video{
 				width: 100%;
 				height: 100%;
@@ -219,9 +259,37 @@ app-project{
 			}
 		}
 		iframe{
+			position: absolute;
 			width: 100%;
-    		height: 53vw;
-    		@media (max-width: $tabletV) { height: 55vw; }
+			height: 100%;
+			top: 0;
+			left: 0;
+			/*width: 100%;
+			height: 52vw;
+	    	@media (min-width: 1400px){
+	    		height: 50vw;
+	    	}
+			@media (min-width: 1100px) and (max-width: 1400px){
+				height: 49vw;
+			}
+			@media (min-width: 914px) and (max-width: 1100px){
+				height: 48vw;
+			}
+			@media (min-width: $tabletV) and (max-width: 914px){
+				height: 48vw;
+			}
+    		@media (max-width: $tabletV) { height: 52vw; }*/
+		}
+	}
+	section#project-section-8{
+		text-align: center;
+		clear: both;
+		div.btn-ekd{
+			font-family: $font-Calibre;
+			padding: $margin-mobile-H*1.5 0;
+			margin: 0;
+			@extend .btn-blue-2;
+			@media (min-width: $tabletV) {     padding: 90px 0px 60px 0px; }
 		}
 	}
 }
@@ -230,19 +298,18 @@ app-project{
 *SLIDE
 */
 div[ng-slide]{
-	height: 100vh;
+	height: 55vw;
     width: 100%;
     overflow: hidden;
     position: relative;
 	background-color: $grey-0;
 	dots{
 		position: absolute;
-	    bottom: 0;
+	    bottom: 20px;
 	    left: 50%;
 	    z-index: 10;
 	    @include transform(translateX(-50%));
 	    figure[dot] {
-	    	display: block;
     	    width: 10px;
     	    height: 10px;
     	    opacity: 1;
@@ -251,6 +318,8 @@ div[ng-slide]{
     	    border-radius: 100%;
     	    cursor: pointer;
     	    border: 1px solid white;
+    	    display: none;
+    	    @media (min-width: $tabletV) { display: block;}
 	    }
 	}
 

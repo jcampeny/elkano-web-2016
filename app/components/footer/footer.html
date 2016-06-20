@@ -6,19 +6,19 @@
 			<article screen-detector value="up">BARCELONA <br> Carrer Aribau 230 <br> 08003 Barcelona, Spain</article>
 		</section>
 		<a ng-show="isCase" ng-href="{{caseValues.ref}}">
-			<p>{{caseValues.value}}</p>
+			<p><span screen-detector value="up">{{caseValues.value}}</span></p>
 		</a>
 		<a ng-hide="show=='false'" ng-href="{{ref}}">
-			<p>{{value}}</p>
+			<p><span screen-detector value="up">{{value}}</span></p>
 		</a>
 	</div>
 
 	<div ng-show="isProject">
 		<a ng-show="isProject" ng-href="{{projectSlug.prev}}">
-			<p>Previous Project</p>
+			<p><span screen-detector value="up">Previous Project</span></p>
 		</a>
 		<a ng-href="{{projectSlug.next}}">
-			<p>Next Project</p>
+			<p><span screen-detector value="up">Next Project</span></p>
 		</a>
 	</div>
 

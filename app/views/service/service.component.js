@@ -5,7 +5,7 @@ angular.module('app').directive('appService', function ($rootScope, preloader, D
     controllerAs: 'appService',
     controller: function ($scope) {
         $( window ).load( function(){
-            $rootScope.loaded = preloader.load('all');
+            $rootScope.loaded = preloader.load('window');
         });
 
         DataService.all("project", "all", 0).then(function(projects){
@@ -35,6 +35,7 @@ angular.module('app').directive('appService', function ($rootScope, preloader, D
                 }
                 if(DataService.getParentCategory(project).slug == 'interactive'){
                     DataService.getItemById('media', project.featured_media).then(function(img){
+                        $rootScope.loaded = preloader.load('db');
                         $scope.item3 = {
                             img : img.source_url,
                             color: img.alt_text,

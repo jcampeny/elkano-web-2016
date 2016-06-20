@@ -1,38 +1,40 @@
 <div header-changer  value="{{slug | htmlToPlaintext}}">
 <section id="case-study-section-1">
 	<div full-screen>
-		<div style="background-image: url({{case.img1}})">
+		<div ng-style="{'background-image': 'url('+case.img1+')'}">
 			<article>
-				<h2 ng-class="case.img1color">{{case.title}}</h2>
-				<p ng-class="case.img1color">{{case.content}}</p>
+				<p screen-detector value="up" ng-class="case.img1color">{{case.content}}</p>
+				<h2 screen-detector value="up" ng-class="case.img1color">{{case.title}}</h2>
 			</article>
 		</div>
 	</div>
 </section>
 <section id="case-study-section-2">
-	<div class="btn-ekd">
-		<p>Want to start a project?</p>
+	<div screen-detector value="up" class="btn-ekd">
+		<p >Want to start a project?</p>
 		<a ng-href="contact" class="btn button ajax">
 			Contact Us
 		</a>
 	</div>
 	<div class="content">
-		<h2>{{case.title2}}</h2>
-		<p>{{case.content2}}</p>
+		<h3 screen-detector value="up">{{case.title2}}</h3>
+		<p screen-detector value="up">{{case.content2}}</p>
 	</div>
 </section>
 <section id="case-study-section-3">
 	<article>
-	<cite>« {{case.cite}} »</cite>
-	<p>— {{case.citename}}</p>
+	<cite screen-detector value="up">« {{case.cite}} »</cite>
+	<p screen-detector value="up">— {{case.citename}}</p>
 	</article>
 </section>
 <section id="case-study-section-4">
 	<article>
 		<div class="project">
-			<div class="img" style="background-image: url({{lastproject.img}})"></div>
+			<div ng-if="lastproject.img.indexOf('player.vimeo.com') < 0" class="img" ng-style="{'background-image': 'url('+lastproject.img+')'}"></div>
+			<ng-video ng-if="lastproject.img.value != undefined && lastproject.img.value == 'video'" link="{{lastproject.img.src}}" play="screen" loop="true" controls="false" img="{{lastproject.img.img}}"></ng-video>
+			<iframe ng-if="lastproject.img.value != undefined && lastproject.img.value == 'iframe'" src="{{lastproject.img.src}}" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen autoplayekd></iframe>
 			<div class="content" ng-class="lastproject.imgcolor">
-				<h2>Our latest project <br> for {{lastproject.name}}:</h2>			
+				<h3 screen-detector value="up"><span>Our latest project for </span><br> {{lastproject.name}}:</h3>			
 			</div>
 		</div>
 		<div></div>
@@ -40,20 +42,20 @@
 	<article class="project-content">
 		<div class="content">
 			<div class="col-xs-12 col-sm-5 col-lg-3 information">
-				<h2>{{lastproject.title}}</h2>
-				<h6>{{lastproject.category}}</h6>
-				<p>{{lastproject.content}}</p>
-				<div class="btn-ekd">
+				<h3 screen-detector value="up">{{lastproject.title}}</h3>
+				<h6 screen-detector value="up">{{lastproject.category}}</h6>
+				<p screen-detector value="up">{{lastproject.content}}</p>
+				<div screen-detector value="up" class="btn-ekd">
 					<a ng-href="work/project/{{lastproject.slug}}" class="btn button ajax">
 						View project
 					</a>
 				</div>
 			</div>
 			<div class="col-xs-12 col-sm-6 col-sm-offset-2 col-lg-6 col-lg-offset-4 images">
-				<div ng-repeat="gif in lastproject.gifs" ng-class="(gif.indexOf('player.vimeo') > 0) ? 'isvideo' : ''">
-					<img ng-if="gif.indexOf('player.vimeo.com') < 0"  src="{{gif}}">
+				<div screen-detector ng-repeat="gif in lastproject.gifs" ng-class="(gif.indexOf('player.vimeo') > 0) ? 'isvideo' : ''">
+					<img ng-if="gif.indexOf('player.vimeo.com') < 0"  ng-src="{{gif}}">
 					<ng-video ng-if="gif.value != undefined && gif.value == 'video'" link="{{gif.src}}" play="screen" loop="true" controls="false" img="{{gif.img}}"></ng-video>
-					<iframe ng-if="gif.value != undefined && gif.value == 'iframe'" src="{{gif.src}}" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+					<iframe ng-if="gif.value != undefined && gif.value == 'iframe'" src="{{gif.src}}" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen autoplayekd></iframe>
 				</div>
 			</div>
 			<div class="clear"></div>
@@ -62,50 +64,50 @@
 </section>
 <section id="case-study-section-5">
 	<article>
-		<h2>{{case.title3}}</h2>
-		<p>{{case.content3}}</p>
-		<div class="twice-img">
-			<img src="{{case.img2}}">
-			<img src="{{case.img3}}">
+		<h3 screen-detector value="up">{{case.title3}}</h3>
+		<p screen-detector value="up">{{case.content3}}</p>
+		<div  class="twice-img">
+			<!--<img screen-detector ng-src="{{case.img2}}">
+			<img screen-detector ng-src="{{case.img3}}">-->
 		</div>
 	</article>
 	<article>
-		<h2>{{case.title4}}</h2>
-		<p>{{case.content4}}</p>
+		<h3 screen-detector value="up">{{case.title4}}</h3>
+		<p screen-detector value="up">{{case.content4}}</p>
 	</article>
 </section>
 
 <section id="case-study-section-6">
 	<article ng-repeat="project in projects">
 		<div class="img-important" ng-show="project.important">
-			<img ng-if="project.img.indexOf('player.vimeo.com') < 0"  src="{{project.img}}">
+			<img ng-if="project.img.indexOf('player.vimeo.com') < 0"  ng-src="{{project.img}}">
 			<ng-video ng-if="project.img.value != undefined && project.img.value == 'video'" link="{{project.img.src}}" play="screen" loop="true" controls="false" img="{{project.img.img}}"></ng-video>
-			<iframe ng-if="project.img.value != undefined && project.img.value == 'iframe'" src="{{project.img.src}}" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+			<iframe ng-if="project.img.value != undefined && project.img.value == 'iframe'" src="{{project.img.src}}" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen autoplayekd></iframe>
 		</div>
 		<div class="content">
 			<div class="col-xs-12 col-sm-5 col-lg-3 information">
-				<h2>{{project.title}}</h2>
-				<h6>{{project.category}}</h6>
-				<p>{{project.content}}</p>
-				<div class="btn-ekd" ng-show="project.isPublic">
+				<h3 screen-detector value="up">{{project.title}}</h3>
+				<h6 screen-detector value="up">{{project.category}}</h6>
+				<p screen-detector value="up">{{project.content}}</p>
+				<div screen-detector value="up" class="btn-ekd" ng-show="project.isPublic">
 					<a ng-href="work/project/{{project.slug}}" class="btn button ajax">
 						View project
 					</a>
 				</div>
 			</div>
 			<div class="col-xs-12 col-sm-6 col-sm-offset-1 col-lg-5 col-lg-offset-4 images">
-				<div ng-repeat="gif in project.imgs" ng-class="(gif.indexOf('player.vimeo') > 0) ? 'isvideo' : ''">
-					<img ng-if="gif.indexOf('player.vimeo.com') < 0"  src="{{gif}}">
+				<div screen-detector ng-repeat="gif in project.imgs" ng-class="(gif.indexOf('player.vimeo') > 0) ? 'isvideo' : ''">
+					<img ng-if="gif.indexOf('player.vimeo.com') < 0"  ng-src="{{gif}}">
 					<ng-video ng-if="gif.value != undefined && gif.value == 'video'" link="{{gif.src}}" play="screen" loop="true" controls="false" img="{{gif.img}}"></ng-video>
-					<iframe ng-if="gif.value != undefined && gif.value == 'iframe'" src="{{gif.src}}" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+					<iframe ng-if="gif.value != undefined && gif.value == 'iframe'" src="{{gif.src}}" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen autoplayekd></iframe>
 				</div>
 			</div>
 			<div class="clear"></div>
 		</div>
 	</article>
-	<article class="view-more" >
-		<p class="btn-ekd">
-			<a ng-href="work" class="btn button ajax">
+	<article class="view-more">
+		<p  screen-detector value="up" class="btn-ekd">
+			<a   ng-href="work" class="btn button ajax">
 				View all projects
 				<span></span>
 				<span class="mobile"></span>
@@ -115,4 +117,4 @@
 	</article>
 </section>
 </div>
-<footer ng-footer case="{{otherslug | htmlToPlaintext }}"></footer>
+<footer ng-footer case="{{otherslug.text | htmlToPlaintext }}" casehref="{{otherslug.src | htmlToPlaintext}}"></footer>

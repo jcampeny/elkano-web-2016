@@ -5,10 +5,10 @@ angular.module('app').directive('appHome', function (DataService, ContactService
     controllerAs: 'appHome',
     controller: function ($scope) {
         var state = 0;
-        var delay = 2000; //ms
+        var delay = 5000; //ms
 
         //VIDEO
-        $scope.videohome1 = "https://player.vimeo.com/external/168755026.sd.mp4?s=05e34dbc5df929daa1505b92d06decbc86330827&profile_id=165";
+        $scope.videohome1 = "https://player.vimeo.com/external/170926156.hd.mp4?s=a3a58ce19080dfe46b3dce966650ed52bb6b05e8&profile_id=119";
         /*$scope.item1 = {
             img : "/assets/img/home2.jpg",
             title : 'UN Women Timeline',
@@ -32,7 +32,9 @@ angular.module('app').directive('appHome', function (DataService, ContactService
         * Get main case
         */
         //case/?filter[other]=main-case
-
+        $scope.nextSection = function () {
+            $('html, body').animate({ scrollTop: $('#home-section-1 article').offset().top }, 1000);
+        };
         DataService.all("case", "all", 0).then(function(cases){
             //pasa por todos los case para comprobar si es un main case (category other)
             angular.forEach(cases, function(caseStudy, i) {
@@ -94,7 +96,6 @@ angular.module('app').directive('appHome', function (DataService, ContactService
             });
         });
         DataService.all('media', 'all', 0).then(function(imgs){
-            console.log(imgs);
             angular.forEach(imgs, function(img, i){
                 if(img.alt_text == 'client'){
                     $scope.client_logos.push(img.source_url);
@@ -147,15 +148,15 @@ angular.module('app').directive('appHome', function (DataService, ContactService
 			//hide
 			
 			TweenLite.fromTo('article[state="'+state+'"] > cite', time_animation, {left: '0px', opacity:'1'},{left: '-50px', opacity:'0'});
-			TweenLite.fromTo('article[state="'+state+'"] > p', time_animation, {y: '0px', opacity:'1'},{y: '30px', opacity:'0', onComplete : function () {TweenLite.set('article[state="'+state+'"]', {'display': 'none'}); if(state >= ($scope.cites.length-1)){state=0;}else{state++;} show();}});
-			TweenLite.fromTo('article[state="'+state+'"] > hr', time_animation, {width: '25%', opacity:'1'},{width: '0%', opacity:'0'});
+			TweenLite.fromTo('article[state="'+state+'"] > p', time_animation, {/*x: '0px',*/ opacity:'1'},{/*x: '-50px',*/ opacity:'0', onComplete : function () {TweenLite.set('article[state="'+state+'"]', {'display': 'none'}); if(state >= ($scope.cites.length-1)){state=0;}else{state++;} show();}});
+			TweenLite.fromTo('article[state="'+state+'"] > hr', time_animation, {/*width: '25%',*/ opacity:'1'},{/*width: '0%',*/ opacity:'0'});
 			//state control
 			//show
 			function show(){
 				TweenLite.set('article[state="'+state+'"]', {'display': 'block'});
 				TweenLite.fromTo('article[state="'+state+'"] > cite', time_animation, {left: '50px', opacity:'0'},{left: '0px', opacity:'1'});
-				TweenLite.fromTo('article[state="'+state+'"] > p', time_animation, {y: '30px', opacity:'0'},{y: '0px', opacity:'1', onComplete : function () {$timeout(function () {anim();},delay);}});
-				TweenLite.fromTo('article[state="'+state+'"] > hr', time_animation, {width: '0%', opacity:'0'},{width: '25%', opacity:'1'});	
+				TweenLite.fromTo('article[state="'+state+'"] > p', time_animation, {/*x: '50px',*/ opacity:'0'},{/*x: '0px',*/ opacity:'1', onComplete : function () {$timeout(function () {anim();},delay);}});
+				TweenLite.fromTo('article[state="'+state+'"] > hr', time_animation, {/*width: '0%',*/ opacity:'0'},{/*width: '25%',*/ opacity:'1'});	
 			}
 		};
         

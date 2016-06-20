@@ -18,6 +18,7 @@ app-case-study{
 						margin: 0;
 					}
 					h2{
+						margin: 0;
 						@media (max-width: $tabletV){
 							font-size: 20px;
 							line-height: 24px;
@@ -46,8 +47,11 @@ app-case-study{
 			}
 			p{
 				margin: auto;
+				margin-top: 15px;
 				text-align: left;
 				padding: $margin-mobile-H 0;
+				font-size: 20px;
+				line-height: 24px;
 				@media (min-width: $tabletV) { width: 50%; padding: 0; }				
 			}
 
@@ -61,12 +65,14 @@ app-case-study{
 			color: white;
 			@media (min-width: $tabletV) {text-align: center; padding: $margin-mobile-H;};
 			cite{
+				font-style: normal !important;
 				display: block;
 				font-size: 26px;
 				line-height: 30px;
-				@media (min-width: $tabletV) { font-size: 40px; line-height: 54px; width: 50%; margin: auto; }
+				@media (min-width: $tabletV) { font-size: 40px; line-height: 54px; width: 70%; margin: auto; }
 			}
 			p{
+				font-family: $font-Calibre;
 				margin-top: 30px;
 				font-size: 18px;
 				@media (min-width: $tabletV) { margin-top: 50px; }
@@ -95,20 +101,18 @@ app-case-study{
 				position: relative;
 				overflow: hidden;
 				//cursor: pointer;
-				height: 70vw; 
 				padding: 0;
+				padding-bottom: 56%;
+				height: 0px; 
 				display: block;
+				iframe{
+					position: absolute;
+				    width: 100%;
+				    height: 100%;
+				}
 				.white{
 					color: white;
-				}
-				@media (min-width: $tabletV) {
-					height: 100vh;
-					/*&:hover{
-						div.img{
-							transform:scale(1.1);
-						}
-					}*/
-				}				
+				}			
 				div.img{
 					position: absolute;
     				width: 100%;
@@ -120,14 +124,20 @@ app-case-study{
 				div.content{
 					position: absolute;
 					bottom: 50%;
+					pointer-events: none;
 					@include transform(translateY(50%));
 					@media (min-width: $tabletV) {
 						transform: none;
 						bottom: $margin-mobile-H;
 						left: $margin-mobile-H;
 					}
-					h2{
+					h3{
 						margin: 0;
+						line-height: 40px;
+						span{
+							font-family: $font-Calibre;
+							font-size: 18px;
+						}
 					}
 					p{
 						font-size: 12px;
@@ -150,18 +160,28 @@ app-case-study{
 						    left: 50%;
 						    @include transform(translate(-50%,-50%));
 						}	
-						iframe{width: 100%;height: 100%;}
+						iframe{width: 100%;height: 100%;position: absolute;}
 						div[ng-repeat]{
-							height: 45vw;
+							//height: 52vw;
 						    overflow: hidden;
 						    margin: 30px 0px;
 						    position: relative;
-						    @media (min-width: $tabletV) {height: 18vw;}
+						   // @media (min-width: $tabletV) {height: 20vw;}
+						   height: 0px !important;
+						   padding-bottom: 63%;
+						   ng-video{
+						   	@media  (min-width: $tabletV){
+						   		position: absolute;
+						   	}
+						   	#background-mobile{
+						   		margin: 0;
+						   	}
+						   }	
 						}
 					}
 					div.information{
 						 padding: 0;
-						h2{
+						h3{
 							padding: 0; margin: 0;
 							@media (min-width: $tabletV) { margin-top: 0; margin-bottom: 5px;}
 						}
@@ -173,6 +193,11 @@ app-case-study{
 						p{
 							margin: 30px 0;
 							//@media (min-width: $tabletV) { padding-right: $margin-mobile-H; }
+						}
+						h6, p{
+							font-family: $font-Calibre;
+							font-size: 20px;
+							line-height: 24px;
 						}
 						div.btn-ekd{
 							font-family: $font-Calibre;
@@ -202,17 +227,17 @@ app-case-study{
 			padding: $margin-mobile-H;
 			margin: 0;
 			@media (min-width: $tabletV) { padding: $margin-mobile-H; }
-			h2{font-family: $font-Sabon;}
+			h3{font-family: $font-Sabon;}
 			p{
 				margin-top: 20px;
 				text-align:left;
-				font-size: 18px; 
-				line-height: 22px;
+				font-size: 20px; 
+				line-height: 24px;
 				@media (min-width: $tabletV) { 
 					width: 100%;
 					margin: auto; 
-					font-size: 24px; 
-					line-height:30px;
+					font-size: 20px; 
+					line-height: 24px;
 					margin-top: 20px;
 				}
 				@media (min-width: $tabletH) { 
@@ -250,15 +275,47 @@ app-case-study{
 	section#case-study-section-6{
 		article[ng-repeat]{
 			div.img-important{
+				    overflow: hidden;
 				position: relative;
 				width: 100%;
-				height: 53vw;
+				height: 0px;
+				padding-bottom: 56%;
+				ng-video{
+					@media  (min-width: $tabletV){
+						position: absolute;
+						width: 100%;
+						height: 100%;
+					}
+					#background-mobile{
+						margin: 0;
+					}
+				}	
+				/*height: 51vw;
+				@media (min-width: 1400px) {
+					height: 53.5vw;
+				}
+				@media (min-width: 1000px) and (max-width: 1400px){
+					height: 52.5vw;
+				}
+				@media (max-width: 1000px){
+					height: 51vw;
+				}
+				@media (max-width: $tabletV){
+					height: 55vw;
+				}
 				video{
 					position: absolute;
-				}
+				}*/
+
 				iframe{
 					width: 100%;
 					height: 100%;
+					position: absolute;
+				}
+				img{
+					object-fit: cover;
+				    object-position: center;
+				    width: 100%;
 				}
 			}
 			div.content{
@@ -273,18 +330,22 @@ app-case-study{
 					    left: 50%;
 					    @include transform(translate(-50%,-50%));
 					}	
-					div{
-						height: 18vw;
-		    			overflow: hidden;
-		    			margin: 30px 0px;
-		    			position: relative;	
-						@media  (max-width: $tabletV){
-							width: 100%;
-						    min-height: 47vw;
-						    margin: 15px 0;
-						    /* margin: 0; */
-						    height: inherit;
-						}						
+					div[ng-repeat]{
+							//height: 52vw;
+						    overflow: hidden;
+						    margin: 30px 0px;
+						    position: relative;
+						   // @media (min-width: $tabletV) {height: 20vw;}
+						   height: 0px !important;
+						   padding-bottom: 63%;
+						   ng-video{
+						   	@media  (min-width: $tabletV){
+						   		position: absolute;
+						   	}
+						   	#background-mobile{
+						   		margin: 0;
+						   	}
+						   }					
 					}
 
 					iframe{
@@ -298,16 +359,20 @@ app-case-study{
 				div.information{
 					 padding: 0;
 					//@media (min-width: $tabletV) { width: 50%;}
-					h2{
+					h3{
 						@media (min-width: $tabletV) { margin-top: 0; margin-bottom: 5px;}
 					}
 	    			h6{
-		    			font-size: 18px;
 		    			line-height: 22px;
 		    			margin: 0;
 	    			}
 					p{
 						margin: 30px 0;
+					}
+					h6, p{
+						font-family: $font-Calibre;
+						font-size: 20px;
+						line-height: 24px;
 					}
 					div.btn-ekd{
 						font-family: $font-Calibre;

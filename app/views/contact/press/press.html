@@ -1,39 +1,11 @@
-<form id="contact_form">
-	<div>About You</div>
-	<input id="contact_name" type="text" placeholder="Name">
-	<input id="contact_email" type="text" placeholder="Email*">
-	<input id="contact_phone" type="text" placeholder="Phone">
-	<input id="contact_company" type="text" placeholder="Company or Organization">
+<form id="contact_form" ng-submit="submitForm()">
+	<input id="contact_name" type="text" placeholder="Name" ng-model="msg.name">
+	<input id="contact_email" type="text" placeholder="Email*" ng-model="msg.email" required>
 
-	<div>How did you hear about us?</div>
-	<textarea id="contact_hear" type="text" cols="15" rows="3" placeholder=""></textarea>
+	<textarea id="contact_hear" type="text" cols="15" rows="3" ng-model="msg.message" placeholder="Message"></textarea>
 
-	<div>What is your project about?</div>
-	<textarea id="contact_project_about" type="text" cols="15" rows="3" placeholder=""></textarea>
-
-	<div>What's your budget?</div>
-	<article class="budget">
-		<span ng-class="msg.budget == '<2000$' ? 'active' : ''" ng-click="msg.budget = '<2000$'">&#60;2000 $</span>
-		<span ng-class="msg.budget == '2000-4000$' ? 'active' : ''" ng-click="msg.budget = '2000-4000$'">2000 - 4000 $</span>
-		<span></span>
-	</article>
-	<article class="budget">
-		<span ng-class="msg.budget == '5000-7000$' ? 'active' : ''" ng-click="msg.budget = '5000-7000$'">5000 - 7000 $</span>
-		<span ng-class="msg.budget == '7000-10000$' ? 'active' : ''" ng-click="msg.budget = '7000-10000$'">7000 - 10.000 $</span>
-		<span></span>
-	</article>
-	<article class="budget">
-		<span ng-class="msg.budget == '10000-12000$' ? 'active' : ''" ng-click="msg.budget = '10000-12000$'">10.000 - 12.000 $</span>
-		<span ng-class="msg.budget == '>12000$' ? 'active' : ''" ng-click="msg.budget = '>12000$'">&#62;12.000 $</span>
-		<span></span>
-	</article>
-
-	<div>When do you want your project to start?</div>
-	<textarea id="contact_start" type="text" cols="15" rows="3" placeholder=""></textarea>
-
-	<div>When do you want your project to launch?</div>
-	<textarea id="contact_launch" type="text" cols="15" rows="3" placeholder=""></textarea>
 
 	<!--<p>* Campos obligatorios</p>-->
-	<button id="contact_button_send">Submit</button>
+	<button id="contact_button_send">{{btntxt}}</button>
 </form>
+<div id="message">Thank you for your message. <br><br> We’ll be in touch soon!</div>
